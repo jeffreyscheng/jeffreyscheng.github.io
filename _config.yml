@@ -1,0 +1,4 @@
+name: Brandon Lin
+markdown: kramdown
+
+permalink: /mlog/:year/:month/:day/:title
