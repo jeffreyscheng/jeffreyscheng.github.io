@@ -1,0 +1,17 @@
+---
+layout: default
+title: My MLog
+---
+<div class="text">
+	<div class="container">
+		<div class="header">
+			<h2><a href="/">home</a> ~ <a href="/courses.html">courses</a> ~ <a href="/cubing/">cubing</a></h2>
+		</div>
+		<p>Welcome to my MLog, where I'll be posting about various machine learning topics and perhaps some algorithms concepts as well.</p>
+
+		{% for post in site.posts %}
+		<p><a href="{{ post.url }}">{{ post.title }}</a></p>
+		{% endfor %}
+
+	</div>
+</div>
