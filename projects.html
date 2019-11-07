@@ -11,15 +11,12 @@ title: Work
     {% for post in site.posts %}
         {% if post.category == "Project" %}
             <div class="card">
-                <div class="container bg-danger" width=80% style="padding-top:0 padding-bottom:0">
+                <div class="container bg-danger" width=100% style="padding: 5px 5px 5px 5px">
                     <div class="row">
                         <div class="col-lg-3">
                                 <div class="card-body">
                                     <h4 class="card-title">{{post.title}}<br>
-                                        <small>{{post.kind}}</small><br>
-                                        <small>{{post.year}}</small>
-                                    </h4>
-                                    <p class="card-text">
+                                        <small>{{post.year}} | {{post.kind}}<br><br>
                                         {% if post.paper_link %}
                                             <a href={{ post.paper_link }} class="card-link">[Paper]</a>
                                         {% endif %}
@@ -29,15 +26,11 @@ title: Work
                                         {% if post.code_link %}
                                             <a href={{ post.code_link }} class="card-link">[Code]</a>
                                         {% endif %}
-                                    </p>
+                                        </small></h4>
                                 </div>
                         </div>
                         <div class="col-lg-9">
-                            <h4><small>
-                                <!-- <b>Problem: </b>{{post.problem}}<br>
-                                <b>Insight: </b>{{post.insight}}<br>  
-                                <b>Solution: </b>{{post.solution}}<br>
-                                <b>Result: </b>{{post.result}}</small> -->
+                            <h4 class="card-text"><small>
                                 {{post.description}}
                             </ph4
                         </div>
