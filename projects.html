@@ -2,50 +2,43 @@
 layout: default
 title: Work
 ---
-<div class="text">
-	<div class="container" id="aboutme">
-        <div class="header">
-            <h2><a href="/">home</a> ~ <a href="/education.html">education</a> ~ <a href="/work.html">work</a> ~ <a href="/projects.html">projects</a> ~ <a href="/blog.html">blog</a></h2>
-        </div>
-    </div>
-    {% for post in site.posts %}
-        {% if post.category == "Project" %}
-            <div class="card">
-                <div class="container bg-danger" width=100% style="padding: 5px 5px 5px 5px">
-                    <div class="row">
-                        <div class="col-lg-3">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{post.title}}<br>
-                                        <small>{{post.year}} | {{post.kind}}<br><br>
-                                        {% if post.paper_link %}
-                                            <a href={{ post.paper_link }} class="card-link">[Paper]</a>
-                                        {% endif %}
-                                        {% if post.writeup_link %}
-                                            <a href={{ post.code_link }} class="card-link">[Writeup]</a>
-                                        {% endif %}
-                                        {% if post.code_link %}
-                                            <a href={{ post.code_link }} class="card-link">[Code]</a>
-                                        {% endif %}
-                                        </small></h4>
-                                </div>
-                        </div>
-                        <div class="col-lg-9">
-                            <h4 class="card-text"><small>
-                                {{post.description}}
-                            </ph4
-                        </div>
+{% for post in site.posts %}
+    {% if post.category == "Project" %}
+        <div class="card">
+            <div class="container bg-danger" width=100% style="padding: 5px 5px 5px 5px">
+                <div class="row">
+                    <div class="col-lg-3">
+                            <div class="card-body">
+                                <h4 class="card-title">{{post.title}}<br>
+                                    <small>{{post.year}} | {{post.kind}}<br><br>
+                                    {% if post.paper_link %}
+                                        <a href={{ post.paper_link }} class="card-link">[Paper]</a>
+                                    {% endif %}
+                                    {% if post.writeup_link %}
+                                        <a href={{ post.code_link }} class="card-link">[Writeup]</a>
+                                    {% endif %}
+                                    {% if post.code_link %}
+                                        <a href={{ post.code_link }} class="card-link">[Code]</a>
+                                    {% endif %}
+                                    </small></h4>
+                            </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <h4 class="card-text"><small>
+                            {{post.description}}
+                        </h4>
                     </div>
                 </div>
             </div>
-            <!-- <div class="card" style="width: 18rem;">
-                <p><a href="{{ post.url }}">{{ post.title }}</a></p>
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div> -->
-        {% endif %}
-    {% endfor %}
-</div>
+        </div>
+        <!-- <div class="card" style="width: 18rem;">
+            <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div> -->
+    {% endif %}
+{% endfor %}
