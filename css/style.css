@@ -153,7 +153,7 @@ ul li {
 
 .container a:link, .container a:visited{
 	text-decoration: none;
-	color: #A2A2A2;
+	color: #0000EE;
 	-o-transition:.3s;
     -ms-transition:.3s;
     -moz-transition:.3s;
@@ -188,7 +188,7 @@ nav li a {
 	text-align: center;
 	padding: 14px 20px;
 	text-decoration: none;    
-	color: #d6d4d4;		
+	color: #0000EE;		
 	-webkit-transition: .5s;
 	transition: .5s;
 }
