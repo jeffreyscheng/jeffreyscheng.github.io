@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hi, i'm jeffrey</title>
+    <style>
+        #changeText {
+            color: black; /* Ensures text is always black */
+            cursor: pointer; /* Changes cursor to indicate clickable */
+            text-decoration: underline; /* Makes it look like a hyperlink */
+        }
+    </style>
 </head>
 <body>
     <h1>hi, i'm jeffrey</h1>
     <img src="chris.jpeg" style="width:100%;max-width:300px;">
     <p><a href="https://twitter.com/jeffreycider">shitposts</a></p>
-    <p><a href="https://letmegooglethat.com/?q=i+don%27t+have+serious+posts+lol">seriousposts</a></p>
+    <p id="changeText" onclick="changeText()">seriousposts</p>
+
+    <script>
+        function changeText() {
+            var element = document.getElementById("changeText");
+            element.innerHTML = "but why tho";
+        }
+    </script>
 </body>
 </html>
 
