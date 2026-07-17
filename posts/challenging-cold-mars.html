@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A working note on Martian thermochronology, argon diffusion, and Bayesian inference.">
+    <title>challenging the geologists' cold mars history with bayesian diffusion models — jeffrey cheng</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <main class="post post--wide">
+      <a class="back" href="../index.html">← home</a>
+
+      <article class="essay">
+        <header class="essay-header">
+          <div class="essay-meta">
+            <time datetime="2026-07-17">jul 17, 2026</time>
+            <span class="draft-badge">working draft</span>
+          </div>
+          <h1>challenging the geologists' cold mars history with bayesian diffusion models</h1>
+          <p class="dek">Rocks tell us one story. Cameras tell us another. The disagreement may live inside a two-spike model of how argon escapes a crystal.</p>
+        </header>
+
+        <div class="essay-body">
+          <section class="essay-section" aria-labelledby="two-stories">
+            <div class="section-heading">
+              <span>01</span>
+              <h2 id="two-stories">two stories about mars</h2>
+            </div>
+
+            <div class="evidence-grid">
+              <figure class="evidence-card evidence-card--wide">
+                <img src="../assets/cold-mars/martian-channels.jpg" width="2880" height="1800" alt="Branching ancient river channels photographed from orbit on Mars">
+                <figcaption>
+                  <strong>the cameras:</strong> branching channels cut into the Martian surface.
+                  <a href="https://science.nasa.gov/photojournal/ancient-rivers/">NASA/JPL-Caltech/University of Arizona ↗</a>
+                </figcaption>
+              </figure>
+              <figure class="evidence-card">
+                <img src="../assets/cold-mars/martian-pebbles.jpg" width="1280" height="720" alt="Rounded pebbles embedded in the Hottah outcrop on Mars">
+                <figcaption>
+                  Rounded clasts at Hottah are too large for wind to have carried them.
+                  <a href="https://science.nasa.gov/resource/remnants-of-ancient-streambed-on-mars-closeup/">NASA/JPL-Caltech/MSSS ↗</a>
+                </figcaption>
+              </figure>
+              <figure class="evidence-card">
+                <img src="../assets/cold-mars/nakhla-meteorite.jpg" width="960" height="720" alt="Broken interior surfaces of the Nakhla meteorite">
+                <figcaption>
+                  <strong>the rock:</strong> fragments of Nakhla, a meteorite from Mars.
+                  <a href="https://commons.wikimedia.org/wiki/File:Nakhla_meteorite.jpg">NASA S98-04014 ↗</a>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="prose">
+              <p>The surface looks water-worked. Canyons branch like drainage networks. Pebbles are rounded as if they once tumbled through a vigorous stream.</p>
+              <p>But argon trapped in Martian meteorites has been read as a much colder record. In 2005, David Shuster and Benjamin Weiss argued that the nakhlites had not spent long stretches above freezing during roughly the last billion years.</p>
+              <p class="pullquote">Rocks are not liars. But their story has been misinterpreted by geologists.</p>
+            </div>
+          </section>
+
+          <section class="essay-section" aria-labelledby="rock-clock">
+            <div class="section-heading">
+              <span>02</span>
+              <h2 id="rock-clock">how a rock remembers heat</h2>
+            </div>
+
+            <div class="prose">
+              <p>Potassium-40 decays into argon-40. Cold feldspar holds that argon inside its lattice; heat gives it enough mobility to diffuse out. An argon date is therefore also a record of what temperatures the mineral survived.</p>
+            </div>
+
+            <figure class="diagram-card">
+              <svg class="argon-clock" viewBox="0 0 960 440" role="img" aria-labelledby="argon-title argon-desc">
+                <title id="argon-title">Argon clock and temperature animation</title>
+                <desc id="argon-desc">Potassium decays to argon inside a crystal. As temperature rises, argon escapes and the retained fraction falls.</desc>
+                <g class="crystal-grid" aria-hidden="true">
+                  <rect x="45" y="54" width="350" height="300" rx="16"></rect>
+                  <path d="M115 54v300M185 54v300M255 54v300M325 54v300M45 114h350M45 174h350M45 234h350M45 294h350"></path>
+                </g>
+                <g class="atom atom-k">
+                  <circle cx="185" cy="174" r="25"></circle>
+                  <text x="185" y="181">⁴⁰K</text>
+                </g>
+                <g class="atom atom-ar">
+                  <circle cx="185" cy="174" r="25"></circle>
+                  <text x="185" y="181">⁴⁰Ar</text>
+                </g>
+                <g class="small-atoms" aria-hidden="true">
+                  <circle cx="115" cy="114" r="9"></circle><circle cx="325" cy="114" r="9"></circle>
+                  <circle cx="255" cy="234" r="9"></circle><circle cx="115" cy="294" r="9"></circle>
+                </g>
+                <path class="escape-path" d="M185 174 C270 120 365 90 465 58"></path>
+                <text class="panel-label" x="45" y="35">a radioactive clock inside the lattice</text>
+
+                <g class="retention-chart">
+                  <path class="axis" d="M540 350V65M540 350H910"></path>
+                  <text class="axis-label" x="725" y="405">temperature</text>
+                  <text class="axis-label axis-label--vertical" x="485" y="230">argon retained</text>
+                  <path class="retention-curve" d="M555 90 C665 90 690 96 720 135 C760 190 770 310 895 335"></path>
+                  <path class="freezing-line" d="M730 65V350"></path>
+                  <text class="zero-label" x="742" y="84">warmer</text>
+                  <text class="cold-label" x="558" y="84">colder</text>
+                  <circle class="curve-dot" cx="555" cy="90" r="8"></circle>
+                </g>
+              </svg>
+              <figcaption>Heat does not change the clock smoothly. Over geological time, retention behaves almost like a switch.</figcaption>
+            </figure>
+
+            <div class="prose">
+              <p>A grain is not one perfect container. The multi-domain diffusion model treats it as many diffusion domains: small domains empty at lower temperatures; large domains retain argon longer. A step-heating experiment releases those domains in sequence.</p>
+            </div>
+
+            <figure class="diagram-card">
+              <svg class="domain-animation" viewBox="0 0 960 460" role="img" aria-labelledby="domain-title domain-desc">
+                <title id="domain-title">Multiple diffusion domains during step heating</title>
+                <desc id="domain-desc">Small, medium, and large domains within one mineral empty at different temperatures and form an argon release curve.</desc>
+                <g class="grain">
+                  <circle class="grain-shell" cx="235" cy="220" r="155"></circle>
+                  <g class="domain domain--large"><circle cx="190" cy="190" r="68"></circle><circle class="gas" cx="190" cy="190" r="45"></circle></g>
+                  <g class="domain domain--medium"><circle cx="295" cy="270" r="47"></circle><circle class="gas" cx="295" cy="270" r="30"></circle></g>
+                  <g class="domain domain--small"><circle cx="300" cy="135" r="25"></circle><circle class="gas" cx="300" cy="135" r="15"></circle></g>
+                  <g class="domain domain--small"><circle cx="125" cy="290" r="19"></circle><circle class="gas" cx="125" cy="290" r="11"></circle></g>
+                  <g class="domain domain--medium"><circle cx="120" cy="120" r="38"></circle><circle class="gas" cx="120" cy="120" r="24"></circle></g>
+                </g>
+                <text class="panel-label" x="80" y="420">one mineral, many diffusion lengths</text>
+                <g class="heat-steps">
+                  <path class="axis" d="M500 365V80M500 365H910"></path>
+                  <path class="step-line" d="M515 340H600V275H685V205H770V120H890"></path>
+                  <text class="axis-label" x="690" y="415">successive heating steps</text>
+                  <text class="step-label" x="525" y="330">small</text>
+                  <text class="step-label" x="625" y="265">medium</text>
+                  <text class="step-label" x="790" y="110">large</text>
+                  <circle class="step-dot step-dot--one" cx="600" cy="275" r="7"></circle>
+                  <circle class="step-dot step-dot--two" cx="685" cy="205" r="7"></circle>
+                  <circle class="step-dot step-dot--three" cx="770" cy="120" r="7"></circle>
+                </g>
+              </svg>
+              <figcaption>MDD turns the release schedule into a distribution of effective diffusion-domain sizes—not necessarily a distribution of physical grain diameters.</figcaption>
+            </figure>
+          </section>
+
+          <section class="essay-section" aria-labelledby="two-spikes">
+            <div class="section-heading">
+              <span>03</span>
+              <h2 id="two-spikes">the two-spike model</h2>
+            </div>
+
+            <div class="prose">
+              <p>Shuster and Weiss represented the distribution with two domains: a low-retentivity domain and a high-retentivity domain. In distribution language, this is two spikes. It was a reasonable compression for its time. It is also a strong assumption.</p>
+            </div>
+
+            <figure class="diagram-card diagram-card--dark">
+              <svg class="spike-comparison" viewBox="0 0 960 430" role="img" aria-labelledby="spike-title spike-desc">
+                <title id="spike-title">Two spikes compared with a flexible domain distribution</title>
+                <desc id="spike-desc">The Shuster and Weiss model uses two point masses while a flexible model allows posterior support across more diffusion-domain sizes.</desc>
+                <g transform="translate(70 48)">
+                  <text class="comparison-title" x="165" y="0">two assumed domains</text>
+                  <path class="axis" d="M0 290V35M0 290H350"></path>
+                  <path class="spike spike--one" d="M92 290V122"></path>
+                  <path class="spike spike--two" d="M276 290V62"></path>
+                  <circle class="spike-cap" cx="92" cy="122" r="9"></circle>
+                  <circle class="spike-cap" cx="276" cy="62" r="9"></circle>
+                  <text class="comparison-note" x="65" y="322">LRD</text>
+                  <text class="comparison-note" x="250" y="322">HRD</text>
+                </g>
+                <g transform="translate(540 48)">
+                  <text class="comparison-title" x="160" y="0">distribution inferred</text>
+                  <path class="axis" d="M0 290V35M0 290H350"></path>
+                  <path class="posterior-fill" d="M5 290 C45 286 62 265 80 222 C100 174 128 165 154 211 C180 258 194 215 218 136 C242 59 270 72 290 150 C310 226 324 267 346 286 L346 290Z"></path>
+                  <path class="posterior-line" d="M5 290 C45 286 62 265 80 222 C100 174 128 165 154 211 C180 258 194 215 218 136 C242 59 270 72 290 150 C310 226 324 267 346 286"></path>
+                </g>
+                <text class="shared-x-label" x="480" y="417">effective diffusion-domain size →</text>
+              </svg>
+              <figcaption>The narrow conclusion inherits the narrow model. The question is how much uncertainty returns when the domain distribution is allowed to move.</figcaption>
+            </figure>
+          </section>
+
+          <section class="essay-section" aria-labelledby="mcmc">
+            <div class="section-heading">
+              <span>04</span>
+              <h2 id="mcmc">letting the uncertainty move</h2>
+            </div>
+
+            <div class="prose">
+              <p>Bayes' rule turns every plausible domain distribution into a candidate explanation. The MDD simulator predicts an argon-release curve; candidates that reproduce the experiment receive more posterior weight.</p>
+            </div>
+
+            <div class="inference-pipeline" role="img" aria-label="Prior distributions pass through an MDD simulator, are compared with measured argon release, and produce a posterior">
+              <div><small>start with</small><strong>possible domain distributions</strong></div>
+              <span>→</span>
+              <div><small>simulate</small><strong>argon diffusion</strong></div>
+              <span>→</span>
+              <div><small>compare</small><strong>step-heating data</strong></div>
+              <span>→</span>
+              <div class="pipeline-result"><small>keep</small><strong>posterior samples</strong></div>
+            </div>
+
+            <figure class="diagram-card diagram-card--dark">
+              <svg class="mcmc-swarm" viewBox="0 0 960 430" role="img" aria-labelledby="mcmc-title mcmc-desc">
+                <title id="mcmc-title">Many MCMC chains exploring a posterior</title>
+                <desc id="mcmc-desc">Colored sampling chains travel through a curved high-probability region and leave posterior samples behind.</desc>
+                <defs>
+                  <radialGradient id="density-a"><stop offset="0" stop-color="#f3b35b" stop-opacity=".85"></stop><stop offset="1" stop-color="#f3b35b" stop-opacity="0"></stop></radialGradient>
+                  <radialGradient id="density-b"><stop offset="0" stop-color="#80bdd9" stop-opacity=".7"></stop><stop offset="1" stop-color="#80bdd9" stop-opacity="0"></stop></radialGradient>
+                  <path id="chain-path-a" d="M105 338 C180 80 350 360 448 205 C560 30 700 350 870 92"></path>
+                  <path id="chain-path-b" d="M80 130 C220 355 320 55 485 245 C620 390 705 62 900 275"></path>
+                  <path id="chain-path-c" d="M130 260 C250 25 420 345 535 150 C650 -5 770 342 900 170"></path>
+                </defs>
+                <ellipse cx="280" cy="220" rx="220" ry="150" fill="url(#density-b)" transform="rotate(-20 280 220)"></ellipse>
+                <ellipse cx="670" cy="190" rx="230" ry="145" fill="url(#density-a)" transform="rotate(18 670 190)"></ellipse>
+                <use href="#chain-path-a" class="chain-trace chain-trace--a"></use>
+                <use href="#chain-path-b" class="chain-trace chain-trace--b"></use>
+                <use href="#chain-path-c" class="chain-trace chain-trace--c"></use>
+                <circle class="walker walker--a" r="10"><animateMotion dur="8s" repeatCount="indefinite"><mpath href="#chain-path-a"></mpath></animateMotion></circle>
+                <circle class="walker walker--b" r="10"><animateMotion dur="10s" repeatCount="indefinite"><mpath href="#chain-path-b"></mpath></animateMotion></circle>
+                <circle class="walker walker--c" r="10"><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#chain-path-c"></mpath></animateMotion></circle>
+                <text class="swarm-label" x="480" y="400">many chains, one posterior</text>
+              </svg>
+              <figcaption>I used BlackJAX on eight H100 GPUs to run many NUTS chains through the same inverse problem.</figcaption>
+            </figure>
+          </section>
+
+          <section class="essay-section" aria-labelledby="posterior">
+            <div class="section-heading">
+              <span>05</span>
+              <h2 id="posterior">watching the posterior form</h2>
+            </div>
+
+            <div class="prose">
+              <p>As the sampler advances, probability moves across activation energies, diffusion lengths, and volume fractions. What looked like two known domain sizes becomes a family of possible internal structures.</p>
+            </div>
+
+            <figure class="posterior-figure">
+              <img src="../assets/cold-mars/posterior-evolution.gif" width="1500" height="400" alt="Animated posterior densities for activation energy, diffusion-domain size, and volume fraction across MCMC iterations">
+              <figcaption>Prototype posterior animation from the current analysis repository. This is a replacement point for the archived final run.</figcaption>
+            </figure>
+
+            <aside class="repo-note">
+              <span>the work</span>
+              <a href="https://github.com/jeffreyscheng/martiandating">MCMC analysis ↗</a>
+              <a href="https://github.com/jeffreyscheng/geochronology">animation source ↗</a>
+            </aside>
+          </section>
+
+          <section class="essay-section" aria-labelledby="result">
+            <div class="section-heading">
+              <span>06</span>
+              <h2 id="result">a warmer history is still in the posterior</h2>
+            </div>
+
+            <div class="prose">
+              <p>The final test asks for the warmest 100-million-year episode consistent with the retained argon. Unlike the two-domain point estimate, the preliminary Bayesian interval reaches across the freezing point.</p>
+            </div>
+
+            <figure class="temperature-card">
+              <div class="provisional-label">provisional layout · exact endpoints pending archived export</div>
+              <svg viewBox="0 0 960 430" role="img" aria-labelledby="temperature-title temperature-desc">
+                <title id="temperature-title">Maximum temperature for a 100-million-year episode</title>
+                <desc id="temperature-desc">A schematic 95 percent posterior interval extends across zero degrees Celsius while the Shuster and Weiss point estimate is colder.</desc>
+                <text class="plot-title" x="70" y="62">100 My maximum temperature</text>
+                <text class="plot-subtitle" x="70" y="92">posterior interval consistent with ≤1% argon loss</text>
+                <path class="plot-axis" d="M90 330H890"></path>
+                <path class="plot-tick" d="M480 318V342"></path>
+                <path class="zero-rule" d="M480 115V330"></path>
+                <text class="zero-text" x="480" y="370">0°C</text>
+                <text class="cold-word" x="105" y="370">colder</text>
+                <text class="warm-word" x="845" y="370">warmer</text>
+                <path class="ci-line" d="M255 220H650"></path>
+                <circle class="ci-end" cx="255" cy="220" r="9"></circle>
+                <circle class="ci-end" cx="650" cy="220" r="9"></circle>
+                <circle class="ci-median" cx="390" cy="220" r="14"></circle>
+                <text class="ci-label" x="452" y="185">Bayesian 95% interval</text>
+                <path class="ci-pointer" d="M535 193L548 213"></path>
+                <path class="sw-marker" d="M235 265l12 12-12 12-12-12z"></path>
+                <text class="sw-label" x="260" y="282">Shuster–Weiss point estimate</text>
+              </svg>
+              <figcaption>The publication version of this figure should include the exact median, interval endpoints, model tag, R̂, and effective sample size.</figcaption>
+            </figure>
+
+            <div class="prose prose--ending">
+              <p>This does not prove that Mars stayed warm. It says the rock does not exclude a long warm episode as confidently as the two-spike interpretation suggested.</p>
+            </div>
+          </section>
+
+          <footer class="essay-footer">
+            <p><strong>Working references:</strong> Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005)</a>; Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989)</a>.</p>
+          </footer>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
