@@ -13,10 +13,31 @@
 
       <article class="essay essay--plain essay--compact essay--structured">
         <time class="essay-date" datetime="2026-07-17">jul 17, 2026</time>
-        <h1>challenging the geologists' cold mars history with bayesian diffusion models</h1>
+        <h1>challenging the geologists' cold mars history<br class="title-break">with bayesian diffusion models</h1>
 
         <section class="article-grid article-intro" aria-label="introduction">
           <div class="intro-left">
+            <div class="pebble-pair">
+              <figure>
+                <img src="../assets/cold-mars/martian-pebbles.jpg" width="1280" height="720" alt="Rounded pebbles embedded in the Hottah outcrop on Mars">
+                <figcaption>Rounded clasts at Hottah. <a href="https://science.nasa.gov/resource/remnants-of-ancient-streambed-on-mars-closeup/">NASA/JPL-Caltech/MSSS ↗</a></figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/cold-mars/marspebbles2.webp" width="1200" height="1200" alt="Close view of rounded pebbles on Mars">
+                <figcaption>Rounded pebbles on Mars.</figcaption>
+              </figure>
+            </div>
+
+            <figure class="canyon-figure">
+              <img src="../assets/cold-mars/martiancanyon.webp" width="1600" height="852" alt="Three-dimensional reconstruction of a large canyon system on Mars">
+              <figcaption>A three-dimensional reconstruction of a Martian canyon.</figcaption>
+            </figure>
+          </div>
+
+          <div class="article-copy intro-copy">
+            <p>Rocks tell us one story and cameras tell us another. Orbital and rover images show canyons and pebbles, which are good signs that liquid water was around long enough to carve formations and smooth out rocks.  Using some clever forensics, geologists can repurpose silicates like feldspars into time-traveling thermometers.  We have feldspars from Mars called Nakhlites, and a 2005 study by Shuster &amp; Weiss (surprisingly) indicates that Mars could not have been warmer than 0°C for more than 10M years in the last billion.</p>
+            <p>I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers.  I think that Mars could've been above freezing for 10x as long as we previously thought.  Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles are no longer confusing.</p>
+
             <nav class="article-toc" aria-label="table of contents">
               <div class="toc-label">table of contents</div>
               <ol>
@@ -38,26 +59,6 @@
                 </li>
               </ol>
             </nav>
-
-            <div class="pebble-pair">
-              <figure>
-                <img src="../assets/cold-mars/martian-pebbles.jpg" width="1280" height="720" alt="Rounded pebbles embedded in the Hottah outcrop on Mars">
-                <figcaption>Rounded clasts at Hottah. <a href="https://science.nasa.gov/resource/remnants-of-ancient-streambed-on-mars-closeup/">NASA/JPL-Caltech/MSSS ↗</a></figcaption>
-              </figure>
-              <figure>
-                <img src="../assets/cold-mars/marspebbles2.webp" width="1200" height="1200" alt="Close view of rounded pebbles on Mars">
-                <figcaption>Rounded pebbles on Mars.</figcaption>
-              </figure>
-            </div>
-
-            <figure class="canyon-figure">
-              <img src="../assets/cold-mars/martiancanyon.webp" width="1600" height="852" alt="Three-dimensional reconstruction of a large canyon system on Mars">
-              <figcaption>A three-dimensional reconstruction of a Martian canyon.</figcaption>
-            </figure>
-          </div>
-
-          <div class="article-copy intro-copy">
-            <p>Rocks tell us one story and cameras tell us another. Orbital and rover images show canyons and pebbles, which are good signs that liquid water was around long enough to carve formations and smooth out rocks.  Using some clever forensics, geologists can repurpose silicates like feldspars into time-traveling thermometers.  We have feldspars from Mars called Nakhlites, and a 2005 study by Shuster &amp; Weiss (surprisingly) indicates that Mars could not have been warmer than 0°C for more than 10M years in the last billion.  I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers.  I think that Mars could've been above freezing for 10x as long as we previously thought.  Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles are no longer confusing.</p>
           </div>
         </section>
 
