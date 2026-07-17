@@ -1,29 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hi, i'm jeffrey</title>
-    <style>
-        #changeText {
-            color: black; /* Ensures text is always black */
-            cursor: pointer; /* Changes cursor to indicate clickable */
-            text-decoration: underline; /* Makes it look like a hyperlink */
-        }
-    </style>
-</head>
-<body>
-    <h1>hi, i'm jeffrey</h1>
-    <img src="chris.jpeg" style="width:100%;max-width:300px;">
-    <p><a href="https://twitter.com/jeffreycider">shitposts</a></p>
-    <p id="changeText" onclick="changeText()">seriousposts</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A small personal site about rocks, plants, and math.">
+    <title>jeffrey cheng</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="home">
+      <section class="intro" aria-labelledby="intro-heading">
+        <img
+          class="portrait"
+          src="assets/propic.png"
+          alt="Illustrated portrait of Jeffrey looking toward the sky"
+          width="1254"
+          height="1254"
+        >
+        <h1 id="intro-heading">i like rocks, plants, and math</h1>
+      </section>
 
-    <script>
-        function changeText() {
-            var element = document.getElementById("changeText");
-            element.innerHTML = "but why tho";
-        }
-    </script>
-</body>
+      <section class="writing" aria-labelledby="writing-heading">
+        <p class="eyebrow" id="writing-heading">writing</p>
+        <ol class="timeline">
+          <li>
+            <article>
+              <time datetime="2026-07-17">jul 17, 2026</time>
+              <a href="posts/on-small-stones.html">
+                <h2>on small stones</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <time datetime="2026-06-08">jun 08, 2026</time>
+              <a href="posts/a-leaf-in-the-window.html">
+                <h2>a leaf in the window</h2>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </a>
+            </article>
+          </li>
+          <li>
+            <article>
+              <time datetime="2026-04-21">apr 21, 2026</time>
+              <a href="posts/notes-toward-a-proof.html">
+                <h2>notes toward a proof</h2>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+              </a>
+            </article>
+          </li>
+        </ol>
+      </section>
+    </main>
+  </body>
 </html>
-

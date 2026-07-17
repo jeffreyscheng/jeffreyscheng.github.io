@@ -1,0 +1,243 @@
+:root {
+  --paper: #f7f6f1;
+  --ink: #171816;
+  --muted: #74746d;
+  --line: #cfcec7;
+  --sky: #80bdd9;
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a {
+  color: inherit;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.82fr) minmax(24rem, 1.18fr);
+  gap: clamp(4rem, 10vw, 10rem);
+  width: min(70rem, calc(100% - 3rem));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  align-items: center;
+}
+
+.intro {
+  align-self: center;
+}
+
+.portrait {
+  display: block;
+  width: min(100%, 18rem);
+  height: auto;
+  border-radius: 50%;
+  background: var(--sky);
+}
+
+h1 {
+  max-width: 12ch;
+  margin: 2rem 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.35rem, 4.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.writing {
+  width: 100%;
+  max-width: 38rem;
+}
+
+.eyebrow {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.timeline {
+  margin: 0;
+  padding: 0 0 0 1.4rem;
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 2.75rem 1.5rem;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.69rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+  content: "";
+}
+
+.timeline time {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
+.timeline a {
+  display: block;
+  text-decoration: none;
+}
+
+.timeline h2 {
+  display: inline;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 2.8vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  background-image: linear-gradient(var(--sky), var(--sky));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 0.18em;
+  transition: background-size 180ms ease;
+}
+
+.timeline a:hover h2,
+.timeline a:focus-visible h2 {
+  background-size: 100% 0.18em;
+}
+
+.timeline a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 0.4rem;
+}
+
+.timeline p {
+  max-width: 33rem;
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.post {
+  width: min(42rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) 0 8rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: clamp(4rem, 9vw, 7rem);
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: var(--ink);
+}
+
+.post header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.post time {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.post h1 {
+  max-width: none;
+  margin-top: 1rem;
+}
+
+.post-body {
+  padding-top: 2rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 2vw, 1.22rem);
+  line-height: 1.8;
+}
+
+.post-body p {
+  margin: 0 0 1.5em;
+}
+
+::selection {
+  color: var(--ink);
+  background: var(--sky);
+}
+
+@media (max-width: 760px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 5.5rem;
+    width: min(34rem, calc(100% - 2.5rem));
+    padding: 3.5rem 0 5rem;
+    align-items: start;
+  }
+
+  .portrait {
+    width: 10.5rem;
+  }
+
+  h1 {
+    max-width: 11ch;
+    margin-top: 1.5rem;
+  }
+
+  .timeline {
+    padding-left: 0.8rem;
+  }
+
+  .timeline li {
+    padding-left: 1.3rem;
+  }
+
+  .timeline li::before {
+    left: -1.09rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
