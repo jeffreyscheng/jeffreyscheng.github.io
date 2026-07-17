@@ -800,6 +800,88 @@ h1 {
   55%, 100% { stroke-dashoffset: 0; }
 }
 
+/* Plain research note */
+
+.essay--plain > h1 {
+  max-width: 18ch;
+  margin: 0.8rem 0 1.25rem;
+  font-size: clamp(2.15rem, 5.5vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.essay-date {
+  display: block;
+}
+
+.essay-intro {
+  max-width: 38rem;
+  margin: 0 0 clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.essay-opening {
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.essay-copy {
+  width: min(39rem, 100%);
+  margin: 0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  line-height: 1.72;
+}
+
+.essay-copy p {
+  margin: 0 0 1.4em;
+}
+
+.essay-copy a,
+.essay-media a {
+  text-underline-offset: 0.18em;
+}
+
+.essay-copy--ending {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.essay-media {
+  width: min(58rem, 100%);
+  margin: clamp(2.5rem, 6vw, 4.5rem) auto;
+}
+
+.essay-media video,
+.essay-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #30332f;
+  border-radius: 0.25rem;
+  background: #151628;
+}
+
+.essay-media--light img {
+  border-color: var(--line);
+  background: #fff;
+}
+
+.essay-media figcaption,
+.essay-opening figcaption {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+.essay-opening figcaption a {
+  display: inline;
+  margin: 0;
+}
+
 ::selection {
   color: var(--ink);
   background: var(--sky);
