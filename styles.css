@@ -1238,19 +1238,22 @@ h1 {
   text-underline-offset: 0.16em;
 }
 
-.pebble-pair {
+.pebble-pair,
+.intro-evidence-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.65rem;
 }
 
 .pebble-pair figure,
+.intro-evidence-pair figure,
 .canyon-figure {
   min-width: 0;
   margin: 0;
 }
 
 .pebble-pair img,
+.intro-evidence-pair img,
 .canyon-figure img {
   display: block;
   width: 100%;
@@ -1263,12 +1266,28 @@ h1 {
   aspect-ratio: 1 / 1;
 }
 
+.intro-evidence-pair img {
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.highland-denudation-figure img {
+  object-position: center top;
+}
+
+.shuster-figure img {
+  border: 1px solid var(--line);
+  background: #fff;
+  object-fit: contain;
+}
+
 .canyon-figure img {
   height: auto;
   background: #000;
 }
 
 .pebble-pair figcaption,
+.intro-evidence-pair figcaption,
 .canyon-figure figcaption,
 .section-media figcaption {
   margin-top: 0.45rem;
@@ -1278,6 +1297,7 @@ h1 {
 }
 
 .pebble-pair figcaption a,
+.intro-evidence-pair figcaption a,
 .canyon-figure figcaption a,
 .section-media figcaption a {
   text-underline-offset: 0.16em;
@@ -1296,6 +1316,31 @@ h1 {
 
 .intro-copy p:first-child {
   margin-top: 0;
+}
+
+.intro-lead {
+  margin-bottom: 1.15rem !important;
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+.intro-branches {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.35rem;
+  margin-bottom: 1.35rem;
+}
+
+.intro-branch {
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9em;
+  line-height: 1.62;
+}
+
+.intro-branch p {
+  margin: 0;
 }
 
 .major-section {
@@ -1377,6 +1422,11 @@ h1 {
 
   .article-intro .intro-copy {
     order: -1;
+  }
+
+  .intro-branches {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .major-section {

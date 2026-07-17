@@ -32,10 +32,31 @@
               <img src="../assets/cold-mars/martiancanyon.webp" width="1600" height="852" alt="Three-dimensional reconstruction of a large canyon system on Mars">
               <figcaption>A three-dimensional reconstruction of a Martian canyon.</figcaption>
             </figure>
+
+            <div class="intro-evidence-pair">
+              <figure class="highland-denudation-figure">
+                <img src="../assets/cold-mars/mars-highland-denudation.jpg" width="1236" height="3025" alt="A heavily degraded ancient crater rim in Southern Arabia Terra beside a sharper younger crater">
+                <figcaption>An ancient, degraded crater rim in Southern Arabia Terra. <a href="https://science.nasa.gov/photojournal/degraded-crater-rim/">NASA/JPL/ASU ↗</a></figcaption>
+              </figure>
+              <figure class="shuster-figure">
+                <img src="../assets/cold-mars/shuster-weiss-fig3a.png" width="864" height="848" alt="Shuster and Weiss Figure 3A temperature limits for Nakhla across several excursion durations">
+                <figcaption>Temperature limits from Nakhla, Fig. 3A in <a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a>.</figcaption>
+              </figure>
+            </div>
           </div>
 
           <div class="article-copy intro-copy">
-            <p>Rocks tell us one story and cameras tell us another. Orbital and rover images show canyons and pebbles, which are good signs that liquid water was around long enough to carve formations and smooth out rocks.  Using some clever forensics, geologists can repurpose silicates like feldspars into time-traveling thermometers.  We have feldspars from Mars called Nakhlites, and a 2005 study by Shuster &amp; Weiss (surprisingly) indicates that Mars could not have been warmer than 0°C for more than 10M years in the last billion.</p>
+            <p class="intro-lead">Rocks tell us Mars was cold. Cameras tell us Mars was warm.</p>
+
+            <div class="intro-branches">
+              <div class="intro-branch">
+                <p>Orbital and rover images show canyons and pebbles, which are good signs that liquid water was around long enough to carve formations and smooth out rocks. No single landform requires more than 100M years of cumulative above-freezing time, but the Noachian highlands make the strongest case for a long-lived wet climate. Their record includes crater rims worn down, interiors infilled, and small craters erased. <a href="https://doi.org/10.1029/2001JE001505">Craddock &amp; Howard</a> estimate roughly 200m of erosion spread across a 400–600M-year interval. If that denudation was mostly fluvial and episodic, it is compatible with tens to perhaps hundreds of millions of cumulative wet years—but that duration is inferred from erosion volume and rate, not read from a direct clock.</p>
+              </div>
+              <div class="intro-branch">
+                <p>Using some clever forensics, geologists can repurpose silicates like feldspars into time-traveling thermometers. We have feldspars from Mars called Nakhlites, and a 2005 study by Shuster &amp; Weiss (surprisingly) indicates that Mars could not have been warmer than 0°C for more than 10M years in the last billion.</p>
+              </div>
+            </div>
+
             <p>I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers.  I think that Mars could've been above freezing for 10x as long as we previously thought.  Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles are no longer confusing.</p>
 
             <nav class="article-toc" aria-label="table of contents">
