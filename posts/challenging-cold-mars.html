@@ -11,15 +11,18 @@
     <main class="post post--wide">
       <a class="back" href="../index.html">← home</a>
 
-      <article class="essay essay--plain">
+      <article class="essay essay--plain essay--compact">
         <time class="essay-date" datetime="2026-07-17">jul 17, 2026</time>
         <h1>challenging the geologists' cold mars history with bayesian diffusion models</h1>
-        <p class="essay-intro">Rocks tell us one story. Cameras tell us another. The disagreement may live inside a two-spike model of how argon escapes a crystal.</p>
+
+        <div class="essay-copy essay-copy--opening">
+          <p>Rocks tell us one story and cameras tell us another. Orbital and rover images preserve channels, canyons, and rounded pebbles that are difficult to explain without flowing liquid water. Argon retained in Martian meteorites has been interpreted as evidence that the surface remained cold.</p>
+        </div>
 
         <div class="evidence-grid essay-opening">
           <figure class="evidence-card evidence-card--wide">
             <img src="../assets/cold-mars/martian-channels.jpg" width="2880" height="1800" alt="Branching ancient river channels photographed from orbit on Mars">
-            <figcaption>Branching channels cut into the Martian surface. <a href="https://science.nasa.gov/photojournal/ancient-rivers/">NASA/JPL-Caltech/University of Arizona ↗</a></figcaption>
+            <figcaption>Branching channels on Mars. <a href="https://science.nasa.gov/photojournal/ancient-rivers/">NASA/JPL-Caltech/University of Arizona ↗</a></figcaption>
           </figure>
           <figure class="evidence-card">
             <img src="../assets/cold-mars/martian-pebbles.jpg" width="1280" height="720" alt="Rounded pebbles embedded in the Hottah outcrop on Mars">
@@ -31,97 +34,132 @@
           </figure>
         </div>
 
-        <div class="essay-copy">
-          <p>The surface looks water-worked. Canyons branch like drainage networks. Pebbles are rounded as if they once tumbled through a vigorous stream.</p>
-          <p>But argon trapped in Martian meteorites has been read as a much colder record. Shuster and Weiss argued that the nakhlites had not spent more than ten million years above freezing during roughly the last billion years.</p>
-          <p>Rocks are not liars, but their story has been misinterpreted by geologists.</p>
+        <div class="essay-copy essay-copy--opening">
+          <p>Shuster and Weiss used argon thermochronology to argue that the nakhlites had not spent more than about ten million years above 0°C during the last billion years. The analysis below asks how much of that result comes from the meteorite data and how much comes from the assumed diffusion-domain model.</p>
+          <p>The working hypothesis is that the rock record is informative, but that conditioning on two fixed diffusion domains made its thermal history appear more precise than the experiment supports.</p>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
-              <source src="../assets/cold-mars/manim/radioactive-clock.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>Potassium-40 is radioactive. A population of potassium atoms decreases exponentially, while one branch of the decay produces argon-40. If the daughter argon remains in the mineral, the parent-to-daughter ratio records elapsed time.</p>
+            <div class="equation" role="math" aria-label="N of potassium 40 at time t equals N at time zero times e to the negative lambda t">
+              N<sub>⁴⁰K</sub>(t) = N<sub>⁴⁰K</sub>(0)e<sup>−λt</sup>
+            </div>
+            <p>A mineral age is therefore not only a clock reading. It also depends on whether the mineral remained closed to argon after crystallization.</p>
           </div>
-          <figcaption>Potassium-40 decays to argon-40. Rendered from <a href="https://github.com/jeffreyscheng/geochronology">Scene1_RadioactiveClock ↗</a>.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>Potassium-40 decays into argon-40. Cold feldspar holds that argon inside its lattice; heat gives it enough mobility to diffuse out. An argon date therefore remembers both time and temperature.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
+                <source src="../assets/cold-mars/manim/radioactive-clock.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>Potassium-40 decays to argon-40. Rendered from <a href="https://github.com/jeffreyscheng/geochronology">Scene1_RadioactiveClock ↗</a>.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
-              <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>Argon moves through feldspar by diffusion. The rate is strongly temperature-dependent: heating increases the diffusion coefficient and allows argon to leave the crystal; cooling suppresses diffusion and preserves it.</p>
+            <div class="equation" role="math" aria-label="partial C over partial t equals divergence of D of T times gradient C; D of T equals D zero times e to negative activation energy over R T">
+              <span>∂C/∂t = ∇ · (D(T)∇C)</span>
+              <span>D(T) = D₀e<sup>−Eₐ/RT</sup></span>
+            </div>
+            <p>Closure temperature is useful shorthand for this transition, but it is not a fixed material constant. It depends on the diffusion parameters, the size of the domain, and the cooling rate.</p>
           </div>
-          <figcaption>Argon retention changes quickly around a closure temperature. Rendered from Scene2_ClosureTemp.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>A feldspar grain is not one perfect container. Multi-domain diffusion models it as domains with different diffusion lengths. Small domains empty sooner; large domains retain argon longer.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
+                <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>Argon retention around a closure temperature. Rendered from Scene2_ClosureTemp.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
-              <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>A feldspar grain need not behave as one diffusion domain. The multi-domain diffusion model represents the measured sample as a mixture of domains with different effective diffusion lengths. Small or fast domains release argon earlier; large or retentive domains release it later.</p>
+            <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
+              F<sub>model</sub> = Σ<sub>i</sub> φ<sub>i</sub>F<sub>i</sub>, &nbsp; Σ<sub>i</sub> φ<sub>i</sub> = 1
+            </div>
+            <p>The inferred quantities are effective diffusion parameters and volume fractions. They should not automatically be read as a literal inventory of physical grain diameters.</p>
           </div>
-          <figcaption>One mineral, many diffusion domains. Rendered from Scene3_MultiDomain.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>A step-heating experiment releases those domains in sequence. The shape of the release curve constrains the rock's thermal history.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>One mineral represented by several diffusion domains. Rendered from Scene3_MultiDomain.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
-              <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>In a step-heating experiment, the laboratory raises the temperature in stages and measures the argon released at each stage. A proposed parameter set is passed through the diffusion model to predict the release schedule.</p>
+            <div class="equation" role="math" aria-label="log likelihood of y given theta equals negative one half times the sum of squared standardized residuals plus a constant">
+              log p(y | θ) = −½ Σ<sub>j</sub> [(y<sub>j</sub> − f<sub>j</sub>(θ))/σ<sub>j</sub>]<sup>2</sup> + const.
+            </div>
+            <p>The comparison between predicted and measured release supplies the likelihood. Thermal-history constraints are downstream of this fit, so uncertainty in the diffusion model must be carried through to the temperature calculation.</p>
           </div>
-          <figcaption>A simulated step-heating experiment. Rendered from Scene4_StepHeating.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>Shuster and Weiss represented the diffusion-domain distribution with two spikes: one low-retentivity domain and one high-retentivity domain. That was a defensible compression in 2005, when fitting a flexible distribution with Bayesian computation was far less tractable. It was also a strong assumption.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
+                <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>A simulated step-heating experiment. Rendered from Scene4_StepHeating.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
-              <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>Shuster and Weiss represented the domain distribution with two components: a low-retentivity domain and a high-retentivity domain. In distribution notation, this is a pair of point masses.</p>
+            <div class="equation" role="math" aria-label="p of x equals phi times delta at x one plus one minus phi times delta at x two">
+              p(x) = φδ(x − x₁) + (1 − φ)δ(x − x₂)
+            </div>
+            <p>This was computationally practical in 2005. It also restricts the ways the model can explain the release data. If the true effective-domain distribution is broader or differently shaped, a two-point approximation can understate uncertainty in the most retentive material.</p>
           </div>
-          <figcaption>The same bulk age can hide different domain-scale retention. Rendered from Scene13_MDDComparison.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>MCMC replaces one optimized answer with samples from a distribution of plausible answers. Each chain proposes parameters, runs the diffusion model, compares its prediction with the step-heating data, and spends more time in combinations the data support.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+                <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>The same bulk age can hide different domain-scale retention. Rendered from Scene13_MDDComparison.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--video">
-          <div class="video-shell">
-            <video width="1400" height="700" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg">
-              <source src="../assets/cold-mars/mcmc-comet.mp4" type="video/mp4">
-            </video>
+        <div class="essay-row">
+          <div class="essay-row-copy">
+            <p>Bayesian inference treats the diffusion parameters as uncertain. The posterior combines the likelihood from the step-heating experiment with prior information about plausible parameter values.</p>
+            <div class="equation" role="math" aria-label="p of theta given y is proportional to p of y given theta times p of theta">
+              p(θ | y) ∝ p(y | θ)p(θ)
+            </div>
+            <p>MCMC constructs samples from this posterior. I used BlackJAX NUTS on eight H100 GPUs, with many chains exploring activation energies, effective diffusion lengths, and volume fractions. Each retained sample implies a possible domain model and, in turn, a possible temperature constraint.</p>
           </div>
-          <figcaption>Comet-style traces from the tracked posterior samples, rendered with <a href="https://github.com/jeffreyscheng/martiandating/blob/main/animate_mcmc.py">animate_mcmc.py ↗</a>.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>I ran the full inverse problem with BlackJAX on eight H100 GPUs, allowing the diffusion-domain distribution to move rather than fixing two spikes. Propagating that structural uncertainty widens the set of thermal histories the rock permits.</p>
+          <figure class="essay-inline-media">
+            <div class="video-shell">
+              <video width="1400" height="700" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg">
+                <source src="../assets/cold-mars/mcmc-comet.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>Comet-style traces rendered from the tracked posterior samples with <a href="https://github.com/jeffreyscheng/martiandating/blob/main/animate_mcmc.py">animate_mcmc.py ↗</a>.</figcaption>
+          </figure>
         </div>
 
-        <figure class="essay-media essay-media--light essay-media--result">
-          <img src="../assets/cold-mars/temperature-constraint-bayesian.png" width="1440" height="900" alt="Bayesian 95 percent credible intervals for maximum Martian temperature over five possible warm-episode durations">
-          <figcaption>Reproduced from the tracked 1,000-chain sample file using the 95% interval calculation in <a href="https://github.com/jeffreyscheng/martiandating/blob/main/fit_mdd.ipynb">fit_mdd.ipynb ↗</a>.</figcaption>
-        </figure>
+        <div class="essay-row essay-row--result">
+          <div class="essay-row-copy">
+            <p>For every posterior sample, I computed the highest constant temperature that would produce no more than 1% argon loss over several possible warm-episode durations. The collection of those temperatures gives a posterior interval rather than a single threshold.</p>
+            <p>For a 100-million-year episode, the median is −12.7°C and the 95% interval is [−21.1, 42.0]°C in the tracked 1,000-chain run. The upper interval crosses 0°C. This calculation does not show that Mars remained warm; it shows that this posterior does not rule out a warm episode as sharply as the two-domain point interpretation did.</p>
+          </div>
+          <figure class="essay-inline-media essay-inline-media--light">
+            <img src="../assets/cold-mars/temperature-constraint-bayesian.png" width="1440" height="900" alt="Bayesian 95 percent credible intervals for maximum Martian temperature over five possible warm-episode durations">
+            <figcaption>Reproduced from the tracked 1,000-chain sample file using the interval calculation in <a href="https://github.com/jeffreyscheng/martiandating/blob/main/fit_mdd.ipynb">fit_mdd.ipynb ↗</a>.</figcaption>
+          </figure>
+        </div>
 
         <div class="essay-copy essay-copy--ending">
-          <p>The 95% interval for the warmest 100-million-year episode crosses 0°C. This does not prove that Mars stayed warm. It says the rock does not exclude a long warm episode as confidently as the two-spike interpretation suggested.</p>
           <p>The analysis lives in <a href="https://github.com/jeffreyscheng/martiandating">martiandating ↗</a>, the animation source in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>, and the working references are Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
         </div>
       </article>
