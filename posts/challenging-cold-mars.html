@@ -37,10 +37,12 @@
           <p>Rocks are not liars, but their story has been misinterpreted by geologists.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
-            <source src="../assets/cold-mars/manim/radioactive-clock.mp4" type="video/mp4">
-          </video>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
+              <source src="../assets/cold-mars/manim/radioactive-clock.mp4" type="video/mp4">
+            </video>
+          </div>
           <figcaption>Potassium-40 decays to argon-40. Rendered from <a href="https://github.com/jeffreyscheng/geochronology">Scene1_RadioactiveClock ↗</a>.</figcaption>
         </figure>
 
@@ -48,10 +50,12 @@
           <p>Potassium-40 decays into argon-40. Cold feldspar holds that argon inside its lattice; heat gives it enough mobility to diffuse out. An argon date therefore remembers both time and temperature.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
-            <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
-          </video>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
+              <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
+            </video>
+          </div>
           <figcaption>Argon retention changes quickly around a closure temperature. Rendered from Scene2_ClosureTemp.</figcaption>
         </figure>
 
@@ -59,10 +63,12 @@
           <p>A feldspar grain is not one perfect container. Multi-domain diffusion models it as domains with different diffusion lengths. Small domains empty sooner; large domains retain argon longer.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
-            <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
-          </video>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+              <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
+            </video>
+          </div>
           <figcaption>One mineral, many diffusion domains. Rendered from Scene3_MultiDomain.</figcaption>
         </figure>
 
@@ -70,10 +76,12 @@
           <p>A step-heating experiment releases those domains in sequence. The shape of the release curve constrains the rock's thermal history.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
-            <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
-          </video>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
+              <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
+            </video>
+          </div>
           <figcaption>A simulated step-heating experiment. Rendered from Scene4_StepHeating.</figcaption>
         </figure>
 
@@ -81,52 +89,40 @@
           <p>Shuster and Weiss represented the diffusion-domain distribution with two spikes: one low-retentivity domain and one high-retentivity domain. That was a defensible compression in 2005, when fitting a flexible distribution with Bayesian computation was far less tractable. It was also a strong assumption.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
-            <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
-          </video>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+              <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
+            </video>
+          </div>
           <figcaption>The same bulk age can hide different domain-scale retention. Rendered from Scene13_MDDComparison.</figcaption>
-        </figure>
-
-        <div class="essay-copy">
-          <p>The tracked two-domain experiment already shows uncertainty moving across activation energy, diffusion length, and volume fraction instead of collapsing to two fixed grain sizes.</p>
-        </div>
-
-        <figure class="essay-media essay-media--light">
-          <img src="../assets/cold-mars/posterior-2domain-1000chains.gif" width="1500" height="400" alt="Posterior densities evolving through a two-domain analysis with one thousand chains">
-          <figcaption>The repository's two-domain, 1,000-chain posterior evolution.</figcaption>
         </figure>
 
         <div class="essay-copy">
           <p>MCMC replaces one optimized answer with samples from a distribution of plausible answers. Each chain proposes parameters, runs the diffusion model, compares its prediction with the step-heating data, and spends more time in combinations the data support.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/langevin-swarm.jpg">
-            <source src="../assets/cold-mars/manim/langevin-swarm.mp4" type="video/mp4">
-          </video>
-          <figcaption>A visual metaphor for many chains exploring one posterior. Rendered from Scene12_LangevinSwarm; the rock analysis itself uses BlackJAX NUTS.</figcaption>
+        <figure class="essay-media essay-media--video">
+          <div class="video-shell">
+            <video width="1400" height="700" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg">
+              <source src="../assets/cold-mars/mcmc-comet.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>Comet-style traces from the tracked posterior samples, rendered with <a href="https://github.com/jeffreyscheng/martiandating/blob/main/animate_mcmc.py">animate_mcmc.py ↗</a>.</figcaption>
         </figure>
 
         <div class="essay-copy">
           <p>I ran the full inverse problem with BlackJAX on eight H100 GPUs, allowing the diffusion-domain distribution to move rather than fixing two spikes. Propagating that structural uncertainty widens the set of thermal histories the rock permits.</p>
         </div>
 
-        <figure class="essay-media">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/bayesian-opening.jpg">
-            <source src="../assets/cold-mars/manim/bayesian-opening.mp4" type="video/mp4">
-          </video>
-          <figcaption>Fixed parameters produce a narrow constraint; propagated uncertainty produces a distribution. Rendered from Scene7_BayesianOpening.</figcaption>
-        </figure>
-
-        <figure class="essay-media essay-media--light">
-          <img src="../assets/cold-mars/posterior-evolution.gif" width="1500" height="400" alt="Posterior densities evolving for three inferred diffusion domains">
-          <figcaption>The flexible run's tracked posterior evolution from <a href="https://github.com/jeffreyscheng/martiandating">martiandating ↗</a>.</figcaption>
+        <figure class="essay-media essay-media--light essay-media--result">
+          <img src="../assets/cold-mars/temperature-constraint-bayesian.png" width="1440" height="900" alt="Bayesian 95 percent credible intervals for maximum Martian temperature over five possible warm-episode durations">
+          <figcaption>Reproduced from the tracked 1,000-chain sample file using the 95% interval calculation in <a href="https://github.com/jeffreyscheng/martiandating/blob/main/fit_mdd.ipynb">fit_mdd.ipynb ↗</a>.</figcaption>
         </figure>
 
         <div class="essay-copy essay-copy--ending">
           <p>The 95% interval for the warmest 100-million-year episode crosses 0°C. This does not prove that Mars stayed warm. It says the rock does not exclude a long warm episode as confidently as the two-spike interpretation suggested.</p>
-          <p>The final temperature panel is not tracked in either repository, so I have left it out rather than reconstruct its numbers. The analysis lives in <a href="https://github.com/jeffreyscheng/martiandating">martiandating ↗</a>, the animation source in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>, and the working references are Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
+          <p>The analysis lives in <a href="https://github.com/jeffreyscheng/martiandating">martiandating ↗</a>, the animation source in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>, and the working references are Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
         </div>
       </article>
     </main>

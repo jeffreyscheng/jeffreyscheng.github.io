@@ -854,7 +854,23 @@ h1 {
   margin: clamp(2.5rem, 6vw, 4.5rem) auto;
 }
 
-.essay-media video,
+.essay-media--video {
+  width: min(42rem, 100%);
+}
+
+.essay-media--result {
+  width: min(48rem, 100%);
+}
+
+.video-shell {
+  position: relative;
+  contain: layout paint;
+  isolation: isolate;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.video-shell video,
 .essay-media img {
   display: block;
   width: 100%;
@@ -862,6 +878,12 @@ h1 {
   border: 1px solid #30332f;
   border-radius: 0.25rem;
   background: #151628;
+}
+
+.video-shell > vsc-controller {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 }
 
 .essay-media--light img {
