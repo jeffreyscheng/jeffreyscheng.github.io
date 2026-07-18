@@ -872,6 +872,8 @@ h1 {
 
 .video-shell video,
 .essay-media img {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
   height: auto;
@@ -884,6 +886,8 @@ h1 {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }
 
 .essay-media--light img {
@@ -1413,6 +1417,13 @@ h1 {
 .essay--structured .equation {
   margin: 1rem 0 1.15rem;
   font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+}
+
+.essay--structured .katex-display {
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.1rem 0;
 }
 
 @media (max-width: 760px) {
