@@ -16,8 +16,6 @@
         <h1>challenging the geologists' cold mars history<br class="title-break">with bayesian diffusion models</h1>
 
         <section class="intro-sequence" aria-label="introduction">
-          <p class="intro-claim">Cameras tell us Mars was warm for hundreds of millions of years. Rocks tell us Mars was barely ever warm.</p>
-
           <div class="article-grid intro-row">
             <div class="intro-media">
               <div class="pebble-pair">
@@ -38,6 +36,7 @@
             </div>
 
             <div class="article-copy">
+              <p class="intro-claim">Cameras tell us Mars was warm for hundreds of millions of years. Rocks tell us Mars was barely ever warm.</p>
               <p>The cameras hint at existence of ancient water via erosion. Mars's atmosphere is known to have been thin for the last billion years since we see a consistent history of tiny meteorite craters (they would've burned up before impact if the atmosphere were thicker). So smooth pebbles and canyons are unmistakable signs of liquid water, but they're not strong bounds on how long Mars could've had liquid water. For example, the Grand Canyon on Earth only took 5ish million years to carve.</p>
             </div>
           </div>
@@ -94,7 +93,7 @@
             </nav>
 
             <div class="article-copy">
-              <p>I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers. I think that Mars could've been above freezing for 10x as long as we previously thought. Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles and craters lips are no longer confusing.</p>
+              <p>Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers. I think that Mars could've been above freezing for 10x as long as we previously thought. Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles and craters lips are no longer confusing.</p>
             </div>
           </div>
         </section>
@@ -108,11 +107,10 @@
           <section class="article-grid subsection" id="argon-source">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg">
                   <source src="../assets/cold-mars/manim/radioactive-clock.mp4" type="video/mp4">
                 </video>
               </div>
-              <figcaption>Potassium-40 decays to argon-40. Rendered from <a href="https://github.com/jeffreyscheng/geochronology">Scene1_RadioactiveClock ↗</a>.</figcaption>
             </figure>
 
             <div class="article-copy">
@@ -129,19 +127,17 @@
             <div class="section-media-stack">
               <figure class="section-media">
                 <div class="video-shell">
-                  <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
                     <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
                   </video>
                 </div>
-                <figcaption>One mineral represented by several diffusion domains. Rendered from Scene3_MultiDomain.</figcaption>
               </figure>
               <figure class="section-media">
                 <div class="video-shell">
-                  <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
                     <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
                   </video>
                 </div>
-                <figcaption>A simulated step-heating experiment. Rendered from Scene4_StepHeating.</figcaption>
               </figure>
             </div>
 
@@ -162,11 +158,10 @@
           <section class="article-grid subsection" id="argon-diffusion">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
                   <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
                 </video>
               </div>
-              <figcaption>Argon retention around a closure temperature. Rendered from Scene2_ClosureTemp.</figcaption>
             </figure>
 
             <div class="article-copy">
@@ -190,11 +185,10 @@
           <section class="article-grid subsection" id="two-spike">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
                   <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
                 </video>
               </div>
-              <figcaption>The same bulk age can hide different domain-scale retention. Rendered from Scene13_MDDComparison.</figcaption>
             </figure>
 
             <div class="article-copy">
@@ -210,11 +204,10 @@
           <section class="article-grid subsection" id="nuts-posterior">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="1400" height="700" autoplay muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg">
+                <video width="1400" height="700" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg">
                   <source src="../assets/cold-mars/mcmc-comet.mp4" type="video/mp4">
                 </video>
               </div>
-              <figcaption>Comet-style traces rendered from the tracked posterior samples with <a href="https://github.com/jeffreyscheng/martiandating/blob/main/animate_mcmc.py">animate_mcmc.py ↗</a>.</figcaption>
             </figure>
 
             <div class="article-copy">
