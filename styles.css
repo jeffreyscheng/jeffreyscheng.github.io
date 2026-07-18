@@ -1188,21 +1188,34 @@ h1 {
   align-items: start;
 }
 
-.article-intro {
+.intro-sequence {
   margin-top: 2rem;
-  align-items: stretch;
 }
 
-.intro-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
+.intro-claim {
+  width: min(62rem, 100%);
+  margin: 0 auto clamp(2.75rem, 6vw, 4.5rem);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.intro-row {
+  margin-bottom: clamp(3.5rem, 8vw, 6rem);
+}
+
+.intro-row--toc {
+  margin-bottom: 0;
+}
+
+.intro-media {
+  display: grid;
+  gap: 1rem;
   min-width: 0;
 }
 
 .article-toc {
-  margin-top: 1.5rem;
+  margin-top: 0;
   padding-top: 0.9rem;
   border-top: 1px solid var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -1238,25 +1251,27 @@ h1 {
   text-underline-offset: 0.16em;
 }
 
-.pebble-pair,
-.intro-evidence-pair {
+.pebble-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.65rem;
 }
 
 .pebble-pair figure,
-.intro-evidence-pair figure,
-.canyon-figure {
+.canyon-figure,
+.degraded-crater-figure,
+.shuster-figure {
   min-width: 0;
   margin: 0;
 }
 
 .pebble-pair img,
-.intro-evidence-pair img,
-.canyon-figure img {
+.canyon-figure img,
+.degraded-crater-figure img,
+.shuster-figure img {
   display: block;
   width: 100%;
+  height: auto;
   border-radius: 0.25rem;
   object-fit: cover;
 }
@@ -1266,12 +1281,8 @@ h1 {
   aspect-ratio: 1 / 1;
 }
 
-.intro-evidence-pair img {
-  height: auto;
-  aspect-ratio: 1 / 1;
-}
-
-.highland-denudation-figure img {
+.degraded-crater-figure img {
+  aspect-ratio: 16 / 10;
   object-position: center top;
 }
 
@@ -1282,13 +1293,31 @@ h1 {
 }
 
 .canyon-figure img {
-  height: auto;
   background: #000;
 }
 
+.sketch-placeholders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.sketch-placeholders div {
+  display: grid;
+  min-height: 8.5rem;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 0.25rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  text-align: center;
+}
+
 .pebble-pair figcaption,
-.intro-evidence-pair figcaption,
 .canyon-figure figcaption,
+.degraded-crater-figure figcaption,
+.shuster-figure figcaption,
 .section-media figcaption {
   margin-top: 0.45rem;
   color: var(--muted);
@@ -1297,8 +1326,9 @@ h1 {
 }
 
 .pebble-pair figcaption a,
-.intro-evidence-pair figcaption a,
 .canyon-figure figcaption a,
+.degraded-crater-figure figcaption a,
+.shuster-figure figcaption a,
 .section-media figcaption a {
   text-underline-offset: 0.16em;
 }
@@ -1314,33 +1344,8 @@ h1 {
   margin: 0 0 1em;
 }
 
-.intro-copy p:first-child {
-  margin-top: 0;
-}
-
-.intro-lead {
-  margin-bottom: 1.15rem !important;
-  font-size: 1.08em;
-  line-height: 1.5;
-}
-
-.intro-branches {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 1.35rem;
-  margin-bottom: 1.35rem;
-}
-
-.intro-branch {
-  padding-top: 0.8rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.9em;
-  line-height: 1.62;
-}
-
-.intro-branch p {
-  margin: 0;
+.intro-row .article-copy p:last-child {
+  margin-bottom: 0;
 }
 
 .major-section {
@@ -1416,17 +1421,21 @@ h1 {
     gap: 1.5rem;
   }
 
-  .article-intro {
+  .intro-sequence {
     margin-top: 1.5rem;
   }
 
-  .article-intro .intro-copy {
-    order: -1;
+  .intro-claim {
+    margin-bottom: 3rem;
   }
 
-  .intro-branches {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  .intro-row {
+    gap: 1.15rem;
+    margin-bottom: 3.75rem;
+  }
+
+  .intro-row--toc {
+    margin-bottom: 0;
   }
 
   .major-section {
