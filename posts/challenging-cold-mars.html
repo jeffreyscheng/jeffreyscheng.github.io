@@ -80,6 +80,7 @@
                   <a href="#rock-thermometer">how to use a rock as a time-traveling thermometer</a>
                   <ol>
                     <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
+                    <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
                     <li><a href="#date-feldspar">how to date a feldspar</a></li>
                     <li><a href="#argon-diffusion">warmth siphons argon out of the rocks</a></li>
                   </ol>
@@ -119,10 +120,27 @@
             <div class="article-copy">
               <h3>who pumped argon into martian rocks?</h3>
               <p>A feldspar is an aluminosilicate with a tiled tetrahedral backbone. Many feldspars contain potassium, but it's not bonded to anything; it kind of just sits in jail inside the crystal lattice. Since Potassium-40 (⁴⁰K) is radioactive, old feldspars will end up with some radiogenic Argon gas trapped inside.</p>
-              <div class="equation" role="math" aria-label="N of potassium 40 at time t equals N at time zero times e to the negative lambda t">
-                \[N_{{}^{40}\mathrm{K}}(t)=N_{{}^{40}\mathrm{K}}(0)e^{-\lambda t}\]
+            </div>
+          </section>
+
+          <section class="article-grid subsection" id="argon-clock-start">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-closure-clock.jpg">
+                  <source src="../assets/cold-mars/manim/argon-closure-clock.mp4" type="video/mp4">
+                </video>
               </div>
-              <p>The potassium population decreases exponentially. If the daughter argon remains in the mineral, the parent-to-daughter ratio records elapsed time. The useful clock was not pumped into the rock from outside; radioactive decay has been producing it in place.</p>
+            </figure>
+
+            <div class="article-copy">
+              <h3>when does the argon clock start?</h3>
+              <p>In a closed system, the potassium population decreases exponentially. But in aluminosilicate magma, there is no crystal structure to cage Argon gas. So \(\frac{[{}^{40}\mathrm{Ar}]}{[{}^{40}\mathrm{K}]}\) is a clock for the implied age of the rock, where the timer starts the moment the magma cools enough to trap argon gas.</p>
+              <div class="equation" role="math" aria-label="Potassium 40 decreases exponentially after closure; radiogenic argon 40 over potassium 40 equals the argon branching fraction times e to lambda delta t minus one">
+                \[\begin{aligned}
+                  N_{{}^{40}\mathrm{K}}(t)&amp;=N_{{}^{40}\mathrm{K}}(t_c)e^{-\lambda(t-t_c)}\\
+                  \frac{[{}^{40}\mathrm{Ar}]}{[{}^{40}\mathrm{K}]}&amp;=\frac{\lambda_{\mathrm{Ar}}}{\lambda}\!\left(e^{\lambda(t-t_c)}-1\right)
+                \end{aligned}\]
+              </div>
             </div>
           </section>
 
