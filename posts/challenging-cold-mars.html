@@ -126,33 +126,45 @@
           <section class="article-grid subsection" id="argon-clock-start">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-closure-clock.jpg?v=20260719h">
-                  <source src="../assets/cold-mars/manim/argon-closure-clock.mp4?v=20260719h" type="video/mp4">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-closure-clock.jpg?v=20260719i">
+                  <source src="../assets/cold-mars/manim/argon-closure-clock.mp4?v=20260719i" type="video/mp4">
                 </video>
               </div>
             </figure>
 
             <div class="article-copy">
               <h3>when does the argon clock start?</h3>
-              <p>In a closed system, the potassium population decreases exponentially. But in aluminosilicate magma, there is no crystal structure to cage Argon gas. So \(\frac{[{}^{40}\mathrm{Ar}]}{[{}^{40}\mathrm{K}]}\) is a clock for the implied age of the rock, where the timer starts the moment the magma cools enough to trap argon gas.</p>
-              <div class="equation" role="math" aria-label="Potassium 40 decreases exponentially after closure; radiogenic argon 40 over potassium 40 equals the argon branching fraction times e to lambda delta t minus one">
-                \[\begin{aligned}
-                  N_{{}^{40}\mathrm{K}}(t)&amp;=N_{{}^{40}\mathrm{K}}(t_c)e^{-\lambda(t-t_c)}\\
-                  \frac{[{}^{40}\mathrm{Ar}]}{[{}^{40}\mathrm{K}]}&amp;=\frac{\lambda_{\mathrm{Ar}}}{\lambda}\!\left(e^{\lambda(t-t_c)}-1\right)
-                \end{aligned}\]
-              </div>
+              <p>Aluminosilicate magma has no crystal lattice to cage argon gas, so newly formed radiogenic ⁴⁰Ar escapes. The clock starts at closure: once cooling forms the feldspar lattice, newly produced argon can remain trapped.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="date-feldspar">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/feldspar-dating.jpg?v=20260719a">
+                  <source src="../assets/cold-mars/manim/feldspar-dating.mp4?v=20260719a" type="video/mp4">
+                </video>
+              </div>
+            </figure>
+
+            <div class="article-copy">
+              <h3>how to date a feldspar</h3>
+              <p>After closure, ⁴⁰K decreases with a half-life of 1.25 billion years while radiogenic ⁴⁰Ar accumulates. The animation normalizes the argon-producing parent–daughter branch so that the remaining parent and accumulated daughter sum to the original population.</p>
+              <div class="equation" role="math" aria-label="Potassium 40 decreases exponentially after closure while radiogenic argon 40 accumulates">
+                \[\begin{aligned}
+                  N_{{}^{40}\mathrm{K}}(t)&amp;=N_{{}^{40}\mathrm{K}}(t_c)e^{-\lambda(t-t_c)}\\
+                  N_{{}^{40}\mathrm{Ar}^{*}}(t)&amp;=N_{{}^{40}\mathrm{K}}(t_c)-N_{{}^{40}\mathrm{K}}(t)
+                \end{aligned}\]
+              </div>
+              <p>The measured daughter-to-parent ratio therefore maps to the elapsed time since the feldspar closed.</p>
+              <div class="equation" role="math" aria-label="Elapsed time since closure equals the half life times log base two of one plus radiogenic argon 40 over potassium 40">
+                \[t-t_c=t_{1/2}\log_2\!\left(1+\frac{{}^{40}\mathrm{Ar}^{*}}{{}^{40}\mathrm{K}}\right)\]
+              </div>
+            </div>
+          </section>
+
+          <section class="article-grid subsection" id="argon-diffusion">
             <div class="section-media-stack">
-              <figure class="section-media">
-                <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
-                    <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
-                  </video>
-                </div>
-              </figure>
               <figure class="section-media">
                 <div class="video-shell">
                   <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
@@ -160,33 +172,18 @@
                   </video>
                 </div>
               </figure>
+              <figure class="section-media">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
+                    <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
             </div>
-
-            <div class="article-copy">
-              <h3>how to date a feldspar</h3>
-              <p>In an argon step-heating experiment, the laboratory raises a feldspar's temperature in stages and measures the argon released at each stage. The measured ratio of radiogenic argon-40 to potassium-derived argon-39 can be converted into an age.</p>
-              <div class="equation" role="math" aria-label="t equals one over lambda times the natural logarithm of one plus J times argon 40 star over argon 39 K">
-                \[t=\lambda^{-1}\ln\!\left(1+J\,\frac{{}^{40}\mathrm{Ar}^{*}}{{}^{39}\mathrm{Ar}_{\mathrm K}}\right)\]
-              </div>
-              <p>A feldspar grain need not behave as one container. Multi-domain diffusion represents the sample as a mixture of domains with different effective diffusion lengths. Small or fast domains release argon earlier; large or retentive domains release it later.</p>
-              <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
-                \[F_{\mathrm{model}}=\sum_i\phi_iF_i,\qquad\sum_i\phi_i=1\]
-              </div>
-              <p>The shape of the release schedule constrains the effective diffusion parameters and volume fractions. Those parameters describe how the sample behaves during heating; they are not automatically a literal inventory of physical grain diameters.</p>
-            </div>
-          </section>
-
-          <section class="article-grid subsection" id="argon-diffusion">
-            <figure class="section-media">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
-                  <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
-                </video>
-              </div>
-            </figure>
 
             <div class="article-copy">
               <h3>warmth siphons argon out of the rocks</h3>
+              <p>In a step-heating experiment, the laboratory raises a feldspar's temperature in stages and measures the argon released at each stage. That controlled loss reveals how readily argon moves through the sample.</p>
               <p>Argon moves through feldspar by diffusion. Heating increases the diffusion coefficient and lets argon leave the crystal; cooling suppresses diffusion and preserves it. The temperature sensitivity enters through an Arrhenius relationship.</p>
               <div class="equation" role="math" aria-label="partial C over partial t equals divergence of D of T times gradient C; D of T equals D zero times e to negative activation energy over R T">
                 \[\begin{aligned}
@@ -206,21 +203,35 @@
           </div>
 
           <section class="article-grid subsection" id="two-spike">
-            <figure class="section-media">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
-                  <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
-                </video>
-              </div>
-            </figure>
+            <div class="section-media-stack">
+              <figure class="section-media">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                    <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+              <figure class="section-media">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+                    <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+            </div>
 
             <div class="article-copy">
               <h3>shuster et al's 2-spike model</h3>
+              <p>A feldspar grain need not behave as one container. Multi-domain diffusion represents the sample as a mixture of domains with different effective diffusion lengths. Small or fast domains release argon earlier; large or retentive domains release it later.</p>
+              <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
+                \[F_{\mathrm{model}}=\sum_i\phi_iF_i,\qquad\sum_i\phi_i=1\]
+              </div>
               <p>Shuster et al represented the domain distribution with two components: a low-retentivity domain and a high-retentivity domain. In distribution notation, this is a pair of point masses.</p>
               <div class="equation" role="math" aria-label="p of x equals phi times delta at x one plus one minus phi times delta at x two">
                 \[p(x)=\phi\,\delta(x-x_1)+(1-\phi)\,\delta(x-x_2)\]
               </div>
               <p>This was computationally practical in 2005. It also restricts the ways the model can explain the release data. If the effective-domain distribution is broader or differently shaped, a two-point approximation can understate uncertainty in the most retentive material.</p>
+              <p>The shape of the release schedule constrains effective diffusion parameters and volume fractions. Those parameters describe how the sample behaves during heating; they are not automatically a literal inventory of physical grain diameters.</p>
             </div>
           </section>
 
