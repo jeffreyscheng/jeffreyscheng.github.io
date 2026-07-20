@@ -98,11 +98,11 @@
 
       <section>
         <h2>chain evolution</h2>
-        <p>Both animations use all 256 chains in chronological order. They begin at the first retained draw, after 500 frozen-kernel settling draws were discarded. They show mixing within the retained run, not adaptation.</p>
+        <p>Both animations preserve chronological draw order and begin after 500 frozen-kernel settling draws were discarded. The comet view follows five representative chains; the running-mean diagnostic uses all 256. They show retained sampling, not adaptation.</p>
         <div class="grid">
           <figure class="figure">
-            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif" width="960" height="583" alt="Comet trails for all 256 posterior chains through activation-energy and mean-diffusion-scale space">
-            <figcaption>Comet view. Color is fixed by each chain's activation-energy quartile during its first 100 retained draws. Initially separated colors later occupy the same posterior region. Each trail contains 70 consecutive draws; the background is the pooled posterior density.</figcaption>
+            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif" width="960" height="583" alt="Five paired comet trajectories in slower- and faster-diffusion regions sharing an activation-energy axis">
+            <figcaption>Paired comet view. Each chain has synchronized slower- and faster-regime centroids at the same activation energy. The split at ln(D₀/r²)=5.5 summarizes two visible regions of the flexible posterior; it is not a fitted two-domain model. The display paths use an 81-draw moving average. Recent segments are brightest, old segments vanish, and each chain disappears when complete. Background density uses all 256 chains.</figcaption>
           </figure>
           <figure class="figure">
             <img src="../assets/cold-mars-analysis/rerun/primary-chain-contraction.gif" width="960" height="539" alt="Running means of 256 chains contracting while R-hat falls and effective sample size rises">
