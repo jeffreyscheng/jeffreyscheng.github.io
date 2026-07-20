@@ -98,11 +98,11 @@
 
       <section>
         <h2>chain evolution</h2>
-        <p>Both animations preserve chronological draw order and begin after 500 frozen-kernel settling draws were discarded. The comet view cycles through 50 representative chains, five per second; the running-mean diagnostic uses all 256. They show retained sampling, not adaptation.</p>
+        <p>Both animations preserve chronological draw order and begin after 500 frozen-kernel settling draws were discarded. The comet view shows 200 one-second trajectories staggered 0.05 seconds apart; the running-mean diagnostic uses all 256. They show retained sampling, not adaptation.</p>
         <div class="grid">
           <figure class="figure">
-            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=3" width="960" height="583" alt="Fifty paired comet trajectories in slower- and faster-diffusion regions sharing an activation-energy axis">
-            <figcaption>Paired comet view. Ten one-second cohorts show 50 trajectories, five at a time. Each chain has synchronized slower- and faster-regime centroids at the same activation energy. The split at ln(D₀/r²)=5.5 summarizes two visible regions of the flexible posterior. Display paths use an 81-draw moving average; background density uses all 256 chains.</figcaption>
+            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=4" width="960" height="583" alt="Two hundred staggered paired comet trajectories in slower- and faster-diffusion regions sharing an activation-energy axis">
+            <figcaption>Two hundred one-second trajectories start 0.05 seconds apart. Each chain produces synchronized traces in the slower- and faster-diffusion regions at the same activation energy. Display paths use an 81-draw moving average; background density uses all 256 chains.</figcaption>
           </figure>
           <figure class="figure">
             <img src="../assets/cold-mars-analysis/rerun/primary-chain-contraction.gif" width="960" height="539" alt="Running means of 256 chains contracting while R-hat falls and effective sample size rises">
