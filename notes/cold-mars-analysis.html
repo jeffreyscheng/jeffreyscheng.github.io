@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="A working record for auditing the cold-Mars Bayesian diffusion analysis.">
+    <title>cold Mars analysis — working record</title>
+    <style>
+      :root {
+        --paper: #f7f6f1;
+        --ink: #171816;
+        --muted: #666760;
+        --line: #cfcec7;
+        --blue: #315f86;
+        --red: #9b4937;
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--paper); }
+      main { width: min(72rem, calc(100% - 2rem)); margin: 0 auto; padding: 3rem 0 7rem; }
+      h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+      h1 { max-width: 18ch; margin: .35rem 0 1rem; font-size: clamp(2.3rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.04em; }
+      h2 { margin: 0 0 1rem; font-size: 1.65rem; }
+      p, li { line-height: 1.65; }
+      p { max-width: 68rem; }
+      a { color: var(--blue); }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; }
+      .kicker, .stamp, th { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .kicker { color: var(--muted); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+      .stamp { margin-bottom: 2.5rem; color: var(--muted); font-size: .78rem; }
+      .status { max-width: 58rem; margin: 2rem 0 3rem; padding: 1rem 1.15rem; border-left: 4px solid var(--red); background: rgba(155,73,55,.07); }
+      section { padding: 2.3rem 0; border-top: 1px solid var(--line); }
+      table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,.28); }
+      th, td { padding: .8rem .75rem; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+      th { color: var(--muted); font-size: .72rem; letter-spacing: .04em; }
+      td { font-size: .9rem; line-height: 1.5; }
+      .bad { color: var(--red); font-weight: 650; }
+      .provisional { color: #7b5b17; font-weight: 650; }
+      .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .8fr); gap: 2.25rem; align-items: start; }
+      .figure { margin: 0; padding: 1rem; border: 1px solid var(--line); background: white; }
+      .figure img { display: block; width: 100%; height: auto; }
+      figcaption { margin-top: .7rem; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+      .facts { margin: 0; padding-left: 1.2rem; }
+      .facts li { margin-bottom: .55rem; }
+      .next { counter-reset: step; padding: 0; list-style: none; }
+      .next li { display: grid; grid-template-columns: 2rem 1fr; gap: .45rem; margin: 0 0 .8rem; }
+      .next li::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 1.45rem; height: 1.45rem; margin-top: .15rem; border: 1px solid var(--ink); border-radius: 50%; font-size: .72rem; }
+      .small { color: var(--muted); font-size: .82rem; }
+      @media (max-width: 760px) {
+        main { padding-top: 2rem; }
+        .grid { grid-template-columns: 1fr; }
+        table { display: block; overflow-x: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="kicker">Jeffrey ↔ Codex working record</div>
+      <h1>cold Mars analysis</h1>
+      <div class="stamp">updated 2026-07-20 · unlisted · evidence before prose</div>
+
+      <p class="status"><strong>Current status:</strong> there is no defensible warm-Mars posterior yet. Jeffrey's memory of a thousands-of-chains, eight-H100 experiment is supported by the 2026 workflow. Its raw outputs are not in either clone, however, and the committed summaries do not establish convergence. The +42°C website figure came from a separate 2025 run with severe mixing and domain-ordering problems.</p>
+
+      <section>
+        <h2>run inventory</h2>
+        <table>
+          <thead>
+            <tr><th>lineage</th><th>what ran</th><th>what was retained</th><th>what survives here</th><th>assessment</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://github.com/jeffreyscheng/martiandating/commit/76821d7">2025 notebook</a></td>
+              <td>1,000 chains; 1,000 warmup steps; 100 NUTS steps</td>
+              <td>Warmup endpoint plus all 100 subsequent draws: shape <code>101 × 1000 × 2</code>. This was not terminal-state-only sampling.</td>
+              <td>Tracked pickle, notebook, KDE animations, and a NumPy copy.</td>
+              <td class="bad">Not mixed. Maximum rank-normalized/folded split R̂ reaches 12.0. This artifact produced the first comet and +42°C plot.</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/jeffreyscheng/martiandating/commit/9483e7c">2026 H100 workflow</a></td>
+              <td>Eight GPU processes. Standard D3/D4 jobs used 100 chains/GPU; another launcher requested 1,000/GPU.</td>
+              <td>One terminal state after each 1,000-step <em>adaptation</em> block; nominally 100 endpoints/chain.</td>
+              <td>Scripts and prose summary only. Result pickles and scheduler logs were ignored and are absent.</td>
+              <td class="bad">Your memory matches this lineage. But D3/D4 report R̂ 1.78/1.67; N2/N3 report 1.00 only after learning very large noise, and N3 collapses domains. Repeated adaptation also makes these endpoints questionable as stationary draws.</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/jeffreyscheng/martiandating/commit/4597c70">2026 diagnostic</a></td>
+              <td>Eight ordered two-domain chains.</td>
+              <td>Ordinary post-warmup NUTS draws from a fixed kernel.</td>
+              <td>Code, diagnostics, and the replacement comet video.</td>
+              <td class="provisional">Useful code diagnostic: R̂ 1.003, bulk ESS &gt;2,300, zero divergences. Too few chains for the intended experiment and not evidence for a flexible grain-size distribution.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="grid">
+        <div>
+          <h2>why the +42°C plot is invalid</h2>
+          <ol class="facts">
+            <li>The 2025 notebook sorted each chain's final domains by descending <code>log(D₀/r²)</code>. Column 0 therefore became the faster, low-retentivity domain.</li>
+            <li>The later temperature code treated column 0 as the high-retentivity domain. That ordering mismatch exactly reproduces the website's 100 My result: median −12.66°C, central 95% interval [−21.21, 41.99]°C.</li>
+            <li>The actual column-1 transform is not a rescue. Its 100 My central 95% interval is [−20.72, 312.00]°C because pathological chains dominate the upper tail.</li>
+            <li>The transform only varies excursion duration. A valid thermal-history calculation must also represent when the event occurs and the radiogenic argon produced after it.</li>
+          </ol>
+          <p class="small"><a href="../assets/cold-mars-analysis/archival-run-audit.json">machine-readable audit ↗</a></p>
+        </div>
+        <figure class="figure">
+          <img src="../assets/cold-mars-analysis/archival-temperature-violin.png" width="1620" height="972" alt="Violin diagnostic reproducing the invalid old temperature transform from the low-retentivity domain">
+          <figcaption>A violin replaces the box-and-whisker graphic, but changing the glyph does not validate the inference. This figure is retained only as a forensic reproduction. Violins are clipped to each distribution's central 95%.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>archival convergence check</h2>
+        <table>
+          <thead><tr><th>parameter</th><th>low-retentivity domain max R̂</th><th>nominal high-retentivity domain max R̂</th><th>threshold</th></tr></thead>
+          <tbody>
+            <tr><td><code>Eₐ</code></td><td class="bad">7.92</td><td class="bad">7.35</td><td>≈1.01</td></tr>
+            <tr><td><code>log(D₀/r²)</code></td><td class="bad">6.96</td><td class="bad">5.59</td><td>≈1.01</td></tr>
+            <tr><td><code>φ</code></td><td class="bad">12.00</td><td class="bad">11.89</td><td>≈1.01</td></tr>
+          </tbody>
+        </table>
+        <p class="small">Rank-normalized and folded split R̂, computed across the 1,000 chains after discarding the stored warmup endpoint. No divergence, tree-depth, acceptance-rate, or energy diagnostics were stored with this artifact.</p>
+      </section>
+
+      <section>
+        <h2>additional model issues to settle</h2>
+        <ul class="facts">
+          <li>The 2025 notebook has its written priors commented out, except for a negative-activation-energy penalty.</li>
+          <li>Its comet animation applies a likelihood weight to samples that were already drawn from the posterior, effectively weighting the likelihood twice.</li>
+          <li>The 2026 likelihood renormalizes predicted release over the filtered laboratory steps while the corresponding observed fractions retain their whole-experiment normalization. This needs a single, explicit observation-window definition.</li>
+          <li>The 2026 learned-noise fits can obtain good R̂ for a posterior whose effective observation uncertainty is roughly 5.5×–8.7× the input uncertainty. Convergence does not make that measurement model appropriate.</li>
+          <li>Neither available run demonstrates the originally proposed continuous or otherwise richly distributed diffusion-domain model.</li>
+        </ul>
+      </section>
+
+      <section class="grid">
+        <div>
+          <h2>what is missing</h2>
+          <p>The 2026 scripts wrote results under <code>/home/jefcheng/dev/martiandating/results</code> on the cluster. That directory's pickles and logs are ignored by Git and do not exist in this workspace. Without them, we cannot verify the reported chain counts, retained arrays, sampler diagnostics, or whether a later Claude session modified only plots, reran samplers, or changed the target density.</p>
+        </div>
+        <div>
+          <h2>recovery targets</h2>
+          <ul class="facts">
+            <li><code>fit_D3_gpu*.pkl</code> and <code>fit_D3_combined.pkl</code></li>
+            <li><code>fit_D4_gpu*.pkl</code> and <code>fit_D4_combined.pkl</code></li>
+            <li>N2/N3 result pickles</li>
+            <li><code>slurm_*.log</code> and per-GPU logs</li>
+            <li>scheduler job metadata and code checkout SHA, if available</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>next experiment: acceptance criteria</h2>
+        <ol class="next">
+          <li>Freeze the scientific target first: data rows, normalization, uncertainty model, activation-energy treatment, domain representation, and thermal-history parameterization.</li>
+          <li>Adapt each chain once, freeze the NUTS kernel, and then retain ordinary post-warmup draws. Save the full draws or a justified thinning—not endpoints of repeated adaptation windows.</li>
+          <li>Distribute many independently initialized chains across all eight GPUs and record the exact code commit, random seeds, device mapping, and sampler configuration.</li>
+          <li>Save divergences, tree depth, acceptance probability, step size, inverse mass matrix, energy diagnostics, rank-normalized split R̂, and bulk/tail ESS.</li>
+          <li>Inspect per-chain and rank plots before making a comet animation. The animation should depict the unweighted posterior draws, never a second likelihood weighting.</li>
+          <li>Run posterior predictive checks against the measured incremental release fractions in the exact observation window used by the likelihood.</li>
+          <li>Propagate each accepted draw through a thermal-history model that includes excursion timing, duration, diffusion during the event, and post-event radiogenic regrowth.</li>
+          <li>Use violins with median and central 95% markers for the final temperature summary, accompanied by chain diagnostics and posterior-predictive evidence.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>decisions before compute</h2>
+        <ul class="facts">
+          <li>Can the ignored cluster result directory still be recovered?</li>
+          <li>Is the target a discrete 2/3/4-domain MDD model, a continuous distribution over diffusion scales, or a comparison among both?</li>
+          <li>Should activation energy be fixed, shared and inferred, or domain-specific?</li>
+          <li>Which extraction steps belong in the likelihood, and should their release fractions be renormalized after filtering?</li>
+          <li>What warm-event timing prior should replace the duration-only maximum-temperature transform?</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
