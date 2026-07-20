@@ -96,6 +96,22 @@
         <p class="small">Gates: max rank/folded R̂ ≤ 1.01; bulk and tail ESS ≥ 2,000; zero divergences; max-depth frequency &lt; 1%; every-chain BFMI &gt; 0.30; mean grid-edge mass &lt; 0.5%. All primary temperature-quantile Monte Carlo errors are below 0.09°C.</p>
       </section>
 
+      <section>
+        <h2>chain evolution</h2>
+        <p>Both animations use all 256 chains in chronological order. They begin at the first retained draw, after 500 frozen-kernel settling draws were discarded. They show mixing within the retained run, not adaptation.</p>
+        <div class="grid">
+          <figure class="figure">
+            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif" width="960" height="583" alt="Comet trails for all 256 posterior chains through activation-energy and mean-diffusion-scale space">
+            <figcaption>Comet view. Color is fixed by each chain's activation-energy quartile during its first 100 retained draws. Initially separated colors later occupy the same posterior region. Each trail contains 70 consecutive draws; the background is the pooled posterior density.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="../assets/cold-mars-analysis/rerun/primary-chain-contraction.gif" width="960" height="539" alt="Running means of 256 chains contracting while R-hat falls and effective sample size rises">
+            <figcaption>Running-mean view. All chain means contract toward the pooled expectation while the actual checkpointed maximum rank/folded R̂ falls from 1.0648 to 1.0037 and minimum bulk ESS rises from 2,481 to 61,670. Divergences remain zero.</figcaption>
+          </figure>
+        </div>
+        <p class="small">The motion is supporting evidence, not the convergence criterion. The numerical R̂, ESS, BFMI, divergence, tree-depth, and independent-replication checks above carry the diagnostic conclusion.</p>
+      </section>
+
       <section class="grid">
         <div>
           <h2>posterior predictive check</h2>
