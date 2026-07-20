@@ -216,55 +216,72 @@
 
             <div class="article-copy">
               <h3>shuster et al's 2-spike model</h3>
-              <p>Real feldspars do not behave like one perfectly uniform argon jail. Multi-domain diffusion splits the sample into domains: the leaky domains release argon early, while the retentive domains hang onto it longer.</p>
+              <p>Shuster &amp; Weiss reconstructed Nakhla's diffusion kinetics from a laboratory heating schedule. At each oven temperature, they measured the fraction of ³⁹Ar released from the rock. A multi-domain diffusion model treats the sample as a mixture of regions that release argon at different rates.</p>
               <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
                 \[F_{\mathrm{model}}=\sum_i\phi_iF_i,\qquad\sum_i\phi_i=1\]
               </div>
-              <p>Shuster &amp; Weiss's headline calculation split the sample into a low-retentivity domain and a high-retentivity domain that held most of the argon. If (x=\ln(D_0/a^2)) is the effective diffusion scale, that model looks like two spikes.</p>
+              <p>Their two-domain fit assigned 97% of the modeled volume to a high-retentivity domain (HRD) and 3% to a low-retentivity domain (LRD). If \(x=\ln(D_0/r^2)\) is the effective diffusion scale, the model is two point masses:</p>
               <div class="equation" role="math" aria-label="p of x equals phi times delta at x one plus one minus phi times delta at x two">
                 \[p(x)=\phi\,\delta(x-x_1)+(1-\phi)\,\delta(x-x_2)\]
               </div>
-              <p>Their supplement also compared one- and three-domain regressions and carried a model-form uncertainty envelope, so “two spikes” is a simplification of what they actually did. The modern question is narrower: how much uncertainty survives when we sample the diffusion parameters instead of settling on one fitted value?</p>
-              <p>These are effective diffusion lengths inferred from a release schedule, not microscope measurements of literal grain diameters.</p>
+              <p>Two domains are a useful summary of the release curve. For a temperature limit, the exact location and weight of the most retentive material matter enormously. I wanted to carry uncertainty in the whole diffusion-scale distribution through the thermal calculation.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="nuts-posterior">
             <figure class="section-media">
-              <div class="video-shell">
-                <video width="1400" height="700" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/mcmc-comet.jpg?v=20260718b">
-                  <source src="../assets/cold-mars/mcmc-comet.mp4?v=20260718b" type="video/mp4">
-                </video>
-              </div>
+              <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=6" width="960" height="583" alt="Representative paired NUTS trajectories moving through the slower- and faster-diffusion posterior regions">
+              <figcaption>Two hundred representative chains, staggered over eleven seconds. The background density uses all 256 chains.</figcaption>
             </figure>
 
             <div class="article-copy">
               <h3>the full posterior via NUTS</h3>
-              <p>Instead of choosing one best set of diffusion parameters, I put a probability distribution over every plausible set. Bayes' rule scores each one by how well it reproduces the measured argon release.</p>
+              <p>I replaced the two point masses with a smooth probability vector over 28 values of \(\ln(D_0/r^2)\), spanning −4 to 14. The model has a shared activation energy with the Shuster &amp; Weiss measurement, \(E_a\sim\mathcal N(117,5.4^2)\ \mathrm{kJ\,mol^{-1}}\). The likelihood scores each parameter set against the measured ³⁹Ar released during the heating experiment.</p>
               <div class="equation" role="math" aria-label="p of theta given y is proportional to p of y given theta times p of theta">
                 \[p(\theta\mid y)\propto p(y\mid\theta)p(\theta)\]
               </div>
-              <p>A random-walk sampler stumbles blindly around this distribution. NUTS uses its slope to move through it much faster.</p>
-              <div class="equation" role="math" aria-label="log likelihood of y given theta equals negative one half times the sum of squared standardized residuals plus a constant">
-                \[\log p(y\mid\theta)=-\frac12\sum_j\left[\frac{y_j-f_j(\theta)}{\sigma_j}\right]^2+\mathrm{const}.\]
-              </div>
-              <p>I ran the model sweep with BlackJAX across eight H100s. Each comet-like streak is one chain searching through possible diffusion parameters. Every retained sample can be passed through the diffusion model to produce one possible temperature constraint.</p>
-              <p>The animation is a diagnostic ordered two-domain fit. It mixed cleanly—maximum (widehat R=1.003), more than 2,300 bulk effective samples, and no divergences—but it samples uncertainty inside the same two-domain structure. It does not demonstrate a continuous grain-size distribution.</p>
+              <p>I ran BlackJAX's NUTS sampler on eight A100 GPUs. The run used 256 chains, discarded 500 settling states from each chain, and retained 4,000 more: 1,024,000 posterior states in total.</p>
+              <p>The maximum rank-normalized and folded \(\widehat R\) was 1.0037. The minimum bulk and tail effective sample sizes were 61,670 and 55,607; there were no divergences; the minimum per-chain BFMI was 0.907. An independently seeded run agreed within 0.10°C on the endpoints of the temperature interval.</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection analysis-result">
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/rerun/diffusion-distribution.png?v=3" width="1512" height="864" alt="Flexible posterior over diffusion scale with Shuster and Weiss high- and low-retentivity domain proportions overlaid">
+              <figcaption>Flexible diffusion-scale posterior. The orange stems use the right axis and reproduce Shuster &amp; Weiss's 97% HRD and 3% LRD fit.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>The posterior spreads mass across two broad regions. The orange stems show the original 97/3 allocation on a separate axis. The 95% band is wide because the release schedule leaves many neighboring distributions plausible.</p>
+              <p>This axis is an effective diffusion scale. Holding \(D_0\) fixed, a lower value corresponds to a larger, more retentive domain. A microscope grain diameter cannot be recovered without separating \(D_0\) from \(r\).</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection analysis-result">
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/rerun/posterior-predictive.png?v=3" width="1512" height="864" alt="Observed and posterior-predicted argon release across the laboratory heating schedule">
+              <figcaption>Measured ³⁹Ar release and the posterior prediction. The likelihood uses the eighteen orange points.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>I checked the fitted model by simulating the heating experiment from the posterior. Fourteen of the eighteen likelihood observations fall inside their 90% predictive intervals. The misses occur at 475, 525, 550, and 562°C, a structured error in the middle of the schedule. My predeclared target was fifteen of eighteen.</p>
+              <p>The standardized residual RMS is 1.393 and the largest median residual is 2.50σ. Both pass their predeclared bounds. Increasing the fixed discrepancy term from 10% to 15% covers all eighteen points and moves the upper endpoint of the 100-million-year temperature limit from 3.31 to 5.08°C. Changing this one assumption moves the endpoint by 1.77°C.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="warm-mars">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars/temperature-constraint-bayesian.png?v=20260720b" width="1620" height="972" alt="Archival violin diagnostic for the invalid low-retentivity-domain temperature transform">
-              <figcaption>An exploratory interval from the old 1,000-chain run. The run failed convergence diagnostics; this is a record of the false start, not a result.</figcaption>
+              <img src="../assets/cold-mars-analysis/rerun/temperature-violin.png?v=3" width="1512" height="900" alt="Posterior violin distributions for maximum constant temperature at four event durations">
+              <figcaption>Maximum constant temperature that produces 1% argon loss. Lines are central 95% intervals; orange points are medians.</figcaption>
             </figure>
 
             <div class="article-copy">
               <h3>was Mars warm?</h3>
-              <p>For every posterior sample, I asked how hot Mars could stay before the rock lost more than 1% of its argon. Repeating that calculation across a trustworthy posterior would turn one temperature cutoff into a range. The timing of the warm interval matters too, because radiogenic argon can regrow afterward.</p>
-              <p>The old 1,000-chain run produced the exciting plot on the left: for a 100-million-year episode, a median cutoff of −12.7°C and a 95% interval from −21.1°C to 42.0°C. Its chains did not mix. Some (widehat R) values were above 10, so 42.0°C is not a defensible posterior endpoint.</p>
-              <p>The later model sweep has not recovered that warm-Mars result. The converged fixed-activation-energy, learned-noise fits keep their 95% intervals below 0°C; one of them also collapses its nominal three domains onto one effective diffusion scale. My current answer is that this analysis does not establish a 100-million-year thaw. It found a false positive, exposed several modeling choices that matter, and left a cleaner problem to solve.</p>
-              <p>The analysis lives in <a href="https://github.com/jeffreyscheng/martiandating">martiandating ↗</a>; the animations live in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>. The two main references are Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
+              <p>For every posterior state, I solved for the maximum constant temperature that would remove 1% of the rock's present-day radiogenic argon. The calculation assumes a 1.3-billion-year-old rock, a 1.248-billion-year ⁴⁰K half-life, and an event ending at the present. It includes argon produced during the event and the argon that accumulates afterward.</p>
+              <p>For a 100-million-year event, the median limit is −5.22°C and the central 95% interval is [−13.76, 3.31]°C. Thirteen percent of posterior states permit a limit above freezing. A 100-million-year excursion at 0°C therefore survives in part of the posterior.</p>
+              <p>The violins are conditional upper limits. The analysis places no prior on Mars's actual temperature history, so it does not calculate the probability that Mars was warm. The 1% loss threshold and the discrepancy assigned to the laboratory data still need stronger physical justification.</p>
+              <p>My result is that this argon record does not cleanly exclude a 100-million-year interval above freezing once uncertainty in the diffusion-scale distribution is propagated. The predictive miss keeps that conclusion provisional.</p>
+              <p>The full sampler record and plots are in <a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/flexible_mdd_20260720">martiandating ↗</a>; the animation source is in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>. The diffusion model follows Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
             </div>
           </section>
         </section>
