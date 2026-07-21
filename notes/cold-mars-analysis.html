@@ -82,9 +82,29 @@
           <tbody><tr><td>64 × 4,000</td><td>1.0010</td><td>83,413 / 96,173</td><td>0</td><td>0</td><td>63,341</td><td>10.6%</td><td class="pass">pass</td></tr></tbody>
         </table>
         <p class="small">Preset gates: max R̂ ≤ 1.01; divergence fraction ≤ 0.1%; maximum-depth fraction ≤ 1%; responsibility-weighted ESS ≥ 1,000 in every cell; chain-to-chain mean responsibility within 25% for every cell.</p>
-        <figure class="figure" style="margin-top:1.4rem">
-          <img src="../assets/cold-mars-analysis/joint/mixing.png" width="1640" height="1360" alt="Representative retained-chain traces for excursion temperature, activation energy, and discrepancy">
-          <figcaption>Twelve representative chains are drawn; the reported diagnostics use all 64.</figcaption>
+        <div class="grid" style="margin-top:1.4rem">
+          <figure class="figure">
+            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=7" width="960" height="583" alt="Paired comet trajectories over hexagonal posterior-density backgrounds">
+            <figcaption>The restored hex animation comes from the earlier laboratory-only fit. It is a view of retained trajectories, not the joint target.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="../assets/cold-mars-analysis/joint/mixing.png" width="1640" height="1360" alt="Representative retained-chain traces for excursion temperature, activation energy, and discrepancy">
+            <figcaption>Twelve representative joint chains are drawn; the reported diagnostics use all 64.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div>
+          <h2>why the hex samples were not reused</h2>
+          <p>The hex run and the joint run share a 28-bin diffusion parameterization, but not a posterior target. The hex run divided each step by all extracted ³⁹Ar and used the legacy one-mode approximation on the long-time release branch. The corrected model divides by the Shuster–Weiss retained total through 850°C and uses converged spherical eigenmodes.</p>
+          <p>Importance reweighting the 25,600-sample hex subset into the corrected laboratory target fails: Pareto <code>k = 3.44</code>, importance ESS <code>1.06</code>, and maximum normalized weight <code>97.2%</code>. The corrected target lies outside the useful support of the old sample.</p>
+          <p>A new corrected laboratory-only control used 64 chains × 4,000 draws. It passed with max R̂ 1.0005, minimum bulk/tail ESS 86,546/101,768, zero divergences, and zero depth hits.</p>
+          <p>The blue control and orange joint marginals agree. Across the six plotted summaries and every one of the 21 timing cells, density overlap is 93.2–96.0%. The gray hex marginals do not agree with them because they condition on the old laboratory target. This isolates the change: corrected laboratory physics moves the diffusion posterior; adding the natural spectrum mostly learns temperature.</p>
+        </div>
+        <figure class="figure">
+          <img src="../assets/cold-mars-analysis/joint/shared-parameter-comparison.png" width="2464" height="1452" alt="Marginal posterior comparison for shared diffusion and activation-energy summaries">
+          <figcaption>Gray: old hex run. Blue: corrected laboratory-only control. Orange: joint posterior conditioned on a recent 100 My excursion.</figcaption>
         </figure>
       </section>
 
@@ -104,8 +124,8 @@
           <p>The lower endpoints and medians are not estimates of Mars's climate. Once temperature is cold enough for negligible diffusion, the likelihood is almost flat. The long cold tail therefore depends on the −100°C prior bound. The upper endpoint is the useful constraint, and it also requires prior-sensitivity checks before publication.</p>
         </div>
         <figure class="figure">
-          <img src="../assets/cold-mars-analysis/joint/temperature-timing.png" width="1640" height="960" alt="Temperature posterior upper bounds and medians across event timings and durations">
-          <figcaption>Solid curves are 97.5th percentiles; dotted curves are medians. Timing matters because argon produced after an older event remains in the rock.</figcaption>
+          <img src="../assets/cold-mars-analysis/joint/temperature-density-grid.png" width="2024" height="2530" alt="Full conditional temperature distributions at all sampled durations and onset dates">
+          <figcaption>Each silhouette is the full conditional density at one sampled grid cell. Lines are central 95% intervals; orange points are medians.</figcaption>
         </figure>
       </section>
 

@@ -229,9 +229,9 @@
           </section>
 
           <section class="article-grid subsection" id="nuts-posterior">
-            <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars-analysis/joint/mixing.png?v=1" width="1640" height="1360" alt="Trace plots for excursion temperature, activation energy, and model discrepancy across representative NUTS chains">
-              <figcaption>Representative retained-chain traces. The diagnostics use all 64 chains.</figcaption>
+            <figure class="section-media">
+              <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=7" width="960" height="583" alt="Paired comet trajectories over hexagonal posterior-density backgrounds">
+              <figcaption>The hex animation is from the earlier laboratory-only fit. It shows retained NUTS trajectories, not the joint target used for the temperature result.</figcaption>
             </figure>
 
             <div class="article-copy">
@@ -242,6 +242,30 @@
               </div>
               <p>Here \(s\) is one duration-and-start-time cell. The sampler marginalizes over 21 mutually exclusive cells in one expanded ensemble. It sums their likelihoods; multiplying them would count the same rock spectrum repeatedly. Each draw carries a responsibility for every cell, which recovers the posterior conditional on that cell.</p>
               <p>I ran 64 NUTS chains on eight A100 GPUs, with 2,000 adaptation steps and 4,000 retained draws per chain. The maximum rank-normalized and folded \(\widehat R\) was 1.0010. The minimum bulk and tail effective sample sizes were 83,413 and 96,173. There were no divergences or maximum-depth transitions. Every cell had at least 63,341 responsibility-weighted samples.</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection analysis-result">
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/joint/mixing.png?v=2" width="1640" height="1360" alt="Trace plots for excursion temperature, activation energy, and model discrepancy across representative joint NUTS chains">
+              <figcaption>Representative traces from the joint run. The diagnostics use all 64 chains.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>The animation predates the joint analysis. I could not recycle those samples: the earlier fit normalized by all extracted ³⁹Ar and used a legacy spherical-release approximation. The current fit uses the retained total through 850°C and exact spherical eigenmodes.</p>
+              <p>Importance reweighting confirms that the old sample does not cover the corrected target: Pareto \(k=3.44\), effective sample size 1.06 out of 25,600, and one draw receives 97.2% of the weight. A fresh posterior sample was necessary.</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection analysis-result">
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/joint/shared-parameter-comparison.png?v=1" width="2464" height="1452" alt="Marginal posterior comparison for six shared diffusion and activation-energy summaries">
+              <figcaption>Gray: old hex run. Blue: corrected laboratory-only control. Orange: joint posterior for a recent 100 My excursion.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>I ran a corrected laboratory-only control to separate the change in diffusion physics from the addition of the natural argon spectrum. Its maximum \(\widehat R\) was 1.0005, with zero divergences.</p>
+              <p>The old and corrected targets disagree, as the failed reweighting predicts. The corrected laboratory control and joint posterior agree closely: across six shared summaries and all 21 timing cells, their marginal-density overlap is 93.2–96.0%. The natural spectrum mostly identifies excursion temperature; it does not materially relearn the diffusion distribution.</p>
             </div>
           </section>
 
@@ -271,8 +295,8 @@
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars-analysis/joint/temperature-timing.png?v=1" width="1640" height="960" alt="Posterior upper temperature bounds and medians across excursion durations and start times">
-              <figcaption>Solid curves are 97.5th percentiles; dotted curves are medians.</figcaption>
+              <img src="../assets/cold-mars-analysis/joint/temperature-density-grid.png?v=1" width="2024" height="2530" alt="Full conditional temperature distributions at every sampled excursion duration and start date">
+              <figcaption>Every silhouette is a full conditional posterior at one sampled grid cell. Lines are central 95% intervals; orange points are medians.</figcaption>
             </figure>
 
             <div class="article-copy">
