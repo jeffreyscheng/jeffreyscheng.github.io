@@ -4,17 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
-    <meta name="description" content="Working record for the flexible-MDD cold-Mars analysis.">
+    <meta name="description" content="Working record for the joint Nakhla thermochronology analysis.">
     <title>cold Mars analysis — working record</title>
     <style>
       :root {
-        --paper: #f7f6f1;
-        --ink: #171816;
-        --muted: #666760;
-        --line: #cfcec7;
-        --blue: #315f86;
-        --red: #9b4937;
-        --green: #416b50;
+        --paper: #f7f6f1; --ink: #171816; --muted: #666760;
+        --line: #cfcec7; --blue: #315f86; --green: #416b50;
         color-scheme: light;
         font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
@@ -31,15 +26,13 @@
       .kicker, .stamp, th { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .kicker { color: var(--muted); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
       .stamp { margin-bottom: 2.5rem; color: var(--muted); font-size: .78rem; }
-      .status { max-width: 66rem; margin: 2rem 0 3rem; padding: 1rem 1.15rem; border-left: 4px solid var(--green); background: rgba(65,107,80,.08); }
+      .status { max-width: 68rem; margin: 2rem 0 3rem; padding: 1rem 1.15rem; border-left: 4px solid var(--green); background: rgba(65,107,80,.08); }
       section { padding: 2.3rem 0; border-top: 1px solid var(--line); }
       table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,.28); }
       th, td { padding: .75rem .7rem; border: 1px solid var(--line); text-align: left; vertical-align: top; }
       th { color: var(--muted); font-size: .7rem; letter-spacing: .035em; }
       td { font-size: .86rem; line-height: 1.45; }
       .pass { color: var(--green); font-weight: 650; }
-      .bad { color: var(--red); font-weight: 650; }
-      .provisional { color: #7b5b17; font-weight: 650; }
       .grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(22rem, 1.2fr); gap: 2.25rem; align-items: start; }
       .figure { margin: 0; padding: .8rem; border: 1px solid var(--line); background: white; }
       .figure img { display: block; width: 100%; height: auto; }
@@ -48,8 +41,6 @@
       .facts li { margin-bottom: .55rem; }
       .small { color: var(--muted); font-size: .82rem; }
       .callout { margin: 1.4rem 0; padding: .9rem 1rem; border: 1px solid var(--line); background: rgba(255,255,255,.35); }
-      details { margin-top: 1.2rem; }
-      summary { cursor: pointer; color: var(--blue); }
       @media (max-width: 760px) {
         main { padding-top: 2rem; }
         .grid { grid-template-columns: 1fr; }
@@ -61,105 +52,79 @@
     <main>
       <div class="kicker">Jeffrey ↔ Codex working record</div>
       <h1>cold Mars analysis</h1>
-      <div class="stamp">updated 2026-07-20 · unlisted · evidence before prose</div>
+      <div class="stamp">updated 2026-07-21 · unlisted · direct age-spectrum likelihood</div>
 
-      <p class="status"><strong>Current status:</strong> the eight-A100 rerun is complete. The primary run, independent replicate, and five sensitivities all pass the predeclared sampler gates. The primary run misses one scientific gate—14/18 rather than 15/18 observations fall inside the 90% posterior-predictive intervals—so this is a validated sampling result with a visible model discrepancy, not a finished scientific claim.</p>
+      <p class="status"><strong>Current status:</strong> one 64-chain expanded-ensemble run on eight A100s passed all sampler and mixture-traversal gates. The direct likelihood does not support a 100 My above-freezing excursion ending at the present. A 100 My excursion beginning 1 Ga ago crosses 0°C at the 97.5th percentile, but only 4.5% of that conditional posterior is above freezing.</p>
 
       <section class="grid">
         <div>
-          <h2>what the rerun says</h2>
-          <p>For a 100 My constant-temperature event ending at the present, the primary posterior gives a 1%-argon-loss temperature limit of <strong>−5.22°C</strong> at the median and <strong>[−13.76, 3.31]°C</strong> for the central 95% interval.</p>
-          <p>There is a 13.0% posterior probability that this upper limit exceeds 0°C. This is not the probability that Mars was warm. It means a 100 My above-freezing event is not cleanly excluded by this model after uncertainty in the diffusion-scale distribution is propagated.</p>
-          <p>The independent replicate gives [−13.66, −5.29, 3.33]°C. Its median differs by 0.07°C and its interval endpoints by at most 0.10°C.</p>
-          <div class="callout">The old +42°C website result remains invalid. The new calculation uses the full flexible diffusion distribution, integrates argon produced during the event, includes post-event regrowth, and does not reuse the domain-ordering error that generated +42°C.</div>
+          <h2>what was inferred</h2>
+          <p>The model fits two observations from Nakhla together: the laboratory ³⁹Ar release schedule and the natural normalized radiogenic-argon spectrum. The first constrains the diffusion-scale distribution and activation energy. The second constrains a constant-temperature excursion with a declared duration and onset time.</p>
+          <p>The diffusion distribution is a smooth probability vector over 28 values of <code>ln(D₀/r²)</code>. The activation-energy prior is N(117, 5.4²) kJ/mol. Temperature has a uniform prior from −100 to 100°C. A fitted discrepancy term is added to the published natural-spectrum errors.</p>
+          <div class="callout">There is no fixed 1% argon-loss threshold in this analysis. Temperature is sampled inside the likelihood that predicts the observed natural spectrum.</div>
         </div>
         <figure class="figure">
-          <img src="../assets/cold-mars-analysis/rerun/temperature-violin.png" width="1512" height="900" alt="Posterior violin distributions for maximum constant temperature at four event durations">
-          <figcaption>Primary 10% discrepancy model. Each vertical line marks the central 95% interval and each orange point the median. Events end at the present and the bound is defined by 1% loss of present-day radiogenic argon.</figcaption>
+          <img src="../assets/cold-mars-analysis/joint/posterior-predictive.png" width="2040" height="820" alt="Posterior predictions for the laboratory diffusion schedule and natural radiogenic-argon spectrum">
+          <figcaption>Orange points are observed values. Pale bands are 90% replicated-data intervals. Coverage is 14/18 for the scored laboratory schedule and 17/18 for the natural spectrum.</figcaption>
         </figure>
+      </section>
+
+      <section>
+        <h2>one run, not one refit per grid cell</h2>
+        <p>Each grid cell <code>s</code> specifies an excursion duration and onset time. The sampler targets <code>p(x) Σₛ πₛ p(y | x,s)</code>, where <code>x</code> contains the diffusion parameters and excursion temperature. The sum represents mutually exclusive thermal histories. A product would count the same observed spectrum repeatedly.</p>
+        <p>Every retained draw has a posterior responsibility for each cell. Responsibility-weighted draws recover <code>p(x | y,s)</code>. A one-cell test agrees exactly with the original fixed-cell target. At matching cells, the production conditionals agree with the earlier independent fits to within their Monte Carlo error.</p>
       </section>
 
       <section>
         <h2>sampler diagnostics</h2>
         <table>
-          <thead><tr><th>run</th><th>retained states</th><th>max R̂</th><th>minimum bulk / tail ESS</th><th>divergences</th><th>minimum BFMI</th><th>gate</th></tr></thead>
-          <tbody>
-            <tr><td>primary, 28 bins</td><td>1,024,000</td><td>1.0037</td><td>61,670 / 55,607</td><td>0</td><td>0.907</td><td class="pass">pass</td></tr>
-            <tr><td>independent replicate</td><td>1,024,000</td><td>1.0041</td><td>61,118 / 53,736</td><td>0</td><td>0.900</td><td class="pass">pass</td></tr>
-            <tr><td>rougher prior</td><td>512,000</td><td>1.0094</td><td>25,870 / 18,339</td><td>0</td><td>0.829</td><td class="pass">pass</td></tr>
-            <tr><td>20-bin grid</td><td>512,000</td><td>1.0062</td><td>39,374 / 32,299</td><td>0</td><td>0.881</td><td class="pass">pass</td></tr>
-            <tr><td>36-bin grid</td><td>512,000</td><td>1.0090</td><td>24,756 / 21,403</td><td>0</td><td>0.879</td><td class="pass">pass</td></tr>
-            <tr><td>15% discrepancy</td><td>512,000</td><td>1.0032</td><td>69,655 / 75,626</td><td>0</td><td>0.895</td><td class="pass">pass</td></tr>
-            <tr><td>20% discrepancy</td><td>512,000</td><td>1.0027</td><td>82,934 / 99,834</td><td>0</td><td>0.866</td><td class="pass">pass</td></tr>
-          </tbody>
+          <thead><tr><th>chains × retained draws</th><th>max R̂</th><th>minimum bulk / tail ESS</th><th>divergences</th><th>max-depth transitions</th><th>minimum cell ESS</th><th>worst chain-mass deviation</th><th>gate</th></tr></thead>
+          <tbody><tr><td>64 × 4,000</td><td>1.0010</td><td>83,413 / 96,173</td><td>0</td><td>0</td><td>63,341</td><td>10.6%</td><td class="pass">pass</td></tr></tbody>
         </table>
-        <p class="small">Gates: max rank/folded R̂ ≤ 1.01; bulk and tail ESS ≥ 2,000; zero divergences; max-depth frequency &lt; 1%; every-chain BFMI &gt; 0.30; mean grid-edge mass &lt; 0.5%. All primary temperature-quantile Monte Carlo errors are below 0.09°C.</p>
-      </section>
-
-      <section>
-        <h2>chain evolution</h2>
-        <p>Both animations preserve chronological draw order and begin after 500 frozen-kernel settling draws were discarded. The comet view shows 200 one-second trajectories staggered 0.05 seconds apart; the running-mean diagnostic uses all 256. They show retained sampling, not adaptation.</p>
-        <div class="grid">
-          <figure class="figure">
-            <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=5" width="960" height="583" alt="Two hundred staggered paired comet trajectories in slower- and faster-diffusion regions sharing an activation-energy axis">
-            <figcaption>Two hundred one-second trajectories start 0.05 seconds apart. Each chain produces synchronized traces in the slower- and faster-diffusion regions at the same activation energy. Display paths use an 81-draw moving average; background density uses all 256 chains.</figcaption>
-          </figure>
-          <figure class="figure">
-            <img src="../assets/cold-mars-analysis/rerun/primary-chain-contraction.gif" width="960" height="539" alt="Running means of 256 chains contracting while R-hat falls and effective sample size rises">
-            <figcaption>Running-mean view. All chain means contract toward the pooled expectation while the actual checkpointed maximum rank/folded R̂ falls from 1.0648 to 1.0037 and minimum bulk ESS rises from 2,481 to 61,670. Divergences remain zero.</figcaption>
-          </figure>
-        </div>
-        <p class="small">The motion is supporting evidence, not the convergence criterion. The numerical R̂, ESS, BFMI, divergence, tree-depth, and independent-replication checks above carry the diagnostic conclusion.</p>
-      </section>
-
-      <section class="grid">
-        <div>
-          <h2>posterior predictive check</h2>
-          <p>The primary model's standardized residual RMS is 1.393 and its largest median residual is 2.50σ, both inside the registered bounds. Coverage is 14/18, one observation short of the registered 15/18 requirement.</p>
-          <p>The misses occur at 475, 525, 550, and 562°C. They form a structured mid-schedule pattern. The 20- and 36-bin grids and a rougher prior still cover 14/18, so the pattern is not a grid-resolution or smoothness artifact.</p>
-          <p>With fixed discrepancy terms of 15% and 20%, coverage is 18/18. Those runs widen the upper endpoint of the recent 100 My limit to 5.08°C and 5.59°C while leaving the median near −5°C. They diagnose sensitivity; passing a check is not sufficient reason to choose an error model.</p>
-        </div>
-        <figure class="figure">
-          <img src="../assets/cold-mars-analysis/rerun/posterior-predictive.png?v=3" width="1512" height="864" alt="Observed and posterior-predicted argon release across the laboratory heating schedule">
-          <figcaption>The band is the 90% replicated-data interval used for the coverage check. The three low-temperature steps are propagated but not scored; the likelihood uses the 18 timed steps from 350–700°C.</figcaption>
+        <p class="small">Preset gates: max R̂ ≤ 1.01; divergence fraction ≤ 0.1%; maximum-depth fraction ≤ 1%; responsibility-weighted ESS ≥ 1,000 in every cell; chain-to-chain mean responsibility within 25% for every cell.</p>
+        <figure class="figure" style="margin-top:1.4rem">
+          <img src="../assets/cold-mars-analysis/joint/mixing.png" width="1640" height="1360" alt="Representative retained-chain traces for excursion temperature, activation energy, and discrepancy">
+          <figcaption>Twelve representative chains are drawn; the reported diagnostics use all 64.</figcaption>
         </figure>
       </section>
 
       <section class="grid">
         <div>
-          <h2>what was fit</h2>
+          <h2>conditional temperature results</h2>
+          <table>
+            <thead><tr><th>duration</th><th>onset before present</th><th>2.5%, median, 97.5% (°C)</th><th>P(T &gt; 0°C)</th></tr></thead>
+            <tbody>
+              <tr><td>10 My</td><td>10 My</td><td>−93.88, −7.80, 7.22</td><td>21.2%</td></tr>
+              <tr><td>100 My</td><td>100 My</td><td>−94.45, −18.57, −4.47</td><td>0.252%</td></tr>
+              <tr><td>100 My</td><td>1,000 My</td><td>−95.76, −21.45, 1.81</td><td>4.53%</td></tr>
+              <tr><td>200 My</td><td>1,000 My</td><td>−95.75, −23.17, −2.63</td><td>0.863%</td></tr>
+              <tr><td>500 My</td><td>1,000 My</td><td>−95.52, −25.19, −8.77</td><td>0.019%</td></tr>
+            </tbody>
+          </table>
+          <p>The lower endpoints and medians are not estimates of Mars's climate. Once temperature is cold enough for negligible diffusion, the likelihood is almost flat. The long cold tail therefore depends on the −100°C prior bound. The upper endpoint is the useful constraint, and it also requires prior-sensitivity checks before publication.</p>
+        </div>
+        <figure class="figure">
+          <img src="../assets/cold-mars-analysis/joint/temperature-timing.png" width="1640" height="960" alt="Temperature posterior upper bounds and medians across event timings and durations">
+          <figcaption>Solid curves are 97.5th percentiles; dotted curves are medians. Timing matters because argon produced after an older event remains in the rock.</figcaption>
+        </figure>
+      </section>
+
+      <section class="grid">
+        <div>
+          <h2>scope</h2>
           <ul class="facts">
-            <li>A smooth logistic-normal distribution over <code>ln(D₀/r²)</code>, avoiding discrete-domain labels and label switching.</li>
-            <li>A shared activation energy with prior N(117, 5.4²) kJ/mol.</li>
-            <li>Twenty-one timed extraction steps from 275–700°C are propagated; the 18 steps from 350–700°C enter the likelihood.</li>
-            <li>The primary uncertainty combines reported measurement error with a fixed 10% relative discrepancy term.</li>
-            <li>NUTS runs in affine coordinates, discards 500 frozen-kernel settling draws, and retains ordinary post-settling states from 256 chains.</li>
+            <li>Nakhla records roughly the last 1.3 Gy. It cannot test Noachian denudation several billion years ago.</li>
+            <li>Shuster &amp; Weiss's four-billion-year statement also used ALH84001. That meteorite is not in this likelihood.</li>
+            <li>The event is constant temperature, and the model assumes no natural diffusion outside that one excursion.</li>
+            <li>The laboratory predictive misses are structured around the middle of the heating schedule. The discrepancy model needs sensitivity analysis.</li>
+            <li>The direct result is more restrictive than the superseded 1%-loss transform. The earlier +42°C result came from a non-mixing chain and a domain-ordering error.</li>
           </ul>
+          <p><a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/joint_age_spectrum_20260721">Tracked model, manifests, summaries, figures, and compact posterior ↗</a></p>
         </div>
         <figure class="figure">
-          <img src="../assets/cold-mars-analysis/rerun/diffusion-distribution.png?v=3" width="1512" height="864" alt="Flexible posterior distribution over feldspar diffusion scales">
-          <figcaption>The posterior median is not constrained to two spikes. The pale region shows pointwise central 95% uncertainty; the orange right-axis stems reproduce the Shuster–Weiss 97% HRD and 3% LRD fit.</figcaption>
+          <img src="../assets/cold-mars-analysis/joint/temperature-violin.png" width="1640" height="960" alt="Direct conditional temperature posteriors for present-ending excursions">
+          <figcaption>Present-ending excursions under the uniform −100 to 100°C prior. Lines are central 95% intervals; orange points are medians.</figcaption>
         </figure>
-      </section>
-
-      <section>
-        <h2>thermal assumptions that still matter</h2>
-        <p>The plotted transform assumes a 1.3 Ga rock, a potassium-40 half-life of 1.248 Ga, a constant-temperature event, and a 1% total-radiogenic-argon loss threshold. It integrates radiogenic production during the event and post-event regrowth through the present-day inventory denominator. These are conditional limits, not inferred Martian temperature histories.</p>
-        <p>Timing is especially important. For a 100 My event ending 0, 250, 500, or 1,000 My ago, the primary intervals are [−13.76, −5.22, 3.31]°C, [−12.18, −3.63, 4.93]°C, [−9.97, −1.38, 7.21]°C, and [0.04, 8.66, 17.35]°C. The positive lower endpoint in the oldest case disappears in prior and observation-error sensitivities and should not be treated as robust.</p>
-        <p><a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/flexible_mdd_20260720">Tracked manifests, diagnostics, summaries, plots, and compact posterior subsets ↗</a></p>
-      </section>
-
-      <section>
-        <h2>why the old result was rejected</h2>
-        <p>The 2025 artifact has maximum rank-normalized/folded split R̂ of 12.0. Its temperature code also used the faster, low-retentivity domain as though it were the high-retentivity domain. That mismatch exactly recreates the old [−21.21, 41.99]°C interval. Reformatting it as a violin does not repair it.</p>
-        <details>
-          <summary>show the forensic reproduction</summary>
-          <figure class="figure" style="margin-top:1rem; max-width:56rem">
-            <img src="../assets/cold-mars-analysis/archival-temperature-violin.png" width="1620" height="972" alt="Forensic reproduction of the invalid old temperature transform">
-            <figcaption>Retained only as an audit artifact. The source run did not mix, and the thermal transform used the wrong ordered domain.</figcaption>
-          </figure>
-        </details>
-        <p class="small"><a href="../assets/cold-mars-analysis/archival-run-audit.json">machine-readable archival audit ↗</a></p>
       </section>
     </main>
   </body>

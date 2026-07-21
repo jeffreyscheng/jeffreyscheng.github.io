@@ -97,7 +97,7 @@
             </nav>
 
             <div class="article-copy">
-              <p>Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected that the 21-year-old Shuster et al result is an overconfident point estimate (understandable since MCMC methods are essentially unusable without modern GPUs), so I pointed an 8xH100 cluster at reviving this problem with modern gradient-based MCMC samplers. I think that Mars could've been above freezing for 10x as long as we previously thought. Maybe not long enough for interesting astrobiology implications, but definitely long enough that canyons and smooth pebbles and craters lips are no longer confusing.</p>
+              <p>Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected that the 21-year-old Shuster et al result was overconfident, so I revisited the inverse problem with a flexible diffusion model and gradient-based MCMC on eight GPUs. The result is narrower than I expected: Nakhla does not support a recent 100-million-year interval above freezing. An interval that old and beginning near the start of the last billion years reaches slightly above 0°C at the edge of its 95% posterior interval.</p>
             </div>
           </div>
         </section>
@@ -229,59 +229,72 @@
           </section>
 
           <section class="article-grid subsection" id="nuts-posterior">
-            <figure class="section-media">
-              <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=6" width="960" height="583" alt="Representative paired NUTS trajectories moving through the slower- and faster-diffusion posterior regions">
-              <figcaption>Two hundred representative chains, staggered over eleven seconds. The background density uses all 256 chains.</figcaption>
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/joint/mixing.png?v=1" width="1640" height="1360" alt="Trace plots for excursion temperature, activation energy, and model discrepancy across representative NUTS chains">
+              <figcaption>Representative retained-chain traces. The diagnostics use all 64 chains.</figcaption>
             </figure>
 
             <div class="article-copy">
               <h3>the full posterior via NUTS</h3>
-              <p>I replaced the two point masses with a smooth probability vector over 28 values of \(\ln(D_0/r^2)\), spanning −4 to 14. The model has a shared activation energy with the Shuster &amp; Weiss measurement, \(E_a\sim\mathcal N(117,5.4^2)\ \mathrm{kJ\,mol^{-1}}\). The likelihood scores each parameter set against the measured ³⁹Ar released during the heating experiment.</p>
-              <div class="equation" role="math" aria-label="p of theta given y is proportional to p of y given theta times p of theta">
-                \[p(\theta\mid y)\propto p(y\mid\theta)p(\theta)\]
+              <p>I replaced the two point masses with a smooth probability vector over 28 diffusion scales. The laboratory ³⁹Ar release constrains that distribution. The natural radiogenic-argon spectrum constrains temperature under a specified excursion duration and start time.</p>
+              <div class="equation" role="math" aria-label="posterior over diffusion parameters and temperature given both spectra and an excursion scenario">
+                \[p(\theta,T\mid y_{39},y_{40},s)\propto p(y_{39}\mid\theta)\,p(y_{40}\mid\theta,T,s)\,p(\theta)\,p(T)\]
               </div>
-              <p>I ran BlackJAX's NUTS sampler on eight A100 GPUs. The run used 256 chains, discarded 500 settling states from each chain, and retained 4,000 more: 1,024,000 posterior states in total.</p>
-              <p>The maximum rank-normalized and folded \(\widehat R\) was 1.0037. The minimum bulk and tail effective sample sizes were 61,670 and 55,607; there were no divergences; the minimum per-chain BFMI was 0.907. An independently seeded run agreed within 0.10°C on the endpoints of the temperature interval.</p>
+              <p>Here \(s\) is one duration-and-start-time cell. The sampler marginalizes over 21 mutually exclusive cells in one expanded ensemble. It sums their likelihoods; multiplying them would count the same rock spectrum repeatedly. Each draw carries a responsibility for every cell, which recovers the posterior conditional on that cell.</p>
+              <p>I ran 64 NUTS chains on eight A100 GPUs, with 2,000 adaptation steps and 4,000 retained draws per chain. The maximum rank-normalized and folded \(\widehat R\) was 1.0010. The minimum bulk and tail effective sample sizes were 83,413 and 96,173. There were no divergences or maximum-depth transitions. Every cell had at least 63,341 responsibility-weighted samples.</p>
             </div>
           </section>
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars-analysis/rerun/diffusion-distribution.png?v=3" width="1512" height="864" alt="Flexible posterior over diffusion scale with Shuster and Weiss high- and low-retentivity domain proportions overlaid">
-              <figcaption>Flexible diffusion-scale posterior. The orange stems use the right axis and reproduce Shuster &amp; Weiss's 97% HRD and 3% LRD fit.</figcaption>
+              <img src="../assets/cold-mars-analysis/joint/diffusion-distribution.png?v=1" width="1640" height="880" alt="Joint posterior over diffusion scale with Shuster and Weiss high- and low-retentivity domain proportions overlaid">
+              <figcaption>The orange stems use the right axis and show Shuster &amp; Weiss's 97% HRD and 3% LRD fit.</figcaption>
             </figure>
 
             <div class="article-copy">
-              <p>The posterior spreads mass across two broad regions. The orange stems show the original 97/3 allocation on a separate axis. The 95% band is wide because the release schedule leaves many neighboring distributions plausible.</p>
-              <p>This axis is an effective diffusion scale. Holding \(D_0\) fixed, a lower value corresponds to a larger, more retentive domain. A microscope grain diameter cannot be recovered without separating \(D_0\) from \(r\).</p>
+              <p>The release schedule does not identify two exact domain sizes. It permits a broad peak near the high-retentivity domain and a small tail near the low-retentivity domain. The pale region is the pointwise central 95% interval after the natural spectrum and a 100-million-year recent excursion are included.</p>
+              <p>The horizontal axis is \(\ln(D_0/r^2)\), not grain diameter. A lower value is more retentive if \(D_0\) is held fixed.</p>
             </div>
           </section>
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars-analysis/rerun/posterior-predictive.png?v=3" width="1512" height="864" alt="Observed and posterior-predicted argon release across the laboratory heating schedule">
-              <figcaption>Measured ³⁹Ar release and the posterior prediction. The likelihood uses the eighteen orange points.</figcaption>
+              <img src="../assets/cold-mars-analysis/joint/posterior-predictive.png?v=1" width="2040" height="820" alt="Posterior predictions for the laboratory argon release and natural radiogenic-argon spectrum">
+              <figcaption>Observed values are orange. Pale bands are 90% replicated-data intervals.</figcaption>
             </figure>
 
             <div class="article-copy">
-              <p>I checked the fitted model by simulating the heating experiment from the posterior. Fourteen of the eighteen likelihood observations fall inside their 90% predictive intervals. The misses occur at 475, 525, 550, and 562°C, a structured error in the middle of the schedule. My predeclared target was fifteen of eighteen.</p>
-              <p>The standardized residual RMS is 1.393 and the largest median residual is 2.50σ. Both pass their predeclared bounds. Increasing the fixed discrepancy term from 10% to 15% covers all eighteen points and moves the upper endpoint of the 100-million-year temperature limit from 3.31 to 5.08°C. Changing this one assumption moves the endpoint by 1.77°C.</p>
+              <p>The left panel checks the inferred diffusion distribution against the laboratory heating schedule. The right checks the same posterior against the natural radiogenic-argon spectrum. Fourteen of eighteen scored laboratory points and seventeen of eighteen natural-spectrum points lie inside their 90% replicated-data intervals.</p>
+              <p>The laboratory misses are clustered in the middle of the heating schedule. I include a fitted discrepancy term rather than treating the published measurement errors as a complete model of recoil, alteration, geometry, and heating-duration error.</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection analysis-result">
+            <figure class="section-media section-media--light">
+              <img src="../assets/cold-mars-analysis/joint/temperature-timing.png?v=1" width="1640" height="960" alt="Posterior upper temperature bounds and medians across excursion durations and start times">
+              <figcaption>Solid curves are 97.5th percentiles; dotted curves are medians.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>Timing matters because argon produced after an old excursion remains in the rock. For a 100-million-year excursion ending now, the 97.5th percentile is −4.47°C. For one beginning one billion years ago, it is 1.81°C.</p>
+              <p>The second case puts 4.5% of its conditional posterior above freezing. The data therefore treat a recent 100-million-year warm interval very differently from one near the old edge of Nakhla's record.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="warm-mars">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars-analysis/rerun/temperature-violin.png?v=3" width="1512" height="900" alt="Posterior violin distributions for maximum constant temperature at four event durations">
-              <figcaption>Maximum constant temperature that produces 1% argon loss. Lines are central 95% intervals; orange points are medians.</figcaption>
+              <img src="../assets/cold-mars-analysis/joint/temperature-violin.png?v=1" width="1640" height="960" alt="Conditional posterior distributions for constant excursion temperature at five durations">
+              <figcaption>Events end at the present. Lines are central 95% intervals; orange points are medians.</figcaption>
             </figure>
 
             <div class="article-copy">
               <h3>was Mars warm?</h3>
-              <p>For every posterior state, I solved for the maximum constant temperature that would remove 1% of the rock's present-day radiogenic argon. The calculation assumes a 1.3-billion-year-old rock, a 1.248-billion-year ⁴⁰K half-life, and an event ending at the present. It includes argon produced during the event and the argon that accumulates afterward.</p>
-              <p>For a 100-million-year event, the median limit is −5.22°C and the central 95% interval is [−13.76, 3.31]°C. Thirteen percent of posterior states permit a limit above freezing. A 100-million-year excursion at 0°C therefore survives in part of the posterior.</p>
-              <p>The violins are conditional upper limits. The analysis places no prior on Mars's actual temperature history, so it does not calculate the probability that Mars was warm. The 1% loss threshold and the discrepancy assigned to the laboratory data still need stronger physical justification.</p>
-              <p>My result is that this argon record does not cleanly exclude a 100-million-year interval above freezing once uncertainty in the diffusion-scale distribution is propagated. The predictive miss keeps that conclusion provisional.</p>
-              <p>The full sampler record and plots are in <a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/flexible_mdd_20260720">martiandating ↗</a>; the animation source is in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>. The diffusion model follows Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
+              <p>These are direct temperature posteriors from the joint likelihood. There is no 1%-argon-loss threshold. I used a uniform temperature prior from −100 to 100°C.</p>
+              <p>For a 100-million-year excursion ending now, the central 95% interval and median are [−94.45, −18.57, −4.47]°C. Only 0.25% of its conditional posterior is above freezing.</p>
+              <p>The long cold tails are not measurements of a −95°C climate. Below the temperature where diffusion becomes negligible, the rock cannot distinguish one cold temperature from another, so the lower tail follows the prior bound. The upper tail contains the useful constraint.</p>
+              <p>This Nakhla analysis covers the last 1.3 billion years. It does not test Noachian crater erosion several billion years ago, and it does not replace the ALH84001 half of Shuster &amp; Weiss's four-billion-year argument. My original comparison put those time windows too close together.</p>
+              <p>The result does not support a recent 100-million-year interval above freezing. A 100-million-year interval near the beginning of the last billion years is not excluded at the central-95% level, but it has little posterior mass above 0°C under this prior.</p>
+              <p>The sampler record, model, compact posterior, and plots are in <a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/joint_age_spectrum_20260721">martiandating ↗</a>; the animation source is in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>. The diffusion model follows Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
             </div>
           </section>
         </section>
