@@ -149,26 +149,20 @@
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
-              <p>Let \(\Delta t=t-t_{\mathrm{closure}}\) be the elapsed time since closure, and let \(N_X(t)\) mean the number of atoms of isotope \(X\) at time \(t\). Potassium-40 has total decay constant \(\lambda=\ln(2)/(1.25\,\mathrm{Gyr})\). Only a fraction \(b\approx0.107\) of its decays take the argon-producing branch.</p>
-              <p>The star in \({}^{40}\mathrm{Ar}^{*}\) means <em>radiogenic</em>: argon produced by potassium decay, rather than all argon in the rock. In a closed feldspar, the remaining parent and accumulated daughter are</p>
+              <p>Once a feldspar closes, ⁴⁰K continues to decay while radiogenic ⁴⁰Ar accumulates. Let \(\Delta t=t-t_{\mathrm{closure}}\) be the elapsed time since closure. \(N_0\) is the number of ⁴⁰K atoms at closure; \(N_{\mathrm K}\) and \(N_{\mathrm{Ar}}\) are the present numbers of ⁴⁰K and radiogenic ⁴⁰Ar atoms.</p>
+              <p>Potassium-40 has decay constant \(\lambda=\ln(2)/(1.25\,\mathrm{Gyr})\), and a fraction \(b\approx0.107\) of its decays produce argon. Therefore,</p>
               <div class="equation" role="math" aria-label="Number of potassium 40 atoms remaining after closure">
-                \[N_{{}^{40}\mathrm{K}}(t)
-                  =N_{{}^{40}\mathrm{K}}(t_{\mathrm{closure}})
-                  e^{-\lambda\Delta t}\]
+                \[N_{\mathrm K}=N_0e^{-\lambda\Delta t}\]
               </div>
               <div class="equation" role="math" aria-label="Number of radiogenic argon 40 atoms accumulated after closure">
-                \[N_{{}^{40}\mathrm{Ar}^{*}}(t)
-                  =bN_{{}^{40}\mathrm{K}}(t_{\mathrm{closure}})
-                  \left(1-e^{-\lambda\Delta t}\right)\]
+                \[N_{\mathrm{Ar}}
+                  =bN_0\left(1-e^{-\lambda\Delta t}\right)\]
               </div>
-              <p>Dividing daughter atoms by the remaining parent atoms gives a measured ratio \(R\):</p>
+              <p>The unknown initial population \(N_0\) disappears when we take the measured daughter-to-parent ratio:</p>
               <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 atom ratio">
-                \[R(t)\equiv
-                  \frac{N_{{}^{40}\mathrm{Ar}^{*}}(t)}
-                  {N_{{}^{40}\mathrm{K}}(t)}
+                \[R\equiv\frac{N_{\mathrm{Ar}}}{N_{\mathrm K}}
                   =b\left(e^{\lambda\Delta t}-1\right)\]
               </div>
-              <p>Solving that ratio for elapsed time gives the feldspar's time since closure:</p>
               <div class="equation" role="math" aria-label="Elapsed time since closure from the measured radiogenic argon 40 to potassium 40 atom ratio">
                 \[\Delta t=\frac{1}{\lambda}
                   \ln\!\left(1+\frac{R}{b}\right)\]
