@@ -134,7 +134,7 @@
 
             <div class="article-copy">
               <h3>when does the argon clock start?</h3>
-              <p>Aluminosilicate magma has no crystal lattice to cage argon gas, so newly formed radiogenic ⁴⁰Ar escapes. The clock starts at closure: once cooling forms the feldspar lattice, newly produced argon can remain trapped.</p>
+              <p>Aluminosilicate magma has no crystal lattice to cage argon gas, so newly formed radiogenic ⁴⁰Ar escapes. The clock starts at closure: once cooling forms the feldspar lattice, newly produced argon can remain trapped. I call that moment \(t_{\mathrm{closure}}\).</p>
             </div>
           </section>
 
@@ -149,17 +149,29 @@
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
-              <p>After closure, the remaining ⁴⁰K decays with a half-life of 1.25 billion years. About 10.7% of those decays produce radiogenic ⁴⁰Ar.</p>
-              <div class="equation" role="math" aria-label="Potassium 40 decreases exponentially after closure while the argon producing branch accumulates radiogenic argon 40">
-                \[\begin{aligned}
-                  N_{{}^{40}\mathrm{K}}(t)&amp;=N_{{}^{40}\mathrm{K}}(t_c)e^{-\lambda(t-t_c)}\\
-                  N_{{}^{40}\mathrm{Ar}^{*}}(t)&amp;=bN_{{}^{40}\mathrm{K}}(t_c)\left(1-e^{-\lambda(t-t_c)}\right),
-                  \qquad b=\frac{\lambda_{\mathrm{Ar}}}{\lambda}\approx0.107
-                \end{aligned}\]
+              <p>Let \(\Delta t=t-t_{\mathrm{closure}}\) be the elapsed time since closure, and let \(N_X(t)\) mean the number of atoms of isotope \(X\) at time \(t\). Potassium-40 has total decay constant \(\lambda=\ln(2)/(1.25\,\mathrm{Gyr})\). Only a fraction \(b\approx0.107\) of its decays take the argon-producing branch.</p>
+              <p>The star in \({}^{40}\mathrm{Ar}^{*}\) means <em>radiogenic</em>: argon produced by potassium decay, rather than all argon in the rock. In a closed feldspar, the remaining parent and accumulated daughter are</p>
+              <div class="equation" role="math" aria-label="Number of potassium 40 atoms remaining after closure">
+                \[N_{{}^{40}\mathrm{K}}(t)
+                  =N_{{}^{40}\mathrm{K}}(t_{\mathrm{closure}})
+                  e^{-\lambda\Delta t}\]
               </div>
-              <p>Measure the ⁴⁰K and radiogenic ⁴⁰Ar left in the feldspar, plug their ratio into this equation, and you get the time since closure.</p>
-              <div class="equation" role="math" aria-label="Elapsed time since closure from the radiogenic argon 40 to potassium 40 ratio and the argon branching fraction">
-                \[t-t_c=\frac{1}{\lambda}\ln\!\left(1+\frac{1}{b}\frac{{}^{40}\mathrm{Ar}^{*}}{{}^{40}\mathrm{K}}\right)\]
+              <div class="equation" role="math" aria-label="Number of radiogenic argon 40 atoms accumulated after closure">
+                \[N_{{}^{40}\mathrm{Ar}^{*}}(t)
+                  =bN_{{}^{40}\mathrm{K}}(t_{\mathrm{closure}})
+                  \left(1-e^{-\lambda\Delta t}\right)\]
+              </div>
+              <p>Dividing daughter atoms by the remaining parent atoms gives a measured ratio \(R\):</p>
+              <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 atom ratio">
+                \[R(t)\equiv
+                  \frac{N_{{}^{40}\mathrm{Ar}^{*}}(t)}
+                  {N_{{}^{40}\mathrm{K}}(t)}
+                  =b\left(e^{\lambda\Delta t}-1\right)\]
+              </div>
+              <p>Solving that ratio for elapsed time gives the feldspar's time since closure:</p>
+              <div class="equation" role="math" aria-label="Elapsed time since closure from the measured radiogenic argon 40 to potassium 40 atom ratio">
+                \[\Delta t=\frac{1}{\lambda}
+                  \ln\!\left(1+\frac{R}{b}\right)\]
               </div>
             </div>
           </section>
