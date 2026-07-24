@@ -82,8 +82,8 @@
                     <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
                     <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
                     <li><a href="#date-feldspar">how to date a feldspar</a></li>
-                    <li><a href="#perfect-crystal-riddle">time-traveling riddle: using a perfect crystal as a thermometer</a></li>
                     <li><a href="#argon-irradiation">dating without a separate potassium measurement</a></li>
+                    <li><a href="#perfect-crystal-riddle">time-traveling riddle: using a perfect crystal as a thermometer</a></li>
                     <li><a href="#heterogeneous-riddle">time-traveling riddle: using a heterogeneous rock as a better thermometer</a></li>
                   </ol>
                 </li>
@@ -164,56 +164,6 @@
             </div>
           </section>
 
-          <section class="article-grid subsection" id="perfect-crystal-riddle">
-            <figure class="section-media">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
-                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
-                </video>
-              </div>
-            </figure>
-
-            <div class="article-copy">
-              <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
-              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
-              <p>Assume for the moment that we know the rock’s age. The next section shows how to obtain it by irradiating the Martian feldspar beside an Earth feldspar, baking both rocks, measuring the offgassed ³⁹Ar and ⁴⁰Ar, and applying Equation 1. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
-              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
-              <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
-                \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
-              </div>
-              <table class="notation-table">
-                <tbody>
-                  <tr>
-                    <th scope="row">\(D(T)\)</th>
-                    <td>argon diffusivity at temperature \(T\)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">\(D_0\)</th>
-                    <td>pre-exponential diffusivity</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">\(E_a\)</th>
-                    <td>activation energy for diffusion</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">\(R_g\)</th>
-                    <td>gas constant</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">\(T\)</th>
-                    <td>absolute temperature</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">\(r\)</th>
-                    <td>effective diffusion distance through a grain</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>Every grain in this imaginary rock has the same diffusion distance and the same \(D_0\) and \(E_a\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped. At a higher temperature, more escapes. Once the rock’s age and diffusion kinetics are known, the surviving radiogenic argon can be inverted for the refrigerator temperature.</p>
-              <p>The next section explains how neutron irradiation supplies a laboratory ³⁹Ar tracer. Once that tracer exists, the trick for learning the diffusion kinetics is step heating. Instead of jumping immediately to the hottest oven setting, we raise the temperature in known steps and measure the fraction of ³⁹Ar released at each one. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law. The controlled ³⁹Ar release curve tells us \(E_a\) and the effective diffusion scale \(D_0/r^2\); the natural ⁴⁰Ar that survived on Mars tells us the alien’s refrigerator temperature.</p>
-            </div>
-          </section>
-
           <section class="article-grid subsection" id="argon-irradiation">
             <figure class="section-media">
               <div class="video-shell">
@@ -275,6 +225,56 @@
                   <p>Substituting the two measured isotope ratios and taking the logarithm gives the expression above.</p>
                 </div>
               </details>
+            </div>
+          </section>
+
+          <section class="article-grid subsection" id="perfect-crystal-riddle">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
+                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                </video>
+              </div>
+            </figure>
+
+            <div class="article-copy">
+              <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
+              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
+              <p>We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
+              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
+              <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
+                \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
+              </div>
+              <table class="notation-table">
+                <tbody>
+                  <tr>
+                    <th scope="row">\(D(T)\)</th>
+                    <td>argon diffusivity at temperature \(T\)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(D_0\)</th>
+                    <td>pre-exponential diffusivity</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(E_a\)</th>
+                    <td>activation energy for diffusion</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(R_g\)</th>
+                    <td>gas constant</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(T\)</th>
+                    <td>absolute temperature</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(r\)</th>
+                    <td>effective diffusion distance through a grain</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Every grain in this imaginary rock has the same diffusion distance and the same \(D_0\) and \(E_a\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped. At a higher temperature, more escapes. Once the rock’s age and diffusion kinetics are known, the surviving radiogenic argon can be inverted for the refrigerator temperature.</p>
+              <p>The dating experiment has already supplied a laboratory ³⁹Ar tracer. Instead of jumping immediately to the hottest oven setting, we raise the temperature in known steps and measure the fraction of ³⁹Ar released at each one. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law. The controlled ³⁹Ar release curve tells us \(E_a\) and the effective diffusion scale \(D_0/r^2\); the natural ⁴⁰Ar that survived on Mars tells us the alien’s refrigerator temperature.</p>
             </div>
           </section>
 
