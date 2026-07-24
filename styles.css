@@ -1361,6 +1361,61 @@ h1 {
   margin-top: 0.65rem;
 }
 
+.article-copy .arrow-list {
+  list-style: none;
+  padding-left: 1.45rem;
+}
+
+.arrow-list > li {
+  position: relative;
+}
+
+.arrow-list > li::before {
+  position: absolute;
+  left: -1.35rem;
+  color: var(--muted);
+  content: "→";
+}
+
+.article-copy .arrow-list--nested {
+  margin-top: 0.75rem;
+  margin-bottom: 0.15rem;
+  padding-left: 1.35rem;
+  color: var(--muted);
+  font-size: 0.93em;
+}
+
+.arrow-list--nested > li + li {
+  margin-top: 0.4rem;
+}
+
+.notation-table {
+  width: 100%;
+  margin: 0.85rem 0 1.15rem;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  line-height: 1.45;
+}
+
+.notation-table th,
+.notation-table td {
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.notation-table tr:last-child th,
+.notation-table tr:last-child td {
+  border-bottom: 1px solid var(--line);
+}
+
+.notation-table th {
+  width: 5.5rem;
+  padding-right: 1rem;
+  font-weight: 400;
+}
+
 .derivation {
   margin: 1.1rem 0 1.25rem;
   border-top: 1px solid var(--line);
@@ -1459,6 +1514,11 @@ h1 {
 
 .essay--structured .equation--wide {
   font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+}
+
+.essay--structured .equation--nowrap {
+  font-size: clamp(0.78rem, 1.05vw, 0.92rem);
+  white-space: nowrap;
 }
 
 .essay--structured .katex-display {

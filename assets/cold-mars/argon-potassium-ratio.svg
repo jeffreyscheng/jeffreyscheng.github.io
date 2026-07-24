@@ -49,6 +49,5 @@
   <g fill="#282b29" font-family="Georgia, 'Times New Roman', serif">
     <text x="473" y="505" text-anchor="middle" font-size="23">time since closure (billion years)</text>
     <text x="22" y="260" text-anchor="middle" font-size="22" transform="rotate(-90 22 260)">radiogenic ⁴⁰Ar / remaining ⁴⁰K</text>
-    <text x="570" y="166" font-size="24" fill="#2e79a8">daughter / parent ratio</text>
   </g>
 </svg>

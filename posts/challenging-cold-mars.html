@@ -82,8 +82,9 @@
                     <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
                     <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
                     <li><a href="#date-feldspar">how to date a feldspar</a></li>
+                    <li><a href="#perfect-crystal-riddle">time-traveling riddle: using a perfect crystal as a thermometer</a></li>
                     <li><a href="#argon-irradiation">dating without a separate potassium measurement</a></li>
-                    <li><a href="#argon-diffusion">warmth siphons argon out of the rocks</a></li>
+                    <li><a href="#heterogeneous-riddle">time-traveling riddle: using a heterogeneous rock as a better thermometer</a></li>
                   </ol>
                 </li>
                 <li>
@@ -141,7 +142,7 @@
 
           <section class="article-grid subsection" id="date-feldspar">
             <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars/argon-potassium-ratio.svg?v=20260724a" alt="Radiogenic argon 40 divided by remaining potassium 40 rises with time since feldspar closure.">
+              <img src="../assets/cold-mars/argon-potassium-ratio.svg?v=20260724b" alt="Radiogenic argon 40 divided by remaining potassium 40 rises with time since feldspar closure.">
             </figure>
 
             <div class="article-copy">
@@ -163,6 +164,56 @@
             </div>
           </section>
 
+          <section class="article-grid subsection" id="perfect-crystal-riddle">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
+                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                </video>
+              </div>
+            </figure>
+
+            <div class="article-copy">
+              <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
+              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature, and then teleports the feldspar into our living room.</p>
+              <p>Assume for the moment that we know the rock’s age. The next section shows how to obtain it by irradiating the Martian feldspar beside an Earth feldspar, baking both rocks, measuring the offgassed ³⁹Ar and ⁴⁰Ar, and applying Equation 1. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
+              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
+              <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
+                \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
+              </div>
+              <table class="notation-table">
+                <tbody>
+                  <tr>
+                    <th scope="row">\(D(T)\)</th>
+                    <td>argon diffusivity at temperature \(T\)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(D_0\)</th>
+                    <td>pre-exponential diffusivity</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(E_a\)</th>
+                    <td>activation energy for diffusion</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(R_g\)</th>
+                    <td>gas constant</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(T\)</th>
+                    <td>absolute temperature</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(r\)</th>
+                    <td>effective diffusion distance through a grain</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Every grain in this imaginary rock has the same diffusion distance and the same \(D_0\) and \(E_a\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped. At a higher temperature, more escapes. Once the rock’s age and diffusion kinetics are known, the surviving radiogenic argon can be inverted for the refrigerator temperature.</p>
+              <p>The next section explains how neutron irradiation supplies a laboratory ³⁹Ar tracer. Once that tracer exists, the trick for learning the diffusion kinetics is step heating. Instead of jumping immediately to the hottest oven setting, we raise the temperature in known steps and measure the fraction of ³⁹Ar released at each one. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law. The controlled ³⁹Ar release curve tells us \(E_a\) and the effective diffusion scale \(D_0/r^2\); the natural ⁴⁰Ar that survived on Mars tells us the alien’s refrigerator temperature.</p>
+            </div>
+          </section>
+
           <section class="article-grid subsection" id="argon-irradiation">
             <figure class="section-media">
               <div class="video-shell">
@@ -175,26 +226,27 @@
             <div class="article-copy">
               <h3>dating without a separate potassium measurement</h3>
               <p>Measuring ⁴⁰Ar is easy: put the rock in a very hot oven and the neutral argon diffuses out. A mass spectrometer measures the offgassed argon. The same procedure fails on ⁴⁰K. Potassium is present as K⁺, and the feldspar’s electrostatic potential locks those ions in place. We therefore need to infer the age without measuring ⁴⁰K directly.</p>
-              <ul>
-                <li>Isotope abundances act like fingerprints. The natural ⁴⁰K/³⁹K ratio is effectively constant here and is known for Martian material.</li>
-                <li>Neutron irradiation converts a small fraction of the rock’s ³⁹K into ³⁹Ar through \({}^{39}\mathrm K+n\rightarrow{}^{39}\mathrm{Ar}+p\). Heating can then release that ³⁹Ar. The converted fraction is basically a property of how angry the neutron irradiation is: its neutron fluence and energy spectrum.</li>
-                <li>An Earth feldspar of known age is irradiated beside the Martian feldspar. Its known age, together with both measured argon isotopes, tells us the ³⁹K → ³⁹Ar reaction yield for their shared irradiation.</li>
+              <ul class="arrow-list">
+                <li>Isotope abundances act like fingerprints. The natural ⁴⁰K/³⁹K ratio is effectively constant here and is known for Martian material. ³⁹K is also not measurable by offgassing, but we can perform a trick.</li>
+                <li>Suppose we irradiate the rock with fast neutrons. A small fraction of its ³⁹K becomes ³⁹Ar through \({}^{39}\mathrm K+n\rightarrow{}^{39}\mathrm{Ar}+p\), and heating can release that ³⁹Ar. The converted fraction is basically a property of how angry the neutron irradiation is: its neutron fluence and energy spectrum. This fraction is unknown and hard to calculate, but we can employ another trick.</li>
+                <li>
+                  An Earth feldspar of known age is placed beside the Martian feldspar in the same irradiation package. Their adjacent positions let one unknown conversion factor calibrate both rocks:
+                  <ul class="arrow-list arrow-list--nested">
+                    <li>known Earth age + measured Earth ⁴⁰Ar/³⁹Ar → conversion factor for the shared irradiation</li>
+                    <li>shared conversion factor + measured Martian ³⁹Ar → proxy for present Martian ³⁹K</li>
+                    <li>known natural ⁴⁰K/³⁹K ratio → proxy for present Martian ⁴⁰K</li>
+                    <li>Martian radiogenic ⁴⁰Ar/⁴⁰K ratio → age of the Martian feldspar</li>
+                  </ul>
+                </li>
               </ul>
-              <p>Let \(\Delta t_{\mathrm{Earth}}\) be the known age of the Earth monitor. After correcting for atmospheric argon and interfering reactions, write \(N_{^{39}\mathrm{Ar}}\) for potassium-derived ³⁹Ar and \(N_{^{40}\mathrm{Ar}}\) for radiogenic ⁴⁰Ar. The Martian feldspar’s age is</p>
-              <div class="equation equation--wide" role="math" aria-label="Martian feldspar age calibrated by a co-irradiated Earth feldspar of known age">
-                \[\begin{aligned}
-                  \Delta t_{\mathrm{Mars}}
-                  =\frac{1}{\lambda}\ln\!\Bigg[1
-                  &amp;\left(e^{\lambda\Delta t_{\mathrm{Earth}}}-1\right)\\[-0.2em]
-                  &amp;\times
-                  \frac{
-                    N_{^{40}\mathrm{Ar}}^{\mathrm{Mars}}(t)\,
-                    N_{^{39}\mathrm{Ar}}^{\mathrm{Earth}}(t)}
-                  {
-                    N_{^{39}\mathrm{Ar}}^{\mathrm{Mars}}(t)\,
-                    N_{^{40}\mathrm{Ar}}^{\mathrm{Earth}}(t)}
-                  \Bigg].
-                \end{aligned}\]
+              <p>Let \(E\) denote the Earth monitor and \(M\) the Martian feldspar. After correcting for atmospheric argon and interfering reactions, \(\Delta t_E\) is known and \(\mathcal R_E,\mathcal R_M\) are the measured radiogenic ⁴⁰Ar / potassium-derived ³⁹Ar ratios. The Martian feldspar’s age is</p>
+              <div class="equation equation--wide equation--nowrap" role="math" aria-label="Martian feldspar age calibrated by a co-irradiated Earth feldspar of known age">
+                \[
+                  \Delta t_M=\lambda^{-1}\ln\!\left[
+                  1+\left(e^{\lambda\Delta t_E}-1\right)
+                  \mathcal R_M/\mathcal R_E\right].
+                  \tag{1}
+                \]
               </div>
 
               <details class="derivation">
@@ -214,37 +266,33 @@
                   <p>The Earth monitor has known age, so its equation fixes that nuisance factor. Dividing the Martian equation by the Earth equation eliminates \(J\):</p>
                   <div class="equation" role="math" aria-label="Eliminating the shared irradiation factor with a known age Earth monitor">
                     \[
-                      e^{\lambda\Delta t_{\mathrm{Mars}}}-1
+                      e^{\lambda\Delta t_M}-1
                       =
-                      \left(e^{\lambda\Delta t_{\mathrm{Earth}}}-1\right)
-                      \frac{\mathcal R_{\mathrm{Mars}}}
-                      {\mathcal R_{\mathrm{Earth}}}.
+                      \left(e^{\lambda\Delta t_E}-1\right)
+                      \frac{\mathcal R_M}{\mathcal R_E}.
                     \]
                   </div>
                   <p>Substituting the two measured isotope ratios and taking the logarithm gives the expression above.</p>
                 </div>
               </details>
-              <p>Heating the Martian feldspar in steps produces a sequence of isotope ratios and apparent ages. The fraction of ³⁹Ar released at each step also supplies the diffusion data used below.</p>
             </div>
           </section>
 
-          <section class="article-grid subsection" id="argon-diffusion">
+          <section class="article-grid subsection" id="heterogeneous-riddle">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
-                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                  <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
                 </video>
               </div>
             </figure>
 
             <div class="article-copy">
-              <h3>warmth siphons argon out of the rocks</h3>
-              <p>Argon random-walks through a solid feldspar. Its diffusivity rises steeply with temperature:</p>
-              <div class="equation" role="math" aria-label="D of T equals D zero times e to negative activation energy over the gas constant times T">
-                \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
-              </div>
-              <p>Here \(D_0\) is the pre-exponential diffusivity, \(E_a\) the activation energy, \(R_g\) the gas constant, and \(T\) absolute temperature. To the accuracy used here, ³⁹Ar and ⁴⁰Ar follow the same diffusion law. The stepwise ³⁹Ar release constrains the diffusion kinetics; the accompanying ⁴⁰Ar/³⁹Ar age spectrum shows how much natural radiogenic argon the rock retained.</p>
-              <p>For a constant-temperature interval, argon loss depends on the exposure \(D(T)\Delta t/L^2\), where \(L\) is a diffusion distance. The effective closure temperature therefore depends on duration and domain size.</p>
+              <h3>time-traveling riddle: using a heterogeneous rock as a better thermometer</h3>
+              <p>The perfect crystal was deliberately unrealistic. A real feldspar contains diffusion domains with different effective sizes and retentivities. During the same warm interval, a small or low-retentivity domain can lose most of its argon while a large or high-retentivity domain loses almost none.</p>
+              <p>That heterogeneity makes the inverse problem harder, but it also gives us more than one thermometer. A homogeneous rock supplies one leakage response. A mixture of domains supplies a family of responses at different temperature scales.</p>
+              <p>Step heating separates those responses in the laboratory. Low-retentivity domains release their ³⁹Ar during the early, cooler oven steps; high-retentivity domains hold on until later, hotter steps. The release curve therefore constrains how much material occupies each diffusion scale. The natural ⁴⁰Ar retained across those same domains then constrains the Martian temperature history.</p>
+              <p>Shuster &amp; Weiss approximated Nakhla with two domains: 3% low-retentivity material and 97% high-retentivity material. In other words, they replaced the unknown distribution of diffusion scales with two spikes. That is the model I revisit below.</p>
             </div>
           </section>
         </section>
@@ -259,8 +307,8 @@
             <div class="section-media-stack">
               <figure class="section-media">
                 <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
-                    <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+                    <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
                   </video>
                 </div>
               </figure>
@@ -268,7 +316,7 @@
 
             <div class="article-copy">
               <h3>shuster et al's 2-spike model</h3>
-              <p>Shuster &amp; Weiss reconstructed Nakhla's diffusion kinetics from a laboratory heating schedule. At each oven temperature, they measured the fraction of ³⁹Ar released from the rock. A multi-domain diffusion model treats the sample as a mixture of regions that release argon at different rates.</p>
+              <p>Shuster &amp; Weiss fit Nakhla’s step-heating curve with a weighted sum of domain-specific release curves:</p>
               <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
                 \[F_{\mathrm{model}}=\sum_i\phi_iF_i,\qquad\sum_i\phi_i=1\]
               </div>
