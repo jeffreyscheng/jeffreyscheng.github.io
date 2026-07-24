@@ -142,34 +142,16 @@
           <section class="article-grid subsection" id="date-feldspar">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/feldspar-dating.jpg?v=20260724a">
-                  <source src="../assets/cold-mars/manim/feldspar-dating.mp4?v=20260724a" type="video/mp4">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/feldspar-dating.jpg?v=20260724b">
+                  <source src="../assets/cold-mars/manim/feldspar-dating.mp4?v=20260724b" type="video/mp4">
                 </video>
               </div>
             </figure>
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
-              <p>Let \(N_X(t)\) be the number of atoms of isotope \(X\) at time \(t\), and let \(\Delta t=t-t_{\mathrm{closure}}\). Start with an ideal closed feldspar: no radiogenic ⁴⁰Ar at closure and no argon loss afterward.</p>
-              <p>⁴⁰K has decay constant \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\). A fraction \(b\approx0.107\) of its decays produce ⁴⁰Ar. The parent and daughter populations are therefore</p>
-              <div class="equation" role="math" aria-label="Potassium 40 remaining and radiogenic argon 40 accumulated after closure">
-                \[\begin{aligned}
-                  N_{^{40}\mathrm K}(t)
-                    &amp;=N_{^{40}\mathrm K}(t_{\mathrm{closure}})
-                      e^{-\lambda\Delta t},\\
-                  N_{^{40}\mathrm{Ar}}(t)
-                    &amp;=b\!\left[N_{^{40}\mathrm K}(t_{\mathrm{closure}})
-                      -N_{^{40}\mathrm K}(t)\right].
-                \end{aligned}\]
-              </div>
-              <p>If \(N_{^{40}\mathrm K}(t_{\mathrm{closure}})\) were known, the present ⁴⁰Ar count would give the age directly:</p>
-              <div class="equation" role="math" aria-label="Elapsed time from closure-time potassium 40 and present radiogenic argon 40">
-                \[\Delta t=-\frac{1}{\lambda}\ln\!\left[
-                  1-\frac{N_{^{40}\mathrm{Ar}}(t)}
-                  {bN_{^{40}\mathrm K}(t_{\mathrm{closure}})}
-                \right]\]
-              </div>
-              <p>The present daughter-to-parent ratio cancels the unknown closure-time count:</p>
+              <p>After closure, ⁴⁰K disappears at a known rate and radiogenic ⁴⁰Ar accumulates. If we knew how much ⁴⁰K the feldspar contained at closure, either count would tell us how long ago that happened. We usually do not. Dividing the daughter count by the surviving parent count removes the unknown starting quantity.</p>
+              <p>Let \(N_X(t)\) count atoms of isotope \(X\). The daughter-to-parent ratio \(\mathcal Q\) is</p>
               <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 ratio and elapsed time since closure">
                 \[\begin{aligned}
                   \mathcal Q
@@ -181,43 +163,38 @@
                     \ln\!\left(1+\frac{\mathcal Q}{b}\right).
                 \end{aligned}\]
               </div>
+              <p>Here \(\Delta t\) is time since closure, \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\), and \(b=0.107\) is the fraction of ⁴⁰K decays that produce ⁴⁰Ar. This simple clock assumes that the feldspar began with no radiogenic argon and lost none after closure. The diffusion model below allows later argon loss.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="argon-irradiation">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724a">
-                  <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724a" type="video/mp4">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724b">
+                  <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724b" type="video/mp4">
                 </video>
               </div>
             </figure>
 
             <div class="article-copy">
               <h3>dating without a separate potassium measurement</h3>
-              <p>The ratio \(\mathcal Q\) requires present ⁴⁰K and radiogenic ⁴⁰Ar on the same scale. The ⁴⁰Ar/³⁹Ar method makes an argon proxy for the potassium instead. Natural potassium contains stable ³⁹K in a known, nearly invariant ratio to ⁴⁰K. Neutron irradiation converts a small fraction of it into potassium-derived ³⁹Ar:</p>
+              <p>Measuring potassium and trapped argon separately is awkward. The ⁴⁰Ar/³⁹Ar method turns some of the feldspar’s stable ³⁹K into ³⁹Ar first. The parent proxy and the radiogenic daughter can then leave the crystal as gases and enter the same mass spectrometer.</p>
               <div class="equation" role="math" aria-label="Potassium 39 captures a neutron to produce argon 39 and a proton">
                 \[{}^{39}\mathrm K+n\longrightarrow{}^{39}\mathrm{Ar}+p\]
               </div>
-              <p>A mass spectrometer can now measure the parent proxy and radiogenic daughter from the same extracted gas. The reactor yield varies with neutron dose, so a mineral standard of known age \(a_m\) is irradiated with the unknown. Its measured ratio</p>
-              <div class="equation" role="math" aria-label="Monitor ratio and J calibration">
+              <p>The amount of ³⁹Ar produced depends on the neutron exposure. A mineral of known age rides through the reactor beside the unknown feldspar. Its known age and measured argon ratio determine \(J\), the calibration for that irradiation. The same calibrated curve then maps the unknown’s ratio to its age.</p>
+              <div class="equation" role="math" aria-label="Monitor calibration and unknown sample age in argon 40 argon 39 dating">
                 \[\begin{aligned}
-                  \mathcal R_m
-                    &amp;=\left(\frac{N_{^{40}\mathrm{Ar}}}
-                    {N_{^{39}\mathrm{Ar}}}\right)_m,\\
-                  J&amp;=\frac{e^{\lambda a_m}-1}{\mathcal R_m}.
+                  \mathcal R_i
+                    &amp;=\left(\frac{N_{^{40}\mathrm{Ar,rad}}}
+                    {N_{^{39}\mathrm{Ar,K}}}\right)_i,
+                    \qquad i\in\{m,s\},\\
+                  J&amp;=\frac{e^{\lambda a_m}-1}{\mathcal R_m},
+                    \qquad
+                  a_s=\frac{1}{\lambda}\ln(1+J\mathcal R_s).
                 \end{aligned}\]
               </div>
-              <p>calibrates the \(J\) factor for that irradiation. For the unknown sample,</p>
-              <div class="equation" role="math" aria-label="Unknown sample age from its argon 40 to argon 39 ratio and calibrated J factor">
-                \[\begin{aligned}
-                  \mathcal R_s
-                    &amp;=\left(\frac{N_{^{40}\mathrm{Ar}}}
-                    {N_{^{39}\mathrm{Ar}}}\right)_s,\\
-                  a_s&amp;=\frac{1}{\lambda}\ln(1+J\mathcal R_s).
-                \end{aligned}\]
-              </div>
-              <p>After irradiation, the monitor is fused and the feldspar is heated in steps. Each released gas packet is measured for both argon isotopes. Its ratio maps through \(J\) to an apparent age. The fraction of total ³⁹Ar released in each step is also the laboratory diffusion signal.</p>
+              <p>The subscripts \(m\) and \(s\) mean monitor and sample. After the usual corrections, \(\mathcal R\) compares radiogenic ⁴⁰Ar with potassium-derived ³⁹Ar. Heating the feldspar in steps produces a sequence of ratios and apparent ages. The fraction of ³⁹Ar released at each step also supplies the diffusion data used below.</p>
             </div>
           </section>
 
