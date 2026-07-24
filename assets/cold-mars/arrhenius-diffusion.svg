@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title description">
+  <title id="title">Why argon diffusion follows Arrhenius kinetics</title>
+  <desc id="description">A warm crystal has a larger fraction of atomic configurations energetic enough to cross a diffusion barrier. The Boltzmann fraction above the activation energy produces the Arrhenius factor.</desc>
+  <rect width="960" height="620" fill="#f7f5ef"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="480" y="46" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="30">an argon atom must cross an energy barrier to move</text>
+
+    <!-- Plot -->
+    <g stroke="#d8d4ca" stroke-width="1">
+      <line x1="105" y1="450" x2="850" y2="450"/>
+      <line x1="105" y1="360" x2="850" y2="360"/>
+      <line x1="105" y1="270" x2="850" y2="270"/>
+      <line x1="105" y1="180" x2="850" y2="180"/>
+    </g>
+    <g stroke="#282b29" stroke-width="2.3">
+      <line x1="105" y1="450" x2="850" y2="450"/>
+      <line x1="105" y1="450" x2="105" y2="95"/>
+    </g>
+
+    <!-- Boltzmann-weight curves -->
+    <path d="M105 112 C208 240 315 350 555 421 C675 441 772 447 850 449"
+          fill="none" stroke="#4c93bc" stroke-width="6" stroke-linecap="round"/>
+    <path d="M105 112 C264 167 420 245 555 318 C666 365 765 394 850 412"
+          fill="none" stroke="#e17b51" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Tails beyond activation barrier -->
+    <path d="M555 318 C666 365 765 394 850 412 L850 450 L555 450 Z"
+          fill="#e17b51" opacity="0.19"/>
+    <path d="M555 421 C675 441 772 447 850 449 L850 450 L555 450 Z"
+          fill="#4c93bc" opacity="0.25"/>
+
+    <line x1="555" y1="86" x2="555" y2="450" stroke="#765a7d" stroke-width="4" stroke-dasharray="10 8"/>
+    <path d="M555 86 L546 103 H564 Z" fill="#765a7d"/>
+
+    <g font-size="23">
+      <text x="179" y="161" fill="#4c93bc">cold crystal</text>
+      <text x="294" y="205" fill="#e17b51">warm crystal</text>
+      <text x="573" y="114" fill="#765a7d">activation energy Eₐ</text>
+      <text x="684" y="333" fill="#b55b37">enough energy to jump</text>
+      <text x="661" y="430" fill="#3c789a">few successful jumps</text>
+    </g>
+
+    <text x="475" y="489" text-anchor="middle" fill="#444946" font-size="22">available thermal energy</text>
+    <text x="27" y="274" text-anchor="middle" fill="#444946" font-size="21" transform="rotate(-90 27 274)">relative Boltzmann weight</text>
+
+    <!-- Causal chain -->
+    <g>
+      <rect x="65" y="520" width="244" height="65" rx="14" fill="#e7f0f4" stroke="#9bbdcd" stroke-width="2"/>
+      <rect x="358" y="520" width="244" height="65" rx="14" fill="#f4e8e0" stroke="#d8a78e" stroke-width="2"/>
+      <rect x="651" y="520" width="244" height="65" rx="14" fill="#eee7f0" stroke="#bea7c5" stroke-width="2"/>
+      <text x="187" y="548" text-anchor="middle" fill="#252927" font-size="20">thermal attempts</text>
+      <text x="187" y="573" text-anchor="middle" fill="#59605c" font-size="18">attempt scale D₀</text>
+      <text x="480" y="548" text-anchor="middle" fill="#252927" font-size="20">successful fraction</text>
+      <text x="480" y="574" text-anchor="middle" fill="#59605c" font-size="18">exp[−Eₐ/(RᵍT)]</text>
+      <text x="773" y="548" text-anchor="middle" fill="#252927" font-size="20">random atomic jumps</text>
+      <text x="773" y="574" text-anchor="middle" fill="#59605c" font-size="18">diffusivity D(T)</text>
+      <path d="M316 552 H349 M609 552 H642" stroke="#6a706c" stroke-width="4" stroke-linecap="round"/>
+      <path d="M349 552 L338 544 V560 Z M642 552 L631 544 V560 Z" fill="#6a706c"/>
+    </g>
+  </g>
+</svg>

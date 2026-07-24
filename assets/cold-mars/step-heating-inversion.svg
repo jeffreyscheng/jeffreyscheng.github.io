@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title description">
+  <title id="title">Step heating calibrates diffusion, then retained argon reveals temperature</title>
+  <desc id="description">A known laboratory oven schedule produces a measured argon 39 release curve. Fitting it gives diffusion kinetics. Those kinetics and the known age predict retained argon 40 versus refrigerator temperature, so the measured retention identifies the temperature.</desc>
+  <rect width="960" height="720" fill="#f7f5ef"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="480" y="44" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="29">step heating turns one rock into a calibrated thermometer</text>
+
+    <!-- Panel backgrounds -->
+    <rect x="32" y="76" width="535" height="586" rx="20" fill="#fff" stroke="#d4d0c6" stroke-width="2"/>
+    <rect x="593" y="76" width="335" height="586" rx="20" fill="#fff" stroke="#d4d0c6" stroke-width="2"/>
+
+    <text x="60" y="112" fill="#59605c" font-size="20" letter-spacing="1.5">LABORATORY: LEARN DIFFUSION</text>
+    <text x="620" y="112" fill="#59605c" font-size="20" letter-spacing="1.5">MARS: INFER TEMPERATURE</text>
+
+    <!-- Oven temperature staircase -->
+    <g stroke="#282b29" stroke-width="2">
+      <line x1="82" y1="316" x2="518" y2="316"/>
+      <line x1="82" y1="316" x2="82" y2="150"/>
+    </g>
+    <g stroke="#e17b51" stroke-width="6" fill="none" stroke-linejoin="round">
+      <path d="M82 292 H136 V274 H190 V250 H244 V221 H298 V191 H352 V163 H406 V140 H460 V122 H518"/>
+    </g>
+    <g fill="#59605c" font-size="18">
+      <text x="300" y="345" text-anchor="middle">oven step</text>
+      <text x="55" y="237" text-anchor="middle" transform="rotate(-90 55 237)">known oven T</text>
+      <text x="105" y="288">low</text>
+      <text x="277" y="185">warmer</text>
+      <text x="450" y="115">hot</text>
+    </g>
+    <text x="300" y="370" text-anchor="middle" fill="#b85e3d" font-size="19">hold each temperature for a known time</text>
+
+    <!-- Per-step release bars and cumulative curve -->
+    <g stroke="#282b29" stroke-width="2">
+      <line x1="82" y1="588" x2="518" y2="588"/>
+      <line x1="82" y1="588" x2="82" y2="385"/>
+    </g>
+    <g fill="#70a8c2">
+      <rect x="105" y="574" width="34" height="14" rx="3"/>
+      <rect x="159" y="558" width="34" height="30" rx="3"/>
+      <rect x="213" y="526" width="34" height="62" rx="3"/>
+      <rect x="267" y="464" width="34" height="124" rx="3"/>
+      <rect x="321" y="476" width="34" height="112" rx="3"/>
+      <rect x="375" y="526" width="34" height="62" rx="3"/>
+      <rect x="429" y="561" width="34" height="27" rx="3"/>
+      <rect x="483" y="579" width="24" height="9" rx="3"/>
+    </g>
+    <path d="M82 584 C148 580 190 562 232 527 C271 493 297 444 331 419 C375 391 432 388 518 387"
+          fill="none" stroke="#2e79a8" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="518" cy="387" r="6" fill="#2e79a8"/>
+    <g fill="#59605c" font-size="18">
+      <text x="300" y="618" text-anchor="middle">oven step</text>
+      <text x="50" y="487" text-anchor="middle" transform="rotate(-90 50 487)">³⁹Ar released</text>
+      <text x="293" y="453" fill="#2e79a8">cumulative release</text>
+      <text x="319" y="520" fill="#4f869f">released in each step</text>
+    </g>
+
+    <!-- Fit output -->
+    <rect x="155" y="630" width="290" height="54" rx="12" fill="#e9f1f4" stroke="#9bbdcd" stroke-width="2"/>
+    <text x="300" y="653" text-anchor="middle" fill="#252927" font-size="19">fit the whole release curve</text>
+    <text x="300" y="676" text-anchor="middle" fill="#2e6f91" font-size="19">→ Eₐ and D₀/r²</text>
+
+    <!-- Retained argon versus refrigerator temperature -->
+    <g stroke="#282b29" stroke-width="2">
+      <line x1="644" y1="584" x2="889" y2="584"/>
+      <line x1="644" y1="584" x2="644" y2="172"/>
+    </g>
+    <g stroke="#ddd9d0" stroke-width="1">
+      <line x1="644" y1="481" x2="889" y2="481"/>
+      <line x1="644" y1="378" x2="889" y2="378"/>
+      <line x1="644" y1="275" x2="889" y2="275"/>
+    </g>
+    <path d="M644 185 C704 190 738 214 761 267 C788 332 811 437 889 565"
+          fill="none" stroke="#765a7d" stroke-width="6" stroke-linecap="round"/>
+    <line x1="644" y1="361" x2="792" y2="361" stroke="#e17b51" stroke-width="4" stroke-dasharray="9 7"/>
+    <line x1="792" y1="361" x2="792" y2="584" stroke="#e17b51" stroke-width="4" stroke-dasharray="9 7"/>
+    <circle cx="792" cy="361" r="9" fill="#e17b51" stroke="#fff" stroke-width="3"/>
+    <g fill="#59605c" font-size="18">
+      <text x="767" y="621" text-anchor="middle">constant refrigerator T</text>
+      <text x="613" y="384" text-anchor="middle" transform="rotate(-90 613 384)">natural ⁴⁰Ar retained</text>
+      <text x="653" y="344" fill="#b85e3d">measured retention</text>
+      <text x="802" y="576" fill="#b85e3d">T<tspan baseline-shift="sub" font-size="13">fridge</tspan></text>
+      <text x="763" y="155" text-anchor="middle" fill="#765a7d">predicted retention curve</text>
+    </g>
+
+    <!-- Inputs to inversion -->
+    <rect x="620" y="630" width="282" height="54" rx="12" fill="#eee7f0" stroke="#bea7c5" stroke-width="2"/>
+    <text x="761" y="653" text-anchor="middle" fill="#252927" font-size="18">known age + fitted diffusion</text>
+    <text x="761" y="676" text-anchor="middle" fill="#765a7d" font-size="19">measured ⁴⁰Ar → T<tspan baseline-shift="sub" font-size="13">fridge</tspan></text>
+
+    <!-- Connector -->
+    <path d="M567 391 H585" stroke="#6a706c" stroke-width="4" stroke-linecap="round"/>
+    <path d="M585 391 L574 383 V399 Z" fill="#6a706c"/>
+  </g>
+</svg>

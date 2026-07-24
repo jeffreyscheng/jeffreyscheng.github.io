@@ -229,19 +229,24 @@
           </section>
 
           <section class="article-grid subsection" id="perfect-crystal-riddle">
-            <figure class="section-media">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
-                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
-                </video>
-              </div>
+            <figure class="section-media section-media--diagram">
+              <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260724a" width="960" height="600" alt="An alien collects newly formed feldspar on Mars, stores it at one constant refrigerator temperature for hundreds of millions of years, and teleports the aged rock to Earth">
             </figure>
 
             <div class="article-copy">
               <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
               <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
               <p>We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
-              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection">
+            <figure class="section-media section-media--diagram">
+              <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260724a" width="960" height="620" alt="Warm argon atoms have a larger probability of crossing the activation-energy barrier for a diffusion jump, producing Arrhenius temperature dependence">
+            </figure>
+
+            <div class="article-copy">
+              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Each atomic jump requires enough thermal energy to cross an activation barrier. Warmer atoms cross that barrier more often, so argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
               <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
                 \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
               </div>
@@ -274,18 +279,38 @@
                 </tbody>
               </table>
               <p>Every grain in this imaginary rock has the same diffusion distance and the same \(D_0\) and \(E_a\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped. At a higher temperature, more escapes. Once the rock’s age and diffusion kinetics are known, the surviving radiogenic argon can be inverted for the refrigerator temperature.</p>
-              <p>The dating experiment has already supplied a laboratory ³⁹Ar tracer. Instead of jumping immediately to the hottest oven setting, we raise the temperature in known steps and measure the fraction of ³⁹Ar released at each one. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law. The controlled ³⁹Ar release curve tells us \(E_a\) and the effective diffusion scale \(D_0/r^2\); the natural ⁴⁰Ar that survived on Mars tells us the alien’s refrigerator temperature.</p>
+            </div>
+          </section>
+
+          <section class="article-grid subsection">
+            <figure class="section-media section-media--diagram">
+              <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260724a" width="960" height="720" alt="Step heating first fits argon diffusion kinetics from laboratory release, then combines those kinetics with retained natural argon to infer the constant Martian refrigerator temperature">
+            </figure>
+
+            <div class="article-copy">
+              <p>This experiment is called <em>step heating</em>. The dating experiment has already supplied a laboratory ³⁹Ar tracer. Instead of jumping immediately to the hottest oven setting, we hold the rock at a sequence of known temperatures and measure the packet of ³⁹Ar released during each step. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law.</p>
+              <p>The cooler oven steps release little ³⁹Ar. As the oven gets hotter and diffusion accelerates, the released packets grow; after the easiest argon has escaped, they shrink again. Fitting the entire release curve gives us \(E_a\) and the effective diffusion scale \(D_0/r^2\).</p>
+              <p>We can now replay the rock’s known age under a range of candidate refrigerator temperatures. Each temperature predicts how much natural ⁴⁰Ar should remain. The temperature whose prediction matches the measured ⁴⁰Ar is the inferred temperature of the alien’s refrigerator.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="heterogeneous-riddle">
-            <figure class="section-media">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
-                  <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
-                </video>
-              </div>
-            </figure>
+            <div class="section-media-stack">
+              <figure class="section-media">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
+                    <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+              <figure class="section-media">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                    <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+            </div>
 
             <div class="article-copy">
               <h3>time-traveling riddle: using a heterogeneous rock as a better thermometer</h3>

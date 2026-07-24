@@ -1507,6 +1507,11 @@ h1 {
   width: 82%;
 }
 
+.section-media--diagram img {
+  border-color: var(--line);
+  background: #f7f5ef;
+}
+
 .essay--structured .equation {
   margin: 1rem 0 1.15rem;
   font-size: clamp(1.05rem, 1.5vw, 1.18rem);

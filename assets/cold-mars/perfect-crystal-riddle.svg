@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title description">
+  <title id="title">The perfect-crystal Martian refrigerator thought experiment</title>
+  <desc id="description">A Martian alien collects newly formed feldspar, stores it at constant temperature for hundreds of millions of years, and teleports the aged rock to a living room on Earth.</desc>
+  <rect width="960" height="600" fill="#f7f5ef"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="480" y="45" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="29">one rock, one constant temperature, a very long wait</text>
+
+    <g fill="#ffffff" stroke="#d4d0c6" stroke-width="2">
+      <rect x="25" y="78" width="280" height="430" rx="22"/>
+      <rect x="340" y="78" width="280" height="430" rx="22"/>
+      <rect x="655" y="78" width="280" height="430" rx="22"/>
+    </g>
+
+    <g fill="#59605c" font-size="20" letter-spacing="1.5">
+      <text x="50" y="113">MARS · t = 0</text>
+      <text x="365" y="113">MARS · CONSTANT T</text>
+      <text x="680" y="113">EARTH · PRESENT</text>
+    </g>
+
+    <!-- Volcano and fresh feldspar -->
+    <path d="M57 405 L133 244 L213 405 Z" fill="#6d5c55"/>
+    <path d="M107 299 Q132 276 157 299 L144 325 L120 325 Z" fill="#ed7558"/>
+    <path d="M132 278 C118 247 150 238 135 207 C168 227 159 254 174 269 C155 263 151 285 132 278 Z" fill="#ed7558" opacity="0.8"/>
+    <ellipse cx="134" cy="414" rx="100" ry="17" fill="#bd765b" opacity="0.28"/>
+
+    <!-- Cute alien -->
+    <g stroke="#2e6a58" stroke-width="5" stroke-linecap="round">
+      <line x1="244" y1="258" x2="234" y2="226"/>
+      <line x1="267" y1="258" x2="280" y2="226"/>
+    </g>
+    <circle cx="232" cy="222" r="6" fill="#79b995"/>
+    <circle cx="282" cy="222" r="6" fill="#79b995"/>
+    <ellipse cx="256" cy="292" rx="49" ry="57" fill="#79b995" stroke="#2e6a58" stroke-width="3"/>
+    <ellipse cx="240" cy="281" rx="8" ry="13" fill="#202523"/>
+    <ellipse cx="272" cy="281" rx="8" ry="13" fill="#202523"/>
+    <circle cx="237" cy="277" r="2.7" fill="#fff"/>
+    <circle cx="269" cy="277" r="2.7" fill="#fff"/>
+    <path d="M239 314 Q256 327 274 313" fill="none" stroke="#2e6a58" stroke-width="3" stroke-linecap="round"/>
+    <path d="M215 337 Q197 356 208 383" fill="none" stroke="#2e6a58" stroke-width="8" stroke-linecap="round"/>
+    <path d="M296 337 Q309 353 294 369" fill="none" stroke="#2e6a58" stroke-width="8" stroke-linecap="round"/>
+    <polygon points="282,363 301,351 313,369 292,384" fill="#5e93b2" stroke="#2e607e" stroke-width="2"/>
+    <text x="165" y="468" text-anchor="middle" fill="#252927" font-size="23">newly formed feldspar</text>
+
+    <!-- Refrigerator -->
+    <rect x="400" y="146" width="160" height="274" rx="14" fill="#dcecf1" stroke="#48778e" stroke-width="4"/>
+    <line x1="400" y1="257" x2="560" y2="257" stroke="#48778e" stroke-width="3"/>
+    <line x1="531" y1="184" x2="531" y2="230" stroke="#48778e" stroke-width="8" stroke-linecap="round"/>
+    <line x1="531" y1="285" x2="531" y2="331" stroke="#48778e" stroke-width="8" stroke-linecap="round"/>
+    <g stroke="#5b9fbd" stroke-width="3" stroke-linecap="round">
+      <line x1="450" y1="202" x2="510" y2="202"/>
+      <line x1="480" y1="172" x2="480" y2="232"/>
+      <line x1="459" y1="181" x2="501" y2="223"/>
+      <line x1="501" y1="181" x2="459" y2="223"/>
+    </g>
+    <polygon points="460,333 484,315 510,338 487,360" fill="#5e93b2" stroke="#2e607e" stroke-width="3"/>
+    <text x="480" y="457" text-anchor="middle" fill="#252927" font-size="27">constant temperature</text>
+    <text x="480" y="487" text-anchor="middle" fill="#8a5b45" font-size="21">hundreds of millions of years</text>
+
+    <!-- Earth living room -->
+    <rect x="684" y="145" width="222" height="275" rx="10" fill="#f3e7d2" stroke="#bcae98" stroke-width="3"/>
+    <rect x="705" y="174" width="76" height="88" fill="#b8dce8" stroke="#728f9a" stroke-width="3"/>
+    <path d="M743 174 V262 M705 218 H781" stroke="#728f9a" stroke-width="2"/>
+    <path d="M707 360 Q710 318 749 318 H838 Q877 318 880 360 V399 H707 Z" fill="#ca8876" stroke="#8e5d52" stroke-width="3"/>
+    <rect x="726" y="297" width="60" height="42" rx="10" fill="#e8b29e"/>
+    <rect x="800" y="297" width="60" height="42" rx="10" fill="#e8b29e"/>
+    <line x1="866" y1="250" x2="866" y2="328" stroke="#665e58" stroke-width="5"/>
+    <path d="M840 250 H892 L879 218 H852 Z" fill="#efd68a" stroke="#8f8054" stroke-width="3"/>
+    <ellipse cx="805" cy="414" rx="74" ry="12" fill="#b98160" opacity="0.25"/>
+    <polygon points="781,383 810,362 838,389 810,413" fill="#5e93b2" stroke="#2e607e" stroke-width="3"/>
+    <g fill="none" stroke="#9e6eb3" stroke-width="4" stroke-linecap="round" opacity="0.75">
+      <path d="M770 345 C738 315 748 281 780 275"/>
+      <path d="M846 349 C881 318 870 280 839 272"/>
+      <path d="M766 371 C729 372 716 344 727 322"/>
+    </g>
+    <text x="795" y="457" text-anchor="middle" fill="#252927" font-size="27">aged feldspar</text>
+    <text x="795" y="487" text-anchor="middle" fill="#9e6eb3" font-size="21">teleported into our living room</text>
+
+    <!-- Flow arrows -->
+    <g fill="none" stroke="#6a706c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M310 292 H330"/>
+      <path d="M625 292 H645"/>
+    </g>
+    <g fill="#6a706c">
+      <path d="M330 292 L319 284 V300 Z"/>
+      <path d="M645 292 L634 284 V300 Z"/>
+    </g>
+
+    <text x="480" y="556" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="26">known age + surviving argon → infer the refrigerator temperature</text>
+  </g>
+</svg>
