@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title description">
+  <title id="title">Radiogenic argon 40 to potassium 40 ratio after feldspar closure</title>
+  <desc id="description">The radiogenic argon 40 to remaining potassium 40 ratio rises from zero at closure to about 0.88 after four billion years.</desc>
+  <rect width="900" height="520" fill="#f7f5ef"/>
+
+  <g stroke="#d8d4ca" stroke-width="1">
+    <line x1="95" y1="440" x2="850" y2="440"/>
+    <line x1="95" y1="360" x2="850" y2="360"/>
+    <line x1="95" y1="280" x2="850" y2="280"/>
+    <line x1="95" y1="200" x2="850" y2="200"/>
+    <line x1="95" y1="120" x2="850" y2="120"/>
+    <line x1="95" y1="80" x2="850" y2="80"/>
+    <line x1="95" y1="80" x2="95" y2="440"/>
+    <line x1="284" y1="80" x2="284" y2="440"/>
+    <line x1="473" y1="80" x2="473" y2="440"/>
+    <line x1="661" y1="80" x2="661" y2="440"/>
+    <line x1="850" y1="80" x2="850" y2="440"/>
+  </g>
+
+  <g stroke="#282b29" stroke-width="2.2">
+    <line x1="95" y1="440" x2="850" y2="440"/>
+    <line x1="95" y1="440" x2="95" y2="80"/>
+  </g>
+
+  <g fill="#555a56" font-family="Inter, Arial, sans-serif" font-size="19">
+    <text x="95" y="470" text-anchor="middle">0</text>
+    <text x="284" y="470" text-anchor="middle">1</text>
+    <text x="473" y="470" text-anchor="middle">2</text>
+    <text x="661" y="470" text-anchor="middle">3</text>
+    <text x="850" y="470" text-anchor="middle">4</text>
+
+    <text x="77" y="446" text-anchor="end">0</text>
+    <text x="77" y="366" text-anchor="end">0.2</text>
+    <text x="77" y="286" text-anchor="end">0.4</text>
+    <text x="77" y="206" text-anchor="end">0.6</text>
+    <text x="77" y="126" text-anchor="end">0.8</text>
+    <text x="77" y="86" text-anchor="end">0.9</text>
+  </g>
+
+  <polyline
+    points="95.0,440.0 118.6,436.9 142.2,433.6 165.8,430.1 189.4,426.3 213.0,422.3 236.6,417.9 260.2,413.3 283.8,408.3 307.3,402.9 330.9,397.2 354.5,391.1 378.1,384.5 401.7,377.4 425.3,369.9 448.9,361.7 472.5,353.1 496.1,343.7 519.7,333.8 543.3,323.1 566.9,311.6 590.5,299.3 614.1,286.1 637.7,272.0 661.2,256.9 684.8,240.7 708.4,223.3 732.0,204.7 755.6,184.7 779.2,163.3 802.8,140.4 826.4,115.8 850.0,89.5"
+    fill="none"
+    stroke="#2e79a8"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <g fill="#282b29" font-family="Georgia, 'Times New Roman', serif">
+    <text x="473" y="505" text-anchor="middle" font-size="23">time since closure (billion years)</text>
+    <text x="22" y="260" text-anchor="middle" font-size="22" transform="rotate(-90 22 260)">radiogenic ⁴⁰Ar / remaining ⁴⁰K</text>
+    <text x="570" y="166" font-size="24" fill="#2e79a8">daughter / parent ratio</text>
+  </g>
+</svg>
