@@ -82,6 +82,7 @@
                     <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
                     <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
                     <li><a href="#date-feldspar">how to date a feldspar</a></li>
+                    <li><a href="#argon-irradiation">dating without a separate potassium measurement</a></li>
                     <li><a href="#argon-diffusion">warmth siphons argon out of the rocks</a></li>
                   </ol>
                 </li>
@@ -119,7 +120,7 @@
 
             <div class="article-copy">
               <h3>who pumped argon into martian rocks?</h3>
-              <p>A feldspar is an aluminosilicate with a tiled tetrahedral backbone. Many feldspars contain potassium, but it's not bonded to anything; it kind of just sits in jail inside the crystal lattice. Since Potassium-40 (⁴⁰K) is radioactive, old feldspars will end up with some radiogenic Argon gas trapped inside.</p>
+              <p>A feldspar is an aluminosilicate with a tiled tetrahedral backbone. In potassium feldspar, potassium occupies large framework cavities, loosely coordinated by surrounding oxygens rather than built into the tetrahedral backbone. Since Potassium-40 (⁴⁰K) is radioactive, old feldspars will end up with some radiogenic Argon gas trapped inside.</p>
             </div>
           </section>
 
@@ -134,71 +135,109 @@
 
             <div class="article-copy">
               <h3>when does the argon clock start?</h3>
-              <p>Aluminosilicate magma has no crystal lattice to cage argon gas, so newly formed radiogenic ⁴⁰Ar escapes. The clock starts at closure: once cooling forms the feldspar lattice, newly produced argon can remain trapped. I call that moment \(t_{\mathrm{closure}}\).</p>
+              <p>In the simplest clock model, argon produced before closure is lost. As feldspar cools, diffusion slows until argon is retained on the timescale of interest. I call that crossover \(t_{\mathrm{closure}}\). The diffusion model below treats closure continuously.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="date-feldspar">
             <figure class="section-media">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/feldspar-dating.jpg?v=20260720a">
-                  <source src="../assets/cold-mars/manim/feldspar-dating.mp4?v=20260720a" type="video/mp4">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/feldspar-dating.jpg?v=20260724a">
+                  <source src="../assets/cold-mars/manim/feldspar-dating.mp4?v=20260724a" type="video/mp4">
                 </video>
               </div>
             </figure>
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
-              <p>Once a feldspar closes, ⁴⁰K continues to decay while radiogenic ⁴⁰Ar accumulates. Let \(\Delta t=t-t_{\mathrm{closure}}\) be the elapsed time since closure. \(N_0\) is the number of ⁴⁰K atoms at closure; \(N_{\mathrm K}\) and \(N_{\mathrm{Ar}}\) are the present numbers of ⁴⁰K and radiogenic ⁴⁰Ar atoms.</p>
-              <p>Potassium-40 has decay constant \(\lambda=\ln(2)/(1.25\,\mathrm{Gyr})\), and a fraction \(b\approx0.107\) of its decays produce argon. Therefore,</p>
-              <div class="equation" role="math" aria-label="Number of potassium 40 atoms remaining after closure">
-                \[N_{\mathrm K}=N_0e^{-\lambda\Delta t}\]
+              <p>Let \(N_X(t)\) be the number of atoms of isotope \(X\) at time \(t\), and let \(\Delta t=t-t_{\mathrm{closure}}\). Start with an ideal closed feldspar: no radiogenic ⁴⁰Ar at closure and no argon loss afterward.</p>
+              <p>⁴⁰K has decay constant \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\). A fraction \(b\approx0.107\) of its decays produce ⁴⁰Ar. The parent and daughter populations are therefore</p>
+              <div class="equation" role="math" aria-label="Potassium 40 remaining and radiogenic argon 40 accumulated after closure">
+                \[\begin{aligned}
+                  N_{^{40}\mathrm K}(t)
+                    &amp;=N_{^{40}\mathrm K}(t_{\mathrm{closure}})
+                      e^{-\lambda\Delta t},\\
+                  N_{^{40}\mathrm{Ar}}(t)
+                    &amp;=b\!\left[N_{^{40}\mathrm K}(t_{\mathrm{closure}})
+                      -N_{^{40}\mathrm K}(t)\right].
+                \end{aligned}\]
               </div>
-              <div class="equation" role="math" aria-label="Number of radiogenic argon 40 atoms accumulated after closure">
-                \[N_{\mathrm{Ar}}
-                  =bN_0\left(1-e^{-\lambda\Delta t}\right)\]
+              <p>If \(N_{^{40}\mathrm K}(t_{\mathrm{closure}})\) were known, the present ⁴⁰Ar count would give the age directly:</p>
+              <div class="equation" role="math" aria-label="Elapsed time from closure-time potassium 40 and present radiogenic argon 40">
+                \[\Delta t=-\frac{1}{\lambda}\ln\!\left[
+                  1-\frac{N_{^{40}\mathrm{Ar}}(t)}
+                  {bN_{^{40}\mathrm K}(t_{\mathrm{closure}})}
+                \right]\]
               </div>
-              <p>The unknown initial population \(N_0\) disappears when we take the measured daughter-to-parent ratio:</p>
-              <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 atom ratio">
-                \[R\equiv\frac{N_{\mathrm{Ar}}}{N_{\mathrm K}}
-                  =b\left(e^{\lambda\Delta t}-1\right)\]
-              </div>
-              <div class="equation" role="math" aria-label="Elapsed time since closure from the measured radiogenic argon 40 to potassium 40 atom ratio">
-                \[\Delta t=\frac{1}{\lambda}
-                  \ln\!\left(1+\frac{R}{b}\right)\]
+              <p>The present daughter-to-parent ratio cancels the unknown closure-time count:</p>
+              <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 ratio and elapsed time since closure">
+                \[\begin{aligned}
+                  \mathcal Q
+                    &amp;=\frac{N_{^{40}\mathrm{Ar}}(t)}
+                    {N_{^{40}\mathrm K}(t)}
+                    =b\!\left(e^{\lambda\Delta t}-1\right),\\
+                  \Delta t
+                    &amp;=\frac{1}{\lambda}
+                    \ln\!\left(1+\frac{\mathcal Q}{b}\right).
+                \end{aligned}\]
               </div>
             </div>
           </section>
 
-          <section class="article-grid subsection" id="argon-diffusion">
-            <div class="section-media-stack">
-              <figure class="section-media">
-                <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg">
-                    <source src="../assets/cold-mars/manim/closure-temperature.mp4" type="video/mp4">
-                  </video>
-                </div>
-              </figure>
-              <figure class="section-media">
-                <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/step-heating.jpg">
-                    <source src="../assets/cold-mars/manim/step-heating.mp4" type="video/mp4">
-                  </video>
-                </div>
-              </figure>
+          <section class="article-grid subsection" id="argon-irradiation">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724a">
+                  <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724a" type="video/mp4">
+                </video>
+              </div>
+            </figure>
+
+            <div class="article-copy">
+              <h3>dating without a separate potassium measurement</h3>
+              <p>The ratio \(\mathcal Q\) requires present ⁴⁰K and radiogenic ⁴⁰Ar on the same scale. The ⁴⁰Ar/³⁹Ar method makes an argon proxy for the potassium instead. Natural potassium contains stable ³⁹K in a known, nearly invariant ratio to ⁴⁰K. Neutron irradiation converts a small fraction of it into potassium-derived ³⁹Ar:</p>
+              <div class="equation" role="math" aria-label="Potassium 39 captures a neutron to produce argon 39 and a proton">
+                \[{}^{39}\mathrm K+n\longrightarrow{}^{39}\mathrm{Ar}+p\]
+              </div>
+              <p>A mass spectrometer can now measure the parent proxy and radiogenic daughter from the same extracted gas. The reactor yield varies with neutron dose, so a mineral standard of known age \(a_m\) is irradiated with the unknown. Its measured ratio</p>
+              <div class="equation" role="math" aria-label="Monitor ratio and J calibration">
+                \[\begin{aligned}
+                  \mathcal R_m
+                    &amp;=\left(\frac{N_{^{40}\mathrm{Ar}}}
+                    {N_{^{39}\mathrm{Ar}}}\right)_m,\\
+                  J&amp;=\frac{e^{\lambda a_m}-1}{\mathcal R_m}.
+                \end{aligned}\]
+              </div>
+              <p>calibrates the \(J\) factor for that irradiation. For the unknown sample,</p>
+              <div class="equation" role="math" aria-label="Unknown sample age from its argon 40 to argon 39 ratio and calibrated J factor">
+                \[\begin{aligned}
+                  \mathcal R_s
+                    &amp;=\left(\frac{N_{^{40}\mathrm{Ar}}}
+                    {N_{^{39}\mathrm{Ar}}}\right)_s,\\
+                  a_s&amp;=\frac{1}{\lambda}\ln(1+J\mathcal R_s).
+                \end{aligned}\]
+              </div>
+              <p>After irradiation, the monitor is fused and the feldspar is heated in steps. Each released gas packet is measured for both argon isotopes. Its ratio maps through \(J\) to an apparent age. The fraction of total ³⁹Ar released in each step is also the laboratory diffusion signal.</p>
             </div>
+          </section>
+
+          <section class="article-grid subsection" id="argon-diffusion">
+            <figure class="section-media">
+              <div class="video-shell">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
+                  <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                </video>
+              </div>
+            </figure>
 
             <div class="article-copy">
               <h3>warmth siphons argon out of the rocks</h3>
-              <p>Heat makes argon move faster through the crystal. Cool the rock down and diffusion nearly stops. The Arrhenius equation describes how violently the escape rate changes with temperature.</p>
-              <div class="equation" role="math" aria-label="partial C over partial t equals divergence of D of T times gradient C; D of T equals D zero times e to negative activation energy over R T">
-                \[\begin{aligned}
-                  \frac{\partial C}{\partial t}&amp;=\nabla\!\cdot\!\left(D(T)\nabla C\right)\\
-                  D(T)&amp;=D_0\exp\!\left(-\frac{E_a}{RT}\right)
-                \end{aligned}\]
+              <p>Argon random-walks through a solid feldspar. Its diffusivity rises steeply with temperature:</p>
+              <div class="equation" role="math" aria-label="D of T equals D zero times e to negative activation energy over the gas constant times T">
+                \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
               </div>
-              <p>To measure this, geologists irradiate the sample so that ³⁹K produces ³⁹Ar, then put the feldspar in an oven and turn up the temperature step by step. The pattern of ³⁹Ar release tells us the diffusion kinetics. The amount of natural radiogenic ⁴⁰Ar that survived tells us which thermal histories the rock could have experienced.</p>
-              <p>There is no single closure temperature stamped on a feldspar. How much heat it can survive depends on the activation energy, the diffusion length, and how long it stays warm. That is what lets an argon age double as a thermometer.</p>
+              <p>Here \(D_0\) is the pre-exponential diffusivity, \(E_a\) the activation energy, \(R_g\) the gas constant, and \(T\) absolute temperature. To the accuracy used here, ³⁹Ar and ⁴⁰Ar follow the same diffusion law. The stepwise ³⁹Ar release constrains the diffusion kinetics; the accompanying ⁴⁰Ar/³⁹Ar age spectrum shows how much natural radiogenic argon the rock retained.</p>
+              <p>For a constant-temperature interval, argon loss depends on the exposure \(D(T)\Delta t/L^2\), where \(L\) is a diffusion distance. The effective closure temperature therefore depends on duration and domain size.</p>
             </div>
           </section>
         </section>
