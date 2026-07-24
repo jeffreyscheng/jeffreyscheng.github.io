@@ -1,91 +1,129 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title description">
-  <title id="title">The perfect-crystal Martian refrigerator thought experiment</title>
-  <desc id="description">A Martian alien collects newly formed feldspar, stores it at constant temperature for hundreds of millions of years, and teleports the aged rock to a living room on Earth.</desc>
-  <rect width="960" height="600" fill="#f7f5ef"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1180" role="img" aria-labelledby="title description">
+  <title id="title">The perfect-crystal refrigerator thought experiment</title>
+  <desc id="description">A vertical timeline from feldspar formation 1300 million years ago to a present-day Earth laboratory. A magnified rock shows identical spherical grains with the same radius and diffusion kinetics. The rock spends its entire age at one unknown constant temperature.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#666c68"/>
+    </marker>
+    <clipPath id="rock-clip">
+      <path d="M529 178 C599 136 728 147 777 220 C824 289 786 374 699 392 C612 411 496 365 485 281 C478 231 496 198 529 178 Z"/>
+    </clipPath>
+    <g id="grain">
+      <circle r="34" fill="#cfe1e6" stroke="#4d8499" stroke-width="3"/>
+      <circle cx="-10" cy="5" r="6" fill="#df7650"/>
+      <path d="M-22 -17 L0 -29 L22 -17 L22 10 L0 23 L-22 10 Z" fill="none" stroke="#83aebd" stroke-width="2" opacity="0.9"/>
+      <line x1="0" y1="0" x2="31" y2="0" stroke="#765a7d" stroke-width="2"/>
+    </g>
+  </defs>
+  <rect width="960" height="1180" fill="#f7f5ef"/>
 
   <g font-family="Inter, Arial, sans-serif">
-    <text x="480" y="45" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="29">one rock, one constant temperature, a very long wait</text>
+    <text x="480" y="52" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="31">the deliberately perfect feldspar</text>
 
-    <g fill="#ffffff" stroke="#d4d0c6" stroke-width="2">
-      <rect x="25" y="78" width="280" height="430" rx="22"/>
-      <rect x="340" y="78" width="280" height="430" rx="22"/>
-      <rect x="655" y="78" width="280" height="430" rx="22"/>
+    <!-- Literal timeline -->
+    <line x1="105" y1="115" x2="105" y2="1095" stroke="#6c716d" stroke-width="4" marker-end="url(#arrow)"/>
+    <g fill="#59605c" font-size="19">
+      <line x1="91" y1="142" x2="119" y2="142" stroke="#6c716d" stroke-width="3"/>
+      <text x="78" y="149" text-anchor="end">1300 My</text>
+      <line x1="95" y1="416" x2="115" y2="416" stroke="#9a9d98" stroke-width="2"/>
+      <text x="78" y="423" text-anchor="end">900 My</text>
+      <line x1="95" y1="690" x2="115" y2="690" stroke="#9a9d98" stroke-width="2"/>
+      <text x="78" y="697" text-anchor="end">500 My</text>
+      <line x1="91" y1="1032" x2="119" y2="1032" stroke="#6c716d" stroke-width="3"/>
+      <text x="78" y="1039" text-anchor="end">present</text>
+      <text x="35" y="620" text-anchor="middle" transform="rotate(-90 35 620)" letter-spacing="1.2">TOWARD THE PRESENT</text>
     </g>
 
-    <g fill="#59605c" font-size="20" letter-spacing="1.5">
-      <text x="50" y="113">MARS · t = 0</text>
-      <text x="365" y="113">MARS · CONSTANT T</text>
-      <text x="680" y="113">EARTH · PRESENT</text>
+    <!-- Formation and deliberately homogeneous rock -->
+    <rect x="155" y="92" width="748" height="342" rx="24" fill="#fff" stroke="#d4d0c6" stroke-width="2"/>
+    <text x="190" y="133" fill="#59605c" font-size="20" letter-spacing="1.4">FORMATION + ARGON CLOSURE</text>
+
+    <!-- Small volcano and alien -->
+    <path d="M195 345 L267 196 L338 345 Z" fill="#75645b"/>
+    <path d="M233 268 L268 196 L299 270 L279 259 L263 282 L246 258 Z" fill="#df7650"/>
+    <ellipse cx="267" cy="349" rx="92" ry="15" fill="#ead8d0"/>
+    <circle cx="383" cy="251" r="46" fill="#79b99a" stroke="#2f6e5c" stroke-width="4"/>
+    <line x1="357" y1="214" x2="349" y2="189" stroke="#2f6e5c" stroke-width="5"/>
+    <line x1="406" y1="214" x2="414" y2="189" stroke="#2f6e5c" stroke-width="5"/>
+    <circle cx="349" cy="188" r="7" fill="#79b99a"/>
+    <circle cx="415" cy="188" r="7" fill="#79b99a"/>
+    <ellipse cx="368" cy="247" rx="6" ry="10" fill="#202523"/>
+    <ellipse cx="395" cy="247" rx="6" ry="10" fill="#202523"/>
+    <path d="M366 271 Q383 286 401 270" fill="none" stroke="#2f6e5c" stroke-width="4" stroke-linecap="round"/>
+    <path d="M345 290 Q328 316 340 344 M421 291 Q438 315 425 344" fill="none" stroke="#2f6e5c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M418 320 L443 304 L458 331 L432 347 Z" fill="#6ca4bd" stroke="#2c6e8b" stroke-width="3"/>
+
+    <!-- Magnified rock full of identical grains -->
+    <path d="M529 178 C599 136 728 147 777 220 C824 289 786 374 699 392 C612 411 496 365 485 281 C478 231 496 198 529 178 Z"
+          fill="#e8edf0" stroke="#765a7d" stroke-width="5"/>
+    <g clip-path="url(#rock-clip)">
+      <use href="#grain" x="527" y="193"/>
+      <use href="#grain" x="597" y="193"/>
+      <use href="#grain" x="667" y="193"/>
+      <use href="#grain" x="737" y="193"/>
+      <use href="#grain" x="492" y="253"/>
+      <use href="#grain" x="562" y="253"/>
+      <use href="#grain" x="632" y="253"/>
+      <use href="#grain" x="702" y="253"/>
+      <use href="#grain" x="772" y="253"/>
+      <use href="#grain" x="527" y="313"/>
+      <use href="#grain" x="597" y="313"/>
+      <use href="#grain" x="667" y="313"/>
+      <use href="#grain" x="737" y="313"/>
+      <use href="#grain" x="562" y="373"/>
+      <use href="#grain" x="632" y="373"/>
+      <use href="#grain" x="702" y="373"/>
+    </g>
+    <text x="830" y="235" fill="#765a7d" font-size="18">every grain:</text>
+    <text x="830" y="263" fill="#765a7d" font-size="18">same radius r</text>
+    <text x="830" y="291" fill="#765a7d" font-size="18">same D₀</text>
+    <text x="830" y="319" fill="#765a7d" font-size="18">same Eₐ</text>
+    <text x="634" y="420" text-anchor="middle" fill="#3d4d50" font-size="20">not realistic—useful because the rock has one diffusion response</text>
+
+    <!-- Long refrigerator interval -->
+    <rect x="155" y="462" width="748" height="492" rx="24" fill="#fff" stroke="#d4d0c6" stroke-width="2"/>
+    <text x="190" y="505" fill="#59605c" font-size="20" letter-spacing="1.4">ONE CONSTANT-TEMPERATURE HISTORY</text>
+
+    <rect x="232" y="548" width="300" height="324" rx="28" fill="#dcecf0" stroke="#47798e" stroke-width="5"/>
+    <line x1="232" y1="662" x2="532" y2="662" stroke="#47798e" stroke-width="4"/>
+    <line x1="484" y1="588" x2="484" y2="625" stroke="#47798e" stroke-width="8" stroke-linecap="round"/>
+    <line x1="484" y1="711" x2="484" y2="753" stroke="#47798e" stroke-width="8" stroke-linecap="round"/>
+    <g transform="translate(340 734) scale(.64)">
+      <path d="M-78 -12 C-34 -62 48 -63 85 -6 C116 42 77 93 14 98 C-52 103 -111 52 -78 -12 Z"
+            fill="#e8edf0" stroke="#765a7d" stroke-width="7"/>
+      <use href="#grain" x="-36" y="5"/>
+      <use href="#grain" x="35" y="5"/>
+      <use href="#grain" x="0" y="65"/>
+    </g>
+    <g stroke="#4c93bc" stroke-width="5" stroke-linecap="round">
+      <line x1="332" y1="588" x2="432" y2="588"/>
+      <line x1="382" y1="548" x2="382" y2="628"/>
+      <line x1="347" y1="561" x2="417" y2="615"/>
+      <line x1="417" y1="561" x2="347" y2="615"/>
     </g>
 
-    <!-- Volcano and fresh feldspar -->
-    <path d="M57 405 L133 244 L213 405 Z" fill="#6d5c55"/>
-    <path d="M107 299 Q132 276 157 299 L144 325 L120 325 Z" fill="#ed7558"/>
-    <path d="M132 278 C118 247 150 238 135 207 C168 227 159 254 174 269 C155 263 151 285 132 278 Z" fill="#ed7558" opacity="0.8"/>
-    <ellipse cx="134" cy="414" rx="100" ry="17" fill="#bd765b" opacity="0.28"/>
-
-    <!-- Cute alien -->
-    <g stroke="#2e6a58" stroke-width="5" stroke-linecap="round">
-      <line x1="244" y1="258" x2="234" y2="226"/>
-      <line x1="267" y1="258" x2="280" y2="226"/>
+    <text x="593" y="594" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="27">T<tspan baseline-shift="sub" font-family="Inter, Arial, sans-serif" font-size="18">fridge</tspan> is fixed but unknown</text>
+    <line x1="594" y1="642" x2="826" y2="642" stroke="#df7650" stroke-width="5"/>
+    <text x="710" y="628" text-anchor="middle" fill="#b85e3d" font-size="18">constant temperature</text>
+    <g fill="#59605c" font-size="20">
+      <text x="593" y="710">⁴⁰K keeps producing ⁴⁰Ar</text>
+      <text x="593" y="752">argon diffuses toward grain edges</text>
+      <text x="593" y="794">the same process runs for 1300 My</text>
     </g>
-    <circle cx="232" cy="222" r="6" fill="#79b995"/>
-    <circle cx="282" cy="222" r="6" fill="#79b995"/>
-    <ellipse cx="256" cy="292" rx="49" ry="57" fill="#79b995" stroke="#2e6a58" stroke-width="3"/>
-    <ellipse cx="240" cy="281" rx="8" ry="13" fill="#202523"/>
-    <ellipse cx="272" cy="281" rx="8" ry="13" fill="#202523"/>
-    <circle cx="237" cy="277" r="2.7" fill="#fff"/>
-    <circle cx="269" cy="277" r="2.7" fill="#fff"/>
-    <path d="M239 314 Q256 327 274 313" fill="none" stroke="#2e6a58" stroke-width="3" stroke-linecap="round"/>
-    <path d="M215 337 Q197 356 208 383" fill="none" stroke="#2e6a58" stroke-width="8" stroke-linecap="round"/>
-    <path d="M296 337 Q309 353 294 369" fill="none" stroke="#2e6a58" stroke-width="8" stroke-linecap="round"/>
-    <polygon points="282,363 301,351 313,369 292,384" fill="#5e93b2" stroke="#2e607e" stroke-width="2"/>
-    <text x="165" y="468" text-anchor="middle" fill="#252927" font-size="23">newly formed feldspar</text>
+    <path d="M590 842 H830" stroke="#6c716d" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="710" y="878" text-anchor="middle" fill="#765a7d" font-size="21">elapsed time = 1300 My</text>
 
-    <!-- Refrigerator -->
-    <rect x="400" y="146" width="160" height="274" rx="14" fill="#dcecf1" stroke="#48778e" stroke-width="4"/>
-    <line x1="400" y1="257" x2="560" y2="257" stroke="#48778e" stroke-width="3"/>
-    <line x1="531" y1="184" x2="531" y2="230" stroke="#48778e" stroke-width="8" stroke-linecap="round"/>
-    <line x1="531" y1="285" x2="531" y2="331" stroke="#48778e" stroke-width="8" stroke-linecap="round"/>
-    <g stroke="#5b9fbd" stroke-width="3" stroke-linecap="round">
-      <line x1="450" y1="202" x2="510" y2="202"/>
-      <line x1="480" y1="172" x2="480" y2="232"/>
-      <line x1="459" y1="181" x2="501" y2="223"/>
-      <line x1="501" y1="181" x2="459" y2="223"/>
+    <!-- Present-day lab -->
+    <rect x="155" y="980" width="748" height="148" rx="24" fill="#fff" stroke="#d4d0c6" stroke-width="2"/>
+    <text x="190" y="1021" fill="#59605c" font-size="20" letter-spacing="1.4">EARTH LAB · PRESENT</text>
+    <path d="M202 1086 H270 L256 1039 H217 Z" fill="#ead8c0" stroke="#a48c69" stroke-width="3"/>
+    <path d="M223 1039 V1018 H250 V1039" fill="none" stroke="#a48c69" stroke-width="3"/>
+    <circle cx="316" cy="1065" r="28" fill="#e8edf0" stroke="#765a7d" stroke-width="4"/>
+    <circle cx="306" cy="1057" r="6" fill="#df7650"/>
+    <path d="M360 1065 H397" stroke="#6c716d" stroke-width="3" marker-end="url(#arrow)"/>
+    <g fill="#252927" font-size="20">
+      <text x="420" y="1057">measure age + surviving natural ⁴⁰Ar</text>
+      <text x="420" y="1093" fill="#765a7d">infer the one unknown: T<tspan baseline-shift="sub" font-size="14">fridge</tspan></text>
     </g>
-    <polygon points="460,333 484,315 510,338 487,360" fill="#5e93b2" stroke="#2e607e" stroke-width="3"/>
-    <text x="480" y="457" text-anchor="middle" fill="#252927" font-size="27">constant temperature</text>
-    <text x="480" y="487" text-anchor="middle" fill="#8a5b45" font-size="21">hundreds of millions of years</text>
-
-    <!-- Earth living room -->
-    <rect x="684" y="145" width="222" height="275" rx="10" fill="#f3e7d2" stroke="#bcae98" stroke-width="3"/>
-    <rect x="705" y="174" width="76" height="88" fill="#b8dce8" stroke="#728f9a" stroke-width="3"/>
-    <path d="M743 174 V262 M705 218 H781" stroke="#728f9a" stroke-width="2"/>
-    <path d="M707 360 Q710 318 749 318 H838 Q877 318 880 360 V399 H707 Z" fill="#ca8876" stroke="#8e5d52" stroke-width="3"/>
-    <rect x="726" y="297" width="60" height="42" rx="10" fill="#e8b29e"/>
-    <rect x="800" y="297" width="60" height="42" rx="10" fill="#e8b29e"/>
-    <line x1="866" y1="250" x2="866" y2="328" stroke="#665e58" stroke-width="5"/>
-    <path d="M840 250 H892 L879 218 H852 Z" fill="#efd68a" stroke="#8f8054" stroke-width="3"/>
-    <ellipse cx="805" cy="414" rx="74" ry="12" fill="#b98160" opacity="0.25"/>
-    <polygon points="781,383 810,362 838,389 810,413" fill="#5e93b2" stroke="#2e607e" stroke-width="3"/>
-    <g fill="none" stroke="#9e6eb3" stroke-width="4" stroke-linecap="round" opacity="0.75">
-      <path d="M770 345 C738 315 748 281 780 275"/>
-      <path d="M846 349 C881 318 870 280 839 272"/>
-      <path d="M766 371 C729 372 716 344 727 322"/>
-    </g>
-    <text x="795" y="457" text-anchor="middle" fill="#252927" font-size="27">aged feldspar</text>
-    <text x="795" y="487" text-anchor="middle" fill="#9e6eb3" font-size="21">teleported into our living room</text>
-
-    <!-- Flow arrows -->
-    <g fill="none" stroke="#6a706c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M310 292 H330"/>
-      <path d="M625 292 H645"/>
-    </g>
-    <g fill="#6a706c">
-      <path d="M330 292 L319 284 V300 Z"/>
-      <path d="M645 292 L634 284 V300 Z"/>
-    </g>
-
-    <text x="480" y="556" text-anchor="middle" fill="#252927" font-family="Georgia, 'Times New Roman', serif" font-size="26">known age + surviving argon → infer the refrigerator temperature</text>
   </g>
 </svg>

@@ -230,23 +230,28 @@
 
           <section class="article-grid subsection" id="perfect-crystal-riddle">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260724a" width="960" height="600" alt="An alien collects newly formed feldspar on Mars, stores it at one constant refrigerator temperature for hundreds of millions of years, and teleports the aged rock to Earth">
+              <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260724b" width="960" height="1180" alt="A vertical timeline from formation 1300 million years ago to the present shows a feldspar made entirely of identical spherical grains spending its whole age at one unknown constant refrigerator temperature">
             </figure>
 
             <div class="article-copy">
               <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
-              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
-              <p>We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
+              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for 1.3 billion years, and then teleports the aged feldspar into our living room on Earth.</p>
+              <p>“Perfectly homogeneous” is the useful fiction: every spherical grain has the same radius \(r\), the same \(D_0\), and the same \(E_a\). The rock spends exactly 1300 million years at one unknown temperature. We know how to measure its age and the natural ⁴⁰Ar that survived. Our remaining task is to infer the temperature of the alien’s refrigerator.</p>
             </div>
           </section>
 
           <section class="article-grid subsection">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260724a" width="960" height="620" alt="Warm argon atoms have a larger probability of crossing the activation-energy barrier for a diffusion jump, producing Arrhenius temperature dependence">
+              <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260724b" width="960" height="1000" alt="A pictorial derivation in which argon crosses an energy barrier between feldspar cages, Boltzmann statistics determine the successful jump rate, and an unbiased random walk converts that rate into Arrhenius diffusivity">
             </figure>
 
             <div class="article-copy">
-              <p>As previously discussed, argon can move through solid feldspar because it is neutral, unlike K⁺. Each atomic jump requires enough thermal energy to cross an activation barrier. Warmer atoms cross that barrier more often, so argon’s diffusivity rises steeply with temperature according to Arrhenius kinetics:</p>
+              <p>Argon’s neutrality explains why it is not locked to a charged lattice site like K⁺, but neutrality alone does not give us a diffusion law. The Arrhenius form follows from a more specific picture. An argon atom spends most of its time rattling inside a stable cage in the solid crystal. Reaching the next cage requires passing through a narrower, higher-energy configuration.</p>
+              <p>Suppose the lattice remains structurally stable, thermal equilibrium holds, and one effective barrier \(E_a\) dominates the hop. Boltzmann statistics then give the relative probability of reaching the barrier. If \(\nu_0\) is the attempt frequency, the successful hop rate is</p>
+              <div class="equation" role="math" aria-label="The successful hop rate is attempt frequency times an Arrhenius factor">
+                \[\Gamma(T)=\nu_0\exp\!\left(-\frac{E_a}{R_gT}\right).\]
+              </div>
+              <p>Each unbiased three-dimensional hop moves the atom a characteristic distance \(\ell\), so \(\langle x^2\rangle=\Gamma(T)t\ell^2=6D(T)t\). Folding the attempt rate, jump length, geometry, and correlations into \(D_0\) gives</p>
               <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
                 \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
               </div>
@@ -278,18 +283,27 @@
                   </tr>
                 </tbody>
               </table>
-              <p>Every grain in this imaginary rock has the same diffusion distance and the same \(D_0\) and \(E_a\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped. At a higher temperature, more escapes. Once the rock’s age and diffusion kinetics are known, the surviving radiogenic argon can be inverted for the refrigerator temperature.</p>
+              <p>This is an effective kinetic model, not a claim that every microscopic pathway through feldspar is literally identical. Over the fitted laboratory range, feldspar remains a solid framework and argon is an inert guest rather than part of that framework, so thermally activated cage-to-cage hopping is a reasonable reduction. Step heating supplies the empirical check: one barrier predicts a straight line in \(\ln(D/r^2)\) against \(1/T\). At a low refrigerator temperature, nearly all radiogenic argon remains trapped; at a higher temperature, more escapes.</p>
             </div>
           </section>
 
           <section class="article-grid subsection">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260724a" width="960" height="720" alt="Step heating first fits argon diffusion kinetics from laboratory release, then combines those kinetics with retained natural argon to infer the constant Martian refrigerator temperature">
+              <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260724b" width="960" height="720" alt="A solved single-domain step-heating simulation shows the oven schedule, argon released in each five-minute step, the cumulative staircase, and the inversion from retained natural argon to refrigerator temperature">
             </figure>
 
             <div class="article-copy">
               <p>This experiment is called <em>step heating</em>. The dating experiment has already supplied a laboratory ³⁹Ar tracer. Instead of jumping immediately to the hottest oven setting, we hold the rock at a sequence of known temperatures and measure the packet of ³⁹Ar released during each step. Because ³⁹Ar and ⁴⁰Ar are isotopes of the same element, they follow effectively the same diffusion law.</p>
-              <p>The cooler oven steps release little ³⁹Ar. As the oven gets hotter and diffusion accelerates, the released packets grow; after the easiest argon has escaped, they shrink again. Fitting the entire release curve gives us \(E_a\) and the effective diffusion scale \(D_0/r^2\).</p>
+              <p>The figure solves the spherical diffusion equation for one domain under a representative Nakhla-style schedule: five minutes at each successively hotter temperature, with \(E_a=117\ \mathrm{kJ\,mol^{-1}}\) and \(\ln[(D_0/r^2)/(1\ \mathrm{s^{-1}})]=5.7\). The cumulative curve is a staircase because we collect one measurement after each hold. It does not jump from zero to one in a single step. Argon near a grain’s surface has a shorter escape route than argon near its center, so the middle 80% of the release still spans about 475–750°C in this example.</p>
+              <div class="equation equation--wide" role="math" aria-label="Exact cumulative release from a spherical diffusion domain">
+                \[
+                  \Theta_j=\sum_{i\le j}\frac{D(T_i)}{r^2}\Delta t_i,
+                  \qquad
+                  F(\Theta_j)=1-\frac{6}{\pi^2}
+                  \sum_{n=1}^{\infty}\frac{e^{-n^2\pi^2\Theta_j}}{n^2}.
+                \]
+              </div>
+              <p>Fitting the measured staircase to this curve gives \(E_a\) and the effective diffusion scale \(D_0/r^2\).</p>
               <p>We can now replay the rock’s known age under a range of candidate refrigerator temperatures. Each temperature predicts how much natural ⁴⁰Ar should remain. The temperature whose prediction matches the measured ⁴⁰Ar is the inferred temperature of the alien’s refrigerator.</p>
             </div>
           </section>
