@@ -147,41 +147,41 @@ def render(output: Path) -> None:
     )
     incremental, cumulative = laboratory_release()
 
-    figure = plt.figure(figsize=(9.6, 7.2), facecolor="#f7f5ef")
+    # The essay displays this figure in a narrow media column, so the four
+    # stages run vertically. Each plot can then use the full column width.
+    figure = plt.figure(figsize=(8.0, 11.0), facecolor="#f7f5ef")
     grid = figure.add_gridspec(
-        3,
-        2,
-        width_ratios=(1.62, 1.0),
-        height_ratios=(0.78, 1.0, 1.0),
-        left=0.075,
+        4,
+        1,
+        height_ratios=(0.78, 1.0, 1.0, 1.0),
+        left=0.12,
         right=0.965,
-        bottom=0.10,
-        top=0.83,
-        wspace=0.31,
-        hspace=0.47,
+        bottom=0.075,
+        top=0.88,
+        hspace=0.65,
     )
     schedule_axis = figure.add_subplot(grid[0, 0])
     release_axis = figure.add_subplot(grid[1, 0])
     cumulative_axis = figure.add_subplot(grid[2, 0])
-    inversion_axis = figure.add_subplot(grid[:, 1])
+    inversion_axis = figure.add_subplot(grid[3, 0])
 
     figure.suptitle(
-        "a solved single-domain step-heating experiment",
+        "a simulated single-domain step-heating experiment",
         x=0.51,
-        y=0.965,
-        fontsize=20,
+        y=0.973,
+        fontsize=19,
         fontfamily="DejaVu Serif",
         fontweight="normal",
     )
     figure.text(
         0.51,
-        0.910,
+        0.935,
         "5 min per step · spherical grains · "
         r"$E_a=117$ kJ mol$^{-1}$ · "
         r"$\ln[(D_0/r^2)/(1\ \mathrm{s}^{-1})]=5.7$",
         ha="center",
         color="#666b67",
-        fontsize=10,
+        fontsize=9.5,
     )
 
     steps = np.arange(1, len(TEMPERATURES_C) + 1)
@@ -331,8 +331,8 @@ def render(output: Path) -> None:
     )
     style_axis(inversion_axis)
     inversion_axis.text(
-        -74,
-        0.21,
+        -75,
+        0.18,
         "known age\n"
         r"+ fitted $E_a,\ D_0/r^2$"
         "\n+ measured natural ⁴⁰Ar",
@@ -347,19 +347,20 @@ def render(output: Path) -> None:
     inversion_axis.annotate(
         r"$T_\mathrm{fridge}$",
         xy=(target_temperature, measured_retention),
-        xytext=(16, 0.83),
+        xytext=(12, 0.78),
         arrowprops={"arrowstyle": "->", "color": "#b85e3d", "lw": 1.2},
         color="#b85e3d",
         fontsize=10,
     )
 
     figure.text(
-        0.075,
-        0.035,
-        "Exact spherical diffusion solution. The staircase connects discrete "
-        "measurements; diffusion within each five-minute hold is continuous.",
+        0.12,
+        0.021,
+        "Exact spherical diffusion solution. The staircase connects discrete measurements;\n"
+        "diffusion within each five-minute hold is continuous.",
         color="#70746f",
         fontsize=7.8,
+        linespacing=1.35,
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(

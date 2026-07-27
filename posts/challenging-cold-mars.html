@@ -111,9 +111,9 @@
           </div>
 
           <section class="article-grid subsection" id="argon-source">
-            <figure class="section-media">
+            <figure class="section-media" aria-label="Potassium inside a feldspar crystal">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/radioactive-clock.jpg?v=20260718d">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="A rotating three-dimensional feldspar framework shows potassium sitting inside its cavities" poster="../assets/cold-mars/manim/radioactive-clock.jpg?v=20260718d">
                   <source src="../assets/cold-mars/manim/radioactive-clock.mp4?v=20260718d" type="video/mp4">
                 </video>
               </div>
@@ -126,9 +126,9 @@
           </section>
 
           <section class="article-grid subsection" id="argon-clock-start">
-            <figure class="section-media">
+            <figure class="section-media" aria-label="Argon closure as molten feldspar cools">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-closure-clock.jpg?v=20260719i">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Argon escapes while feldspar is molten, then accumulates after the crystal lattice forms" poster="../assets/cold-mars/manim/argon-closure-clock.jpg?v=20260719i">
                   <source src="../assets/cold-mars/manim/argon-closure-clock.mp4?v=20260719i" type="video/mp4">
                 </video>
               </div>
@@ -165,9 +165,9 @@
           </section>
 
           <section class="article-grid subsection" id="argon-irradiation">
-            <figure class="section-media">
+            <figure class="section-media" aria-label="Argon irradiation dating with a co-irradiated Earth monitor">
               <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724c">
+                <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Co-irradiated Earth and Martian feldspars provide the isotope ratios used to infer the Martian rock's age" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724c">
                   <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724c" type="video/mp4">
                 </video>
               </div>
@@ -230,72 +230,93 @@
 
           <section class="article-grid subsection" id="perfect-crystal-riddle">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260725a" width="960" height="900" alt="A vertical timeline shows a newly formed Martian rock magnified into identical spherical grains, stored in a refrigerator from 1300 million years ago until the present, then measured on Earth">
+              <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260725b" width="960" height="900" alt="A vertical timeline shows a newly formed Martian rock magnified into identical spherical grains, stored in a refrigerator from 1300 million years ago until the present, then measured on Earth">
             </figure>
 
             <div class="article-copy">
               <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
-              <p>An ancient Martian alien walks over to a fresh volcanic eruption, picks up a newly formed feldspar, chucks it into a refrigerator held at one constant temperature for 1.3 billion years, and then teleports the aged rock into our living room on Earth.</p>
-              <p>Assume every grain is an identical sphere. We already know the rock’s age and how much radiogenic ⁴⁰Ar it contains. What was the refrigerator temperature?</p>
+              <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
+              <p>We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. To solve the toy problem, we need two more links: how temperature controls argon’s escape, and how the surviving argon reveals the refrigerator temperature.</p>
             </div>
           </section>
 
           <section class="article-grid subsection">
-            <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260725a" width="960" height="760" alt="Argon crosses an activation-energy barrier between feldspar cages; its attempt frequency and Boltzmann factor determine the successful-hop rate, which becomes diffusivity through a three-dimensional random walk">
-            </figure>
+            <div class="section-media-stack">
+              <figure class="section-media section-media--diagram">
+                <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260725b" width="960" height="940" alt="Argon crosses an activation-energy barrier between feldspar cavities; the bottleneck has greater Boltzmann weight at higher temperature, and many unbiased hops become Arrhenius diffusion">
+              </figure>
+              <figure class="section-media" aria-label="Temperature controls argon retention">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="At the same elapsed time, a warmer diffusion domain loses more argon than a colder one" poster="../assets/cold-mars/manim/temperature-retention.jpg?v=20260725a">
+                    <source src="../assets/cold-mars/manim/temperature-retention.mp4?v=20260725a" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+            </div>
 
             <div class="article-copy">
-              <p>Inside feldspar, argon occupies cavities in the aluminosilicate framework. A hop into a neighboring cavity passes through a narrower, higher-energy configuration. Let \(E_a\) be the molar energy difference between the cavity and that bottleneck.</p>
-              <p>During each laboratory hold, the framework remains solid and an argon atom rattles in its cavity many times before a successful hop. At absolute temperature \(T\), the bottleneck’s Boltzmann weight relative to the cavity is \(\exp[-E_a/(R_gT)]\), where \(R_g\) is the gas constant. If the atom attempts \(\nu_0\) jumps per second, its successful-hop rate is</p>
+              <p>Temperature controls how quickly argon moves through the feldspar. An argon atom spends most of its time in cavities in the aluminosilicate framework. To reach a neighboring cavity, it must squeeze through a narrower, higher-energy configuration. Let \(E_a\) be the molar energy needed to reach that bottleneck.</p>
+              <p>While the feldspar remains crystalline, thermal motion makes argon repeatedly sample configurations around a cavity. In a one-barrier model, the bottleneck’s Boltzmann weight relative to the stable cavity is \(\exp[-E_a/(R_gT)]\), where \(T\) is absolute temperature and \(R_g\) is the gas constant. If thermal motion supplies \(\nu_0\) attempts per second, the successful-hop rate is</p>
               <div class="equation" role="math" aria-label="The successful hop rate is attempt frequency times an Arrhenius factor">
                 \[\Gamma(T)=\nu_0\exp\!\left(-\frac{E_a}{R_gT}\right).\]
               </div>
-              <p>Let \(\ell\) be the distance between neighboring cavities. After \(t\) seconds of an unbiased three-dimensional random walk,</p>
+              <p>As \(T\) rises, the exponential penalty shrinks and successful hops become much more frequent.</p>
+              <p>The hops have no preferred direction. If neighboring cavities are separated by distance \(\ell\), then after \(t\) seconds the atom’s three-dimensional random walk satisfies</p>
               <div class="equation" role="math" aria-label="Mean squared displacement from random hopping equals six times diffusivity times time">
                 \[\left\langle |\Delta\mathbf{x}|^2\right\rangle=\Gamma(T)t\ell^2=6D(T)t.\]
               </div>
-              <p>Defining \(D_0=\ell^2\nu_0/6\) gives the Arrhenius diffusion law:</p>
+              <p>Combining the attempt rate and hop length into \(D_0=\ell^2\nu_0/6\) gives the Arrhenius diffusion law:</p>
               <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
                 \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
               </div>
-              <p>For one spherical domain of radius \(r\), this law predicts a straight line in \(\ln(D/r^2)\) against \(1/T\), with slope \(-E_a/R_g\). Step heating measures that line.</p>
+              <p>Escaping also takes longer when the diffusion domain is larger. For a spherical domain of radius \(r\), the release rate depends on \(D(T)/r^2\): doubling \(r\) makes the characteristic diffusion time four times longer.</p>
+              <p>The age measurement does not tell us \(E_a\) or \(D_0/r^2\) for this feldspar. We measure them with <em>step heating</em>.</p>
             </div>
           </section>
 
           <section class="article-grid subsection">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260724b" width="960" height="720" alt="A solved single-domain step-heating simulation shows the oven schedule, argon released in each five-minute step, the cumulative staircase, and the inversion from retained natural argon to refrigerator temperature">
+              <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260725a" width="960" height="1320" alt="A single-domain step-heating simulation shows the oven schedule, argon released in each five-minute step, the cumulative staircase, and the inversion from retained natural argon to refrigerator temperature">
             </figure>
 
             <div class="article-copy">
-              <p><em>Step heating</em> holds the rock at a sequence of known temperatures and collects one ³⁹Ar measurement after each hold. ³⁹Ar and ⁴⁰Ar follow the same diffusion law.</p>
-              <p>Under the five-minute schedule shown, the middle 80% of the simulated release spans about 475–750°C. Argon near the grain surface escapes before argon near the center.</p>
-              <div class="equation equation--wide" role="math" aria-label="Exact cumulative release from a spherical diffusion domain">
-                \[
-                  \Theta_j=\sum_{i\le j}\frac{D(T_i)}{r^2}\Delta t_i,
-                  \qquad
-                  F(\Theta_j)=1-\frac{6}{\pi^2}
-                  \sum_{n=1}^{\infty}\frac{e^{-n^2\pi^2\Theta_j}}{n^2}.
-                \]
-              </div>
-              <p>Fitting the measured staircase to this curve gives \(E_a\) and the effective diffusion scale \(D_0/r^2\).</p>
-              <p>With \(E_a\), \(D_0/r^2\), and the rock’s age fixed, each candidate refrigerator temperature predicts a surviving ⁴⁰Ar inventory. Matching that prediction to the measurement gives the refrigerator temperature.</p>
+              <p>The irradiation used for dating leaves ³⁹Ar throughout the same grains that contained ³⁹K. In a step-heating experiment, we hold the rock at a sequence of successively hotter temperatures and measure the packet of ³⁹Ar released after each hold. ³⁹Ar and ⁴⁰Ar follow the same diffusion law.</p>
+              <p>The observations form a staircase because the instrument collects one packet after each hold. Even one perfectly homogeneous spherical grain empties over many steps: argon near the surface has a shorter route out than argon near the center. Under the five-minute schedule shown, the middle 80% of the simulated release spans about 475–750°C.</p>
+              <p>A candidate pair \((E_a,D_0/r^2)\) predicts the entire staircase. Fitting that prediction to the laboratory measurements calibrates the diffusion kinetics of this feldspar.</p>
+              <details class="derivation">
+                <summary>show the single-sphere release equation</summary>
+                <div class="derivation-body">
+                  <p>After step \(j\), the dimensionless diffusive exposure is</p>
+                  <div class="equation equation--wide" role="math" aria-label="Dimensionless diffusive exposure accumulated through step j">
+                    \[
+                      \Theta_j=\sum_{i\le j}\frac{D(T_i)}{r^2}\Delta t_i.
+                    \]
+                  </div>
+                  <p>For argon initially distributed uniformly through a sphere, the cumulative fraction released is</p>
+                  <div class="equation equation--wide" role="math" aria-label="Exact cumulative release from a spherical diffusion domain">
+                    \[
+                      F(\Theta_j)=1-\frac{6}{\pi^2}
+                      \sum_{n=1}^{\infty}\frac{e^{-n^2\pi^2\Theta_j}}{n^2}.
+                    \]
+                  </div>
+                </div>
+              </details>
+              <p>Now replay the rock’s known lifetime in the model. For each candidate refrigerator temperature, the Arrhenius law predicts its diffusion rate; the spherical release model predicts how much natural ⁴⁰Ar survives. The candidate that matches the measured ⁴⁰Ar gives the refrigerator temperature.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="heterogeneous-riddle">
             <div class="section-media-stack">
-              <figure class="section-media">
+              <figure class="section-media" aria-label="Diffusion-domain size controls argon retention">
                 <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/closure-temperature.jpg?v=20260724a">
-                    <source src="../assets/cold-mars/manim/closure-temperature.mp4?v=20260724a" type="video/mp4">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="At the same temperature, a smaller diffusion domain loses more argon than a larger one" poster="../assets/cold-mars/manim/domain-size-retention.jpg?v=20260725a">
+                    <source src="../assets/cold-mars/manim/domain-size-retention.mp4?v=20260725a" type="video/mp4">
                   </video>
                 </div>
               </figure>
-              <figure class="section-media">
+              <figure class="section-media" aria-label="Multiple diffusion domains inside one feldspar">
                 <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/multi-domain.jpg">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Small, medium, and large diffusion domains inside one feldspar release argon at different temperatures" poster="../assets/cold-mars/manim/multi-domain.jpg">
                     <source src="../assets/cold-mars/manim/multi-domain.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -304,9 +325,9 @@
 
             <div class="article-copy">
               <h3>time-traveling riddle: using a heterogeneous rock as a better thermometer</h3>
-              <p>Real feldspar is partitioned into diffusion domains with different effective sizes. A small domain empties at a lower temperature; a large domain retains argon until a hotter oven step.</p>
-              <p>The step-heating curve is a weighted sum of these release responses. Early measurements constrain the low-retentivity material, later measurements constrain the high-retentivity material, and the natural ⁴⁰Ar inventory records their combined response to Martian temperatures.</p>
-              <p>Shuster &amp; Weiss fit Nakhla with two domains: 3% low-retentivity material and 97% high-retentivity material. My analysis replaces those two point masses with a distribution over diffusion scales.</p>
+              <p>The toy rock has one diffusion distance, so every grain responds on the same temperature scale. The multiple-diffusion-domain (MDD) model treats real feldspar as a mixture of domains, each with its own effective argon escape distance. During the same warm interval, a small domain may lose most of its argon while a large domain retains nearly all of it.</p>
+              <p>Those different responses give us several thermometers inside one rock. During step heating, low-retentivity domains release their ³⁹Ar in the earlier, cooler oven steps; high-retentivity domains hold on until later, hotter steps. The full staircase tells us how much material responds at each diffusion scale.</p>
+              <p>The natural ⁴⁰Ar retained across those same domains then constrains the Martian temperature history. The remaining modeling choice is the shape of the diffusion-domain distribution.</p>
             </div>
           </section>
         </section>
@@ -319,9 +340,9 @@
 
           <section class="article-grid subsection" id="two-spike">
             <div class="section-media-stack">
-              <figure class="section-media">
+              <figure class="section-media" aria-label="Two-spike and flexible diffusion distributions">
                 <div class="video-shell">
-                  <video width="854" height="480" muted loop playsinline controls preload="metadata" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Shuster and Weiss's two-spike diffusion model is compared with a flexible diffusion-scale distribution" poster="../assets/cold-mars/manim/mdd-comparison.jpg">
                     <source src="../assets/cold-mars/manim/mdd-comparison.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -330,32 +351,58 @@
 
             <div class="article-copy">
               <h3>shuster et al's 2-spike model</h3>
-              <p>Shuster &amp; Weiss fit Nakhla’s step-heating curve with a weighted sum of domain-specific release curves:</p>
+              <p>Shuster &amp; Weiss chose a discrete distribution with two domains. The predicted release curve is their weighted sum:</p>
               <div class="equation" role="math" aria-label="F model equals the sum over i of phi i times F i, and the phi values sum to one">
                 \[F_{\mathrm{model}}=\sum_i\phi_iF_i,\qquad\sum_i\phi_i=1\]
               </div>
-              <p>Their two-domain fit assigned 97% of the modeled volume to a high-retentivity domain (HRD) and 3% to a low-retentivity domain (LRD). If \(x=\ln(D_0/r^2)\) is the effective diffusion scale, the model is two point masses:</p>
+              <p>Here \(F_i\) is the release curve of domain \(i\), and \(\phi_i\) is its fraction of the modeled rock.</p>
+              <p>The fit assigned 97% of the modeled volume to a high-retentivity domain (HRD) and 3% to a low-retentivity domain (LRD). If \(x=\ln(D_0/r^2)\) denotes effective diffusion scale, this is a distribution with two point masses:</p>
               <div class="equation" role="math" aria-label="p of x equals phi times delta at x one plus one minus phi times delta at x two">
                 \[p(x)=\phi\,\delta(x-x_1)+(1-\phi)\,\delta(x-x_2)\]
               </div>
-              <p>Two domains are a useful summary of the release curve. For a temperature limit, the exact location and weight of the most retentive material matter enormously. I wanted to carry uncertainty in the whole diffusion-scale distribution through the thermal calculation.</p>
+              <p>The high-retentivity material controls how much argon can survive a long warm interval, so uncertainty in the location and weight of that part of the distribution matters directly for the temperature limit. I replaced the two point masses with a flexible distribution and carried its uncertainty through the thermal calculation.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="nuts-posterior">
             <figure class="section-media">
               <img src="../assets/cold-mars-analysis/rerun/primary-chain-comets.gif?v=7" width="960" height="583" alt="Paired comet trajectories over hexagonal posterior-density backgrounds">
-              <figcaption>The hex animation is from the earlier laboratory-only fit. It shows retained NUTS trajectories, not the joint target used for the temperature result.</figcaption>
+              <figcaption>NUTS trajectories from an exploratory laboratory fit. Each bright head is the current draw; its fading trail shows recent motion through a posterior projection.</figcaption>
             </figure>
 
             <div class="article-copy">
               <h3>the full posterior via NUTS</h3>
-              <p>I replaced the two point masses with a smooth probability vector over 28 diffusion scales. The laboratory ³⁹Ar release constrains that distribution. The natural radiogenic-argon spectrum constrains temperature under a specified excursion duration and start time.</p>
+              <p>I divide \(x=\ln(D_0/r^2)\) into 28 bins and infer the fraction of the rock in each bin. A candidate distribution predicts the laboratory ³⁹Ar staircase. Given a proposed Martian temperature history, the same distribution also predicts the surviving natural ⁴⁰Ar spectrum.</p>
               <div class="equation" role="math" aria-label="posterior over diffusion parameters and temperature given both spectra and an excursion scenario">
-                \[p(\theta,T\mid y_{39},y_{40},s)\propto p(y_{39}\mid\theta)\,p(y_{40}\mid\theta,T,s)\,p(\theta)\,p(T)\]
+                \[
+                  \begin{aligned}
+                    p(\theta,T\mid y_{39},y_{40},s)
+                    &amp;\propto p(y_{39}\mid\theta)\\
+                    &amp;\quad{}\times p(y_{40}\mid\theta,T,s)\\
+                    &amp;\quad{}\times p(\theta)\,p(T).
+                  \end{aligned}
+                \]
               </div>
-              <p>Here \(s\) is one duration-and-start-time cell. The sampler marginalizes over 21 mutually exclusive cells in one expanded ensemble. It sums their likelihoods; multiplying them would count the same rock spectrum repeatedly. Each draw carries a responsibility for every cell, which recovers the posterior conditional on that cell.</p>
-              <p>I ran 64 NUTS chains on eight A100 GPUs, with 2,000 adaptation steps and 4,000 retained draws per chain. The maximum rank-normalized and folded \(\widehat R\) was 1.0010. The minimum bulk and tail effective sample sizes were 83,413 and 96,173. There were no divergences or maximum-depth transitions. Every cell had at least 63,341 responsibility-weighted samples.</p>
+              <p>Here \(\theta\) contains the diffusion distribution, activation energy, and measurement model; \(T\) is the constant excursion temperature; and \(s\) specifies its duration and start time. The laboratory and natural-argon measurements meet through the same \(\theta\). This is where uncertainty about the diffusion-domain distribution becomes uncertainty about temperature.</p>
+              <p>NUTS follows gradients through the joint posterior and leaves samples in proportion to posterior probability. It gives a distribution of plausible diffusion models and temperatures instead of one best-fitting answer.</p>
+              <details class="derivation">
+                <summary>how one run covers 21 timing scenarios</summary>
+                <div class="derivation-body">
+                  <p>The 21 duration-and-start-time cells are mutually exclusive hypotheses for the same observed rock. The sampler targets their mixture,</p>
+                  <div class="equation equation--wide" role="math" aria-label="Expanded ensemble posterior summed over mutually exclusive timing scenarios">
+                    \[
+                      \begin{aligned}
+                        p(\theta,T\mid y)
+                        &amp;\propto p(\theta)\,p(T)\\
+                        &amp;\quad{}\times\sum_s \pi_s\,
+                        p(y_{39}\mid\theta)\\
+                        &amp;\quad{}\times p(y_{40}\mid\theta,T,s).
+                      \end{aligned}
+                    \]
+                  </div>
+                  <p>Each draw has a posterior responsibility for every cell. Weighting by those responsibilities recovers the conditional posterior for any one timing scenario.</p>
+                </div>
+              </details>
             </div>
           </section>
 
@@ -366,44 +413,51 @@
             </figure>
 
             <div class="article-copy">
-              <p>The animation predates the joint analysis. I could not recycle those samples: the earlier fit normalized by all extracted ³⁹Ar and used a legacy spherical-release approximation. The current fit uses the retained total through 850°C and exact spherical eigenmodes.</p>
-              <p>Importance reweighting confirms that the old sample does not cover the corrected target: Pareto \(k=3.44\), effective sample size 1.06 out of 25,600, and one draw receives 97.2% of the weight. A fresh posterior sample was necessary.</p>
+              <p>I ran 64 NUTS chains on eight A100 GPUs, with 2,000 adaptation steps and 4,000 retained draws per chain. The maximum rank-normalized and folded \(\widehat R\) was 1.0010, where 1 means that the chains agree; the minimum bulk and tail effective sample sizes were 83,413 and 96,173. No transitions diverged or reached maximum tree depth.</p>
+              <p>The twelve displayed traces overlap and repeatedly cross the same parameter ranges.</p>
+              <details class="derivation">
+                <summary>why the comet animation and final run use different samples</summary>
+                <div class="derivation-body">
+                  <p>The exploratory animation used a laboratory likelihood that normalized by all extracted ³⁹Ar and used a one-mode approximation on the long-time branch. The final likelihood uses the retained total through 850°C and converged spherical eigenmodes.</p>
+                  <p>Importance reweighting cannot bridge the two targets: Pareto \(k=3.44\), effective sample size 1.06 out of 25,600, and 97.2% of the weight on one draw. I therefore sampled the corrected posterior directly.</p>
+                </div>
+              </details>
             </div>
           </section>
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
               <img src="../assets/cold-mars-analysis/joint/shared-parameter-comparison.png?v=1" width="2464" height="1452" alt="Marginal posterior comparison for six shared diffusion and activation-energy summaries">
-              <figcaption>Gray: old hex run. Blue: corrected laboratory-only control. Orange: joint posterior for a recent 100 My excursion.</figcaption>
+              <figcaption>Gray: old hex run. Blue: corrected laboratory-only control. Orange: joint posterior for a 100 My excursion ending at the present.</figcaption>
             </figure>
 
             <div class="article-copy">
-              <p>I ran a corrected laboratory-only control to separate the change in diffusion physics from the addition of the natural argon spectrum. Its maximum \(\widehat R\) was 1.0005, with zero divergences.</p>
-              <p>The old and corrected targets disagree, as the failed reweighting predicts. The corrected laboratory control and joint posterior agree closely: across six shared summaries and all 21 timing cells, their marginal-density overlap is 93.2–96.0%. The natural spectrum mostly identifies excursion temperature; it does not materially relearn the diffusion distribution.</p>
+              <p>A corrected laboratory-only control separates the information in the two experiments. Its diffusion marginals overlap the joint posterior by 93.2–96.0% across all six summaries and all 21 timing cells.</p>
+              <p>The laboratory staircase therefore determines most of the diffusion distribution. Adding the natural ⁴⁰Ar spectrum mainly determines which excursion temperatures are compatible with that calibrated distribution.</p>
             </div>
           </section>
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
               <img src="../assets/cold-mars-analysis/joint/diffusion-distribution.png?v=1" width="1640" height="880" alt="Joint posterior over diffusion scale with Shuster and Weiss high- and low-retentivity domain proportions overlaid">
-              <figcaption>The orange stems use the right axis and show Shuster &amp; Weiss's 97% HRD and 3% LRD fit.</figcaption>
+              <figcaption>Blue shows the posterior median and pointwise central 95% interval for a 100 My excursion ending at the present. Orange stems use the right axis for Shuster &amp; Weiss's 97% HRD and 3% LRD fit.</figcaption>
             </figure>
 
             <div class="article-copy">
-              <p>The release schedule does not identify two exact domain sizes. It permits a broad peak near the high-retentivity domain and a small tail near the low-retentivity domain. The pale region is the pointwise central 95% interval after the natural spectrum and a 100-million-year recent excursion are included.</p>
-              <p>The horizontal axis is \(\ln(D_0/r^2)\), not grain diameter. A lower value is more retentive if \(D_0\) is held fixed.</p>
+              <p>The posterior does not concentrate at two exact diffusion scales. It has a broad high-retentivity peak and a small low-retentivity tail. The two Shuster &amp; Weiss locations fall within those broader regions, while the NUTS fit preserves the range of distributions allowed by the staircase.</p>
+              <p>The horizontal axis is \(\ln(D_0/r^2)\), so smaller values indicate slower argon loss. It is an effective diffusion scale rather than a direct measurement of grain diameter.</p>
             </div>
           </section>
 
           <section class="article-grid subsection analysis-result">
             <figure class="section-media section-media--light">
               <img src="../assets/cold-mars-analysis/joint/posterior-predictive.png?v=1" width="2040" height="820" alt="Posterior predictions for the laboratory argon release and natural radiogenic-argon spectrum">
-              <figcaption>Observed values are orange. Pale bands are 90% replicated-data intervals.</figcaption>
+              <figcaption>100 My excursion ending at the present. Observed values are orange; pale bands are 90% replicated-data intervals.</figcaption>
             </figure>
 
             <div class="article-copy">
-              <p>The left panel checks the inferred diffusion distribution against the laboratory heating schedule. The right checks the same posterior against the natural radiogenic-argon spectrum. Fourteen of eighteen scored laboratory points and seventeen of eighteen natural-spectrum points lie inside their 90% replicated-data intervals.</p>
-              <p>The laboratory misses are clustered in the middle of the heating schedule. I include a fitted discrepancy term rather than treating the published measurement errors as a complete model of recoil, alteration, geometry, and heating-duration error.</p>
+              <p>Sampler diagnostics tell us that NUTS explored its target. Posterior predictive checks ask whether that target can reproduce the two experiments. Fourteen of eighteen scored laboratory points and seventeen of eighteen natural-spectrum points fall inside their 90% replicated-data intervals.</p>
+              <p>The laboratory misses cluster in the middle of the heating schedule. The likelihood includes a fitted discrepancy term for variation left out of the reported measurement errors, including recoil, alteration, geometry, and heating-duration error.</p>
             </div>
           </section>
 
@@ -415,11 +469,12 @@
 
             <div class="article-copy">
               <h3>was Mars warm?</h3>
-              <p>These are direct temperature posteriors from the joint likelihood. There is no 1%-argon-loss threshold. I used a uniform temperature prior from −100 to 100°C.</p>
-              <p>For a 100-million-year excursion ending now, the central 95% interval and median are [−94.45, −18.57, −4.47]°C. Only 0.25% of its conditional posterior is above freezing.</p>
-              <p>The long cold tails are not measurements of a −95°C climate. Below the temperature where diffusion becomes negligible, the rock cannot distinguish one cold temperature from another, so the lower tail follows the prior bound. The upper tail contains the useful constraint.</p>
-              <p>This Nakhla analysis covers the last 1.3 billion years. It does not test Noachian crater erosion several billion years ago, and it does not replace the ALH84001 half of Shuster &amp; Weiss's four-billion-year argument. My original comparison put those time windows too close together.</p>
-              <p>The result does not support a recent 100-million-year interval above freezing. A 100-million-year interval near the beginning of the last billion years is not excluded at the central-95% level, but it has little posterior mass above 0°C under this prior.</p>
+              <p>For each timing scenario, the joint likelihood gives a posterior over constant excursion temperature. The plot shows excursions ending at the present under a uniform prior from −100 to 100°C.</p>
+              <p>Each scenario contains one constant-temperature excursion; the model treats natural argon loss outside that interval as negligible.</p>
+              <p>For a 100-million-year excursion ending now, the median is −18.6°C and the 97.5th percentile is −4.5°C. Only 0.25% of the posterior lies above freezing. For the same duration beginning one billion years ago, the 97.5th percentile reaches 1.8°C, while 4.5% of the posterior lies above freezing.</p>
+              <p>The figure is cropped at −40°C because colder values carry little additional information. Once diffusion is negligible, Nakhla cannot distinguish one cold temperature from another; the upper tail supplies the useful temperature limit.</p>
+              <p>Nakhla records roughly the last 1.3 billion years. These results do not test Noachian crater erosion several billion years ago, and they do not include the ALH84001 meteorite used in the four-billion-year argument by Shuster &amp; Weiss.</p>
+              <p>Under this prior, discrepancy model, and single-excursion history, a recent 100-million-year interval above freezing lies outside Nakhla’s central 95% posterior interval. An equally long interval near the beginning of the last billion years reaches above 0°C at the edge of that interval, but most of its posterior remains below freezing.</p>
               <p>The sampler record, model, compact posterior, and plots are in <a href="https://github.com/jeffreyscheng/martiandating/tree/main/artifacts/joint_age_spectrum_20260721">martiandating ↗</a>; the animation source is in <a href="https://github.com/jeffreyscheng/geochronology">geochronology ↗</a>. The diffusion model follows Shuster &amp; Weiss, <a href="https://doi.org/10.1126/science.1113077">Science (2005) ↗</a>, and Lovera, Richter &amp; Harrison, <a href="https://doi.org/10.1029/JB094iB12p17917">JGR (1989) ↗</a>.</p>
             </div>
           </section>

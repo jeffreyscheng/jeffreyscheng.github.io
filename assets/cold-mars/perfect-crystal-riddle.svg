@@ -30,10 +30,11 @@
     <line x1="100" y1="68" x2="100" y2="840" stroke="#676d69" stroke-width="4" marker-end="url(#arrow)"/>
     <line x1="86" y1="90" x2="114" y2="90" stroke="#676d69" stroke-width="3"/>
     <line x1="86" y1="795" x2="114" y2="795" stroke="#676d69" stroke-width="3"/>
-    <text x="76" y="97" text-anchor="end" fill="#555b57" font-size="19">1300 My</text>
-    <text x="76" y="802" text-anchor="end" fill="#555b57" font-size="19">present</text>
+    <text x="76" y="97" text-anchor="end" fill="#555b57" font-size="24">1300 My</text>
+    <text x="76" y="802" text-anchor="end" fill="#555b57" font-size="24">present</text>
 
     <!-- Formation and geometric idealization -->
+    <text x="150" y="58" fill="#59605c" font-size="25" letter-spacing="1.5">MARS · FORMATION</text>
     <path d="M158 285 L236 116 L314 285 Z" fill="#75665e"/>
     <path d="M200 197 L236 116 L271 200 L252 189 L235 212 L218 188 Z" fill="#df7650"/>
     <ellipse cx="236" cy="290" rx="102" ry="16" fill="#ead8d0"/>
@@ -55,6 +56,7 @@
     </g>
 
     <!-- Long refrigerator interval -->
+    <text x="253" y="352" fill="#59605c" font-size="25" letter-spacing="1.5">MARS · REFRIGERATOR</text>
     <rect x="253" y="371" width="345" height="304" rx="29" fill="#dcecf0" stroke="#47798e" stroke-width="5"/>
     <line x1="253" y1="479" x2="598" y2="479" stroke="#47798e" stroke-width="4"/>
     <line x1="545" y1="410" x2="545" y2="446" stroke="#47798e" stroke-width="8" stroke-linecap="round"/>
@@ -74,8 +76,11 @@
     <circle cx="684" cy="525" r="6" fill="#df7650"/>
     <circle cx="843" cy="525" r="6" fill="#df7650"/>
     <text x="764" y="504" text-anchor="middle" fill="#b85e3d" font-family="Georgia, 'Times New Roman', serif" font-size="25">T(t)</text>
+    <text x="764" y="561" text-anchor="middle" fill="#59605c" font-size="22">unknown</text>
+    <text x="764" y="586" text-anchor="middle" fill="#59605c" font-size="22">constant in time</text>
 
     <!-- Present-day transfer to the lab -->
+    <text x="227" y="700" fill="#59605c" font-size="25" letter-spacing="1.5">EARTH · PRESENT</text>
     <g transform="translate(273 773) scale(.58)"><use href="#rock"/></g>
     <line x1="336" y1="773" x2="402" y2="773" stroke="#676d69" stroke-width="4" marker-end="url(#arrow)"/>
     <path d="M437 819 H533 L513 747 H458 Z" fill="#ead8c0" stroke="#a48c69" stroke-width="4"/>
@@ -86,5 +91,7 @@
     <circle cx="672" cy="773" r="6" fill="#765a7d"/>
     <path d="M728 773 H817" stroke="#676d69" stroke-width="4" marker-end="url(#arrow)"/>
     <text x="853" y="782" text-anchor="middle" fill="#765a7d" font-family="Georgia, 'Times New Roman', serif" font-size="34">?</text>
+    <text x="552" y="860" text-anchor="middle" fill="#59605c" font-size="22">measure age + remaining ⁴⁰Ar</text>
+    <text x="853" y="860" text-anchor="middle" fill="#765a7d" font-size="23">infer T</text>
   </g>
 </svg>
