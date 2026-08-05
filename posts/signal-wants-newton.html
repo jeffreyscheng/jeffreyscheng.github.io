@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Why an optimizer should precondition signal directions by the inverse Hessian and noise directions by its inverse square root — and why the per-direction SNR that decides between them is already free in DDP.">
+    <title>signal wants newton, noise wants whitening — jeffrey cheng</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css" integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js" integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+  </head>
+  <body>
+    <main class="post post--wide">
+      <a class="back" href="../index.html">← home</a>
+
+      <article class="essay essay--plain essay--note">
+        <time class="essay-date" datetime="2026-08-05">aug 05, 2026</time>
+        <h1>signal wants newton, noise wants whitening</h1>
+
+        <p class="essay-intro">
+          Muon is the fastest LLM optimizer right now, and it is the maximally humble one: it never has
+          enough confidence to apply curvature information. My premise is that signal directions want to be
+          preconditioned by the inverse Hessian and noise directions want to be whitened, so the dial between
+          Newton and Muon should be set by the per-direction SNR. That sounds like it needs an expensive new
+          measurement. It doesn't — in DDP we already compute everything required and then throw it away.
+        </p>
+
+        <div class="essay-body">
+          <section class="essay-section" id="steepest-descent">
+            <div class="section-heading">
+              <span>01</span>
+              <h2>muon is a steepest descent optimizer</h2>
+            </div>
+            <div class="prose">
+              <p>
+                Muon is the fastest LLM optimizer right now. The benchmark that the optimization community
+                uses is track 3 of the nanogpt speedrun, created by Muon creator Keller Jordan. Muon combines
+                spectral descent (Shampoo with \(\beta_2=0\)) with heavyball momentum. The momentumless update
+                is equivalent to many things:
+              </p>
+              <ul>
+                <li>steepest descent under the spectral norm,</li>
+                <li>the polar factor \(UV^\top\) of the gradient \(G=USV^\top\),</li>
+                <li>\(\operatorname{msign}(G)\),</li>
+                <li>
+                  preconditioning by the inverse square root of the Gram matrix,
+                  \((G^\top G)^{-1/2}G\).
+                </li>
+              </ul>
+              <p>
+                Keller Jordan implemented Muon's msign operation using Newton–Schulz. Muon took off whereas
+                Shampoo didn't for a few reasons: it's very fast — just 15 matmuls and 3% more overhead than
+                Adam — and it "just works." No one tunes Muon.
+              </p>
+
+              <h3>where the spectral norm comes from</h3>
+              <p>
+                The gradient is referred to as the direction of steepest descent, but this masks a silent
+                assumption. For a vector \(w\in\mathbb{R}^m\), function \(L:\mathbb{R}^m\rightarrow\mathbb{R}\),
+                and arbitrary norm \(\Vert\cdot\Vert_\_\) we define the direction of steepest descent
+                \(\Delta w\) at \(w\) to be
+              </p>
+              <div class="equation" role="math" aria-label="The direction of steepest descent under an arbitrary norm">
+                \[\operatorname*{arg\,max}_{\Vert \Delta w\Vert_\_=1} \langle \Delta w, -\nabla_w L\rangle.\]
+              </div>
+              <p>
+                If we constrain \(\Delta w\) to the \(L^2\) hypersphere, we do recover that the unit
+                perturbation of steepest descent is proportional to the gradient. However, this does not hold
+                true of other norms. If we instead constrain \(\Delta w\) to the \(L^\infty\) hypercube, we get
+                \(-\operatorname{sgn}(\nabla_w L)\), the element-wise sign of the vector; this corresponds to
+                the nearest corner on the hypercube where each vertex coordinate is \(\pm 1\). Different
+                choices of norm surface lead to different steepest descent update rules.
+              </p>
+              <p>
+                So which norm should we pick for LLM optimization? It is known that the kernel regime has poor
+                regularization. We instead want feature learning, where for every layer \(\ell\) with weights
+                \(W_\ell\in\mathbb{R}^{n\times m}\), both activations \(h_\ell\) and gradients
+                \(\nabla_{h_\ell}L\) are of order \(\Theta(\sqrt{n})\). As per Condition 1 from Yang, Simon,
+                and Bernstein's "A Spectral Condition for Feature Learning," we get the feature learning
+                regime (\(\mu P\)) when both the weights \(W_\ell\) and the updates \(\Delta W_\ell\) have
+                spectral norm \(\Theta\!\left(\frac{n}{m}\right)\). The norm that controls feature learning is
+                the spectral norm, so that is the norm whose steepest descent direction we want.
+              </p>
+              <p>
+                Working it out gives the polar factor. Given weight matrix \(W\in\mathbb{R}^{n\times m}\),
+                inner product \(\langle A,B\rangle=\operatorname{tr}(A^\top B)\), spectral norm
+                \(\Vert\cdot\Vert_2\), and loss \(L\), write \(G=\nabla_W L\) with SVD
+                \(G=\sum_{i=1}^r\sigma_i u_i v_i^\top\). The inner product achieved by the direction of
+                steepest descent is bounded by the nuclear norm of the perturbation:
+              </p>
+              <div class="equation" role="math" aria-label="The steepest descent inner product is bounded by the nuclear norm of the gradient">
+                \[
+                \begin{aligned}
+                  \max_{\Vert\Delta W\Vert_2=1} \langle \Delta W, G\rangle
+                  &amp;=\max_{\Vert\Delta W\Vert_2=1} \operatorname{tr}\!\left[\left(\sum_{i=1}^r \sigma_i u_iv_i^\top\right)^{\!\top} \Delta W\right]\\
+                  &amp;=\max_{\Vert\Delta W\Vert_2=1} \sum_{i=1}^r \sigma_i \operatorname{tr}\!\left(v_i u_i^\top \Delta W\right)\\
+                  &amp;=\max_{\Vert\Delta W\Vert_2=1} \sum_{i=1}^r \sigma_i\, u_i^\top \Delta W v_i\\
+                  &amp;\leq \sum_{i=1}^r \sigma_i \;=\; \Vert G\Vert_*.
+                \end{aligned}
+                \]
+              </div>
+              <p>
+                It's trivial to show that this equality is achieved by \(\Delta W=UV^\top\). Therefore the
+                direction of steepest descent is the polar factor of the gradient, which we notate
+                \(\operatorname{msign}(G)\), and the steepest descent optimizer is uniquely
+              </p>
+              <div class="equation" role="math" aria-label="The spectral steepest descent update rule">
+                \[W_{t+1}=W_t-\eta\cdot \operatorname{msign}(\nabla_{W_t} L).\]
+              </div>
+            </div>
+          </section>
+
+          <section class="essay-section" id="the-premise">
+            <div class="section-heading">
+              <span>02</span>
+              <h2>the premise</h2>
+            </div>
+            <div class="prose">
+              <p>
+                Notice what that derivation optimized for: feature learning. Nothing in it mentions
+                convergence, and Muon does not converge even on toy problems — it snaps every singular value
+                to one, so it never takes a short step in a direction it has already solved. Newton's method
+                has the opposite profile. It works near convergence, since the Taylor approximation is best at
+                the bottom of the basin, but it does not learn features well in the infinite width limit.
+              </p>
+              <p>
+                My premise is that <strong>"signal" really wants to be preconditioned by the inverse
+                Hessian (Newton's method)</strong>, which should lead to convergence in near-quadratic
+                settings. But <strong>noise really wants to be preconditioned by the inverse square root
+                Hessian (whitening)</strong>. Steepest descent methods like Muon and Shampoo do the latter.
+              </p>
+              <p>
+                Ideally, we implement an optimizer that is equivalent to Newton's method in update directions
+                that are noiseless and equivalent to whitening in update directions that are pure noise. Muon
+                is the <strong>maximally humble</strong> version of this optimizer, where it never has enough
+                confidence to apply curvature information; Muon happens to be optimal under an isotropic
+                Hessian, where the curvature is the same anyway.
+              </p>
+              <p>
+                Read that way, the two methods are not rivals but two settings of one dial — which power of
+                the curvature matrix to precondition by. Whitening is the exponent \(\tfrac12\); Newton is the
+                exponent \(1\). If we knew the SNR of each possible update direction, we could
+                straightforwardly decide how much to turn the dial between Newton and Muon, per direction,
+                every step.
+              </p>
+            </div>
+          </section>
+
+          <section class="essay-section" id="msign-is-biased">
+            <div class="section-heading">
+              <span>03</span>
+              <h2>the empirical update is biased</h2>
+            </div>
+            <div class="prose">
+              <p>
+                There is a second, sharper reason to want per-direction noise information, and it is a defect
+                in msign itself rather than a preference about convergence rates.
+              </p>
+              <p>
+                For true gradient \(G=\nabla_W L\) and minibatch gradient \(\hat G=G+E\) under Gaussian noise
+                model \(E\sim N(0,\Sigma)\), we can straightforwardly show that \(\hat G\) is an unbiased
+                estimator of \(G\) by linearity of expectation. However,
+                \(\operatorname{msign}(\hat G)\) is <em>not</em> an unbiased estimator of
+                \(\operatorname{msign}(G)\).
+              </p>
+              <p>
+                If full-rank \(G\) and \(\hat G\) differed only in their singular values, we would actually
+                have \(\operatorname{msign}(\hat G)=\operatorname{msign}(G)\), since their singular values get
+                snapped to one anyway. But there will be small perturbations such that the \(j\)-th singular
+                vectors do not exactly align, \(\hat u_j\neq u_j\) and \(\hat v_j\neq v_j\), and so we will be
+                amplifying the wrong singular directions to unit length if we choose
+                \(\operatorname{msign}(\hat G)\) as our update direction. For directions \(u_iv_i^\top\) with
+                extremely low signal — potentially below the noise floor of \(\sigma(E)\) — we should be
+                snapping the singular values to zero; for directions where \(s_i\gg\sigma_{\max}(E)\), we
+                should be snapping \(s_i\) to 1 as before. We assert that there is some optimal noise-aware
+                projection that does better than msign.
+              </p>
+              <p>
+                This is worth stating as sharply as possible: msign's unit step is not a free normalization.
+                It is a maximally aggressive statement of confidence in the empirical singular basis, applied
+                uniformly, including to the directions that are pure sampling noise. The fix cannot come from
+                the mean gradient, because the mean gradient is exactly the object whose basis is in
+                question. It has to come from a second statistic.
+              </p>
+            </div>
+          </section>
+
+          <section class="essay-section" id="second-moment-is-free">
+            <div class="section-heading">
+              <span>04</span>
+              <h2>the second moment is already free</h2>
+            </div>
+            <div class="prose">
+              <p>
+                This sounds hard. It isn't, because the measurement is already sitting in the data-parallel
+                training loop, unused.
+              </p>
+              <p>
+                In DDP on an 8×H100 with per-GPU batch size \(B\) and effective batch size \(8B\), we get 8
+                separate microgradients. We currently only use the 1st moment (the mean) when we all-reduce to
+                get the average empirical gradient. But we could also use <strong>cross-gradient
+                disagreement</strong> (like the second moment) to figure out which directions are signal and
+                which directions are noise. We could figure this out in parameter-space directions or in the
+                spectral basis.
+              </p>
+              <p>
+                That is the whole proposal: extract the second-order statistic — the covariance — instead of
+                discarding it. The 8 microgradients are independent, equally sized replicas drawn from disjoint
+                data at the same batch size, which is exactly the structure needed to expose the noise level
+                rather than assume it. Their mean is the gradient estimate; their disagreement is the error bar
+                on that estimate; and the ratio of the two, per direction, is the SNR that sets the dial.
+              </p>
+              <p>
+                The cost accounting is what makes this attractive. Nothing new is computed in the backward
+                pass — the microgradients already exist on each rank, and the all-reduce that averages them
+                already touches every one of them. Nothing new is assumed either, which matters more: a noise
+                model would be a guess about the shape of \(\Sigma\), whereas cross-replica disagreement is a
+                measurement of it. Every departure from Muon's default step should be licensed by a
+                measurement, and this is the measurement we already pay for.
+              </p>
+            </div>
+          </section>
+
+          <section class="essay-section" id="three-questions">
+            <div class="section-heading">
+              <span>05</span>
+              <h2>the three questions to answer</h2>
+            </div>
+            <div class="prose">
+              <p>
+                None of the above is yet an optimizer, and I want to be careful about which parts are premise
+                and which are established. Three questions decide the design, in order:
+              </p>
+              <ul>
+                <li>Is balancing curvature-awareness with noisiness even an interesting thing to do?</li>
+                <li>If so, should we work in the raw parameter basis or the spectral basis?</li>
+                <li>
+                  Should our noise metric be my proposed spectral echo estimator, or something simpler like a
+                  Wiener filter / SNR?
+                </li>
+              </ul>
+              <p>
+                The first question is the one that can kill the whole idea, so it goes first, and it is an
+                empirical question about scale rather than a theoretical one: at the batch sizes and step
+                counts real runs use, is there enough per-direction noise left in the accumulated gradient for
+                any of this to matter? If the answer is no, the honest conclusion is that Muon's humility is
+                already correctly calibrated and the dial should stay where it is. If the answer is yes, then
+                Muon is leaving a measured quantity on the floor at every step, and the interesting work is
+                deciding how much curvature each direction's confidence buys.
+              </p>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
