@@ -1207,7 +1207,7 @@ h1 {
   margin-bottom: clamp(3.5rem, 8vw, 6rem);
 }
 
-.intro-row--toc {
+.intro-row:last-child {
   margin-bottom: 0;
 }
 
@@ -1352,7 +1352,8 @@ h1 {
   margin: 0 0 1em;
 }
 
-.article-copy ul {
+.article-copy ul,
+.article-copy ol {
   margin: 0.15rem 0 1.15rem;
   padding-left: 1.25rem;
 }
@@ -1561,7 +1562,7 @@ h1 {
     margin-bottom: 3.75rem;
   }
 
-  .intro-row--toc {
+  .intro-row:last-child {
     margin-bottom: 0;
   }
 
@@ -1691,4 +1692,43 @@ p.slop {
 
 .section-media-stack .section-media--light {
   width: 100%;
+}
+
+.intro-media .shuster-figure {
+  width: 100%;
+}
+
+.sketch-placeholders--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sketch-placeholders--three div {
+  min-height: 6.5rem;
+}
+
+.method-list {
+  margin: 0.5rem 0 1.2rem;
+  padding-left: 1.4rem;
+}
+
+.method-list > li + li {
+  margin-top: 1.15rem;
+}
+
+.method-name {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.32em;
+  line-height: 1.2;
+}
+
+.todo {
+  padding: 0.1em 0.42em;
+  border: 1px dashed var(--line);
+  border-radius: 0.2rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76em;
+  white-space: nowrap;
 }

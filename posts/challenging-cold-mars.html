@@ -36,11 +36,92 @@
                 <img src="../assets/cold-mars/martiancanyon.webp" width="1600" height="852" alt="Three-dimensional reconstruction of a large canyon system on Mars">
                 <figcaption>A three-dimensional reconstruction of a Martian canyon.</figcaption>
               </figure>
+
+              <div class="sketch-placeholders sketch-placeholders--three" aria-label="placeholders for forthcoming hand-drawn illustrations">
+                <div>tiny meteorite</div>
+                <div>flood</div>
+                <div>slowly wet</div>
+              </div>
             </div>
 
             <div class="article-copy">
-              <p class="intro-claim">Cameras tell us Mars was warm for hundreds of millions of years. Rocks tell us Mars was barely ever warm.</p>
-              <p>The cameras hint at existence of ancient water via erosion. Mars's atmosphere is known to have been thin for the last billion years since we see a consistent history of tiny meteorite craters (they would've burned up before impact if the atmosphere were thicker). So smooth pebbles and canyons are unmistakable signs of liquid water, but they're not strong bounds on how long Mars could've had liquid water. For example, the Grand Canyon on Earth only took 5ish million years to carve.</p>
+              <p class="intro-claim">How many wet years did Mars experience? Cameras + simulation say up to 100M. Rock-whisperers say no more than 10M. I think the rock-whisperers are mistranslating slightly and that 100M is actually plausible.</p>
+              <p>Ancient Mars experienced liquid erosion. We see canyons and pebbles. Canyons are carved by rivers. Pebbles on Earth can be smoothed by either wind or water, but ancient Mars is known to have had a thin atmosphere since we see tiny meteorite craters (tiny meteorites would have burned up in a thick atmosphere before impact). So pebbles are also strong evidence of liquid water.</p>
+            </div>
+          </div>
+
+          <div class="article-grid intro-row">
+            <div class="intro-media">
+              <figure class="shuster-figure">
+                <img src="../assets/cold-mars/shuster-weiss-fig3a.png" width="864" height="848" alt="Shuster and Weiss Figure 3A temperature limits for Nakhla across several excursion durations">
+                <figcaption>Temperature limits from Nakhla, Fig. 3A in <a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a>.</figcaption>
+              </figure>
+
+              <nav class="article-toc" aria-label="table of contents">
+                <div class="toc-label">table of contents</div>
+                <ol>
+                  <li>
+                    <a href="#rock-thermometer">how to use a rock as a time-traveling thermometer</a>
+                    <ol>
+                      <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
+                      <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
+                      <li><a href="#date-feldspar">how to date a feldspar</a></li>
+                      <li><a href="#argon-irradiation">dating without a separate potassium measurement</a></li>
+                      <li><a href="#perfect-crystal-riddle">time-traveling riddle: using a perfect crystal as a thermometer</a></li>
+                      <li><a href="#heterogeneous-riddle">time-traveling riddle: using a heterogeneous rock as a better thermometer</a></li>
+                    </ol>
+                  </li>
+                  <li>
+                    <a href="#bayesian-models">augmenting shuster et al with modern computational bayesian models</a>
+                    <ol>
+                      <li><a href="#two-spike">shuster et al's 2-spike model</a></li>
+                      <li><a href="#nuts-posterior">the full posterior via NUTS</a></li>
+                      <li><a href="#warm-mars">was Mars warm?</a></li>
+                    </ol>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+
+            <div class="article-copy">
+              <p>We don’t just know that liquid erosion carved Mars’ surface; we even have estimates of the total water flow over the millennia. But it is not easy to distinguish whether Mars was:</p>
+              <ul>
+                <li>really wet for a short time</li>
+                <li>a bit wet for a long time.</li>
+              </ul>
+              <p>Two methods give us very different answers:</p>
+              <ol class="method-list">
+                <li>
+                  <span class="method-name">Simulation</span>
+                  <ul class="arrow-list arrow-list--nested">
+                    <li>modeling the fluid dynamics of various ancient erosion regimes to see which is most compatible with camera images of modern Mars</li>
+                    <li><span class="todo">insert citation</span> estimates up to 100M “wet years”</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="method-name">Rock-thermometer</span>
+                  <ul class="arrow-list arrow-list--nested">
+                    <li>using spacefaring Martian feldspars as a time-traveling thermometer</li>
+                    <li><a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a> estimate at most 10M “wet years”</li>
+                  </ul>
+                </li>
+              </ol>
+              <p>I was upset by how different those numbers are. Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected the discrepancy comes from the 21-year-old Shuster et al result “reading” the rocks as a thermometer using a very underpowered Bayesian model. Using HMC enabled by modern autodiff, we find that 100M wet years is plausible with the rock-thermometer method, resolving the apparent contradiction.</p>
+            </div>
+          </div>
+
+          <div class="article-grid intro-row">
+            <div class="intro-media">
+              <div class="sketch-placeholders sketch-placeholders--three" aria-label="placeholders for forthcoming hand-drawn illustrations">
+                <div>happy little rock</div>
+                <div>impact</div>
+                <div>journey to Earth</div>
+              </div>
+            </div>
+
+            <div class="article-copy">
+              <p>Both ways to estimate the number of “wet years” begin with a meteorite crash.</p>
+              <p>The rock-thermometer method depends on Earth scientists bringing an ancient Martian feldspar to a lab. This happens when a violent meteorite impact ejects Martian crust matter into space and some falls into Earth orbit by chance. We will discuss the fate of our happy little Martian rock later.</p>
             </div>
           </div>
 
@@ -50,56 +131,21 @@
                 <img src="../assets/cold-mars/mars-highland-denudation.jpg" width="1236" height="3025" alt="A heavily degraded ancient crater rim in Southern Arabia Terra beside a sharper younger crater">
                 <figcaption>An ancient, degraded crater rim in Southern Arabia Terra. <a href="https://science.nasa.gov/photojournal/degraded-crater-rim/">NASA/JPL/ASU ↗</a></figcaption>
               </figure>
-              <div class="sketch-placeholders" aria-label="placeholders for forthcoming crater illustrations">
-                <div>profile reconstruction</div>
-                <div>crater-age sequence</div>
+
+              <div class="sketch-placeholders" aria-label="placeholders for forthcoming hand-drawn illustrations">
+                <div>flood-lips</div>
+                <div>slow-lips</div>
               </div>
             </div>
 
             <div class="article-copy">
-              <p>Martian craters give us one high lower bound around at least 100 million warm years (above 0°C). Imagine old and young meteorite craters. If there were one big ancient deluge, then no old craters would exist, and all young craters would have sharp lips. If there were one big recent deluge, then we wouldn't see craters at all. But if there were slow water erosion over eons, we'd see lots of craters with varying levels of lip smoothness. That's exactly what we see, with a total duration of at least 100My.</p>
-            </div>
-          </div>
-
-          <div class="article-grid intro-row">
-            <figure class="shuster-figure">
-              <img src="../assets/cold-mars/shuster-weiss-fig3a.png" width="864" height="848" alt="Shuster and Weiss Figure 3A temperature limits for Nakhla across several excursion durations">
-              <figcaption>Temperature limits from Nakhla, Fig. 3A in <a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a>.</figcaption>
-            </figure>
-
-            <div class="article-copy">
-              <p>Using some clever forensics, geologists can repurpose silicates like feldspars into time-traveling thermometers. We have feldspars from Mars called Nakhlites, and a 2005 study by Shuster &amp; Weiss (surprisingly) indicates that Mars could not have been warmer than 0°C for more than 10M years in the last billion.</p>
-            </div>
-          </div>
-
-          <div class="article-grid intro-row intro-row--toc">
-            <nav class="article-toc" aria-label="table of contents">
-              <div class="toc-label">table of contents</div>
+              <p>The simulation method uses the lips of craters of various ages. If Mars experienced a few flood years, you’d expect a sharp divide between:</p>
               <ol>
-                <li>
-                  <a href="#rock-thermometer">how to use a rock as a time-traveling thermometer</a>
-                  <ol>
-                    <li><a href="#argon-source">who pumped argon into martian rocks?</a></li>
-                    <li><a href="#argon-clock-start">when does the argon clock start?</a></li>
-                    <li><a href="#date-feldspar">how to date a feldspar</a></li>
-                    <li><a href="#argon-irradiation">dating without a separate potassium measurement</a></li>
-                    <li><a href="#perfect-crystal-riddle">time-traveling riddle: using a perfect crystal as a thermometer</a></li>
-                    <li><a href="#heterogeneous-riddle">time-traveling riddle: using a heterogeneous rock as a better thermometer</a></li>
-                  </ol>
-                </li>
-                <li>
-                  <a href="#bayesian-models">augmenting shuster et al with modern computational bayesian models</a>
-                  <ol>
-                    <li><a href="#two-spike">shuster et al's 2-spike model</a></li>
-                    <li><a href="#nuts-posterior">the full posterior via NUTS</a></li>
-                    <li><a href="#warm-mars">was Mars warm?</a></li>
-                  </ol>
-                </li>
+                <li>pre-flood craters with very eroded lips</li>
+                <li>post-flood craters with pristine crispy edges</li>
               </ol>
-            </nav>
-
-            <div class="article-copy">
-              <p>Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected that the 21-year-old Shuster et al result was overconfident, so I revisited the inverse problem with a flexible diffusion model and gradient-based MCMC on eight GPUs. The result is narrower than I expected: Nakhla does not support a recent 100-million-year interval above freezing. An interval that old and beginning near the start of the last billion years reaches slightly above 0°C at the edge of its 95% posterior interval.</p>
+              <p>Instead, we observe a very smooth continuum of increasingly eroded craters. Simulation <span class="todo">link citation</span> suggests up to 100M total wet-years.</p>
+              <p>The rock-thermometer method is much more involved. The next <span class="todo">???</span>% of this blog will explain the experimental procedure of the rock-thermometer method and the computational model. The final <span class="todo">???</span>% discusses my correction to the method.</p>
             </div>
           </div>
         </section>
