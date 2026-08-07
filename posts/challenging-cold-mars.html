@@ -146,27 +146,48 @@
                 <img src="../assets/cold-mars/argon-potassium-ratio.svg?v=20260724b" alt="Radiogenic argon 40 divided by remaining potassium 40 rises with time since feldspar closure.">
               </figure>
               <figure class="section-media section-media--diagram">
-                <img src="../assets/cold-mars/isotope-budget-2stage.svg?v=20260807b" width="660" height="630" alt="Two pie charts of the rock's original potassium-40. At formation on Mars the pie is entirely potassium-40; at discovery in an Earth laboratory 1.3 billion years later, about a tenth of it is radiogenic argon-40 and the rest is surviving potassium-40.">
+                <img src="../assets/cold-mars/isotope-budget-2stage.svg?v=20260807c" width="660" height="670" alt="Two pie charts of the rock's original potassium-40. At formation on Mars the pie is entirely potassium-40; at discovery in an Earth laboratory 1.3 billion years later, about a tenth of it is radiogenic argon-40 and the rest is surviving potassium-40.">
                 <figcaption>Wedges are to scale for a 1.3-billion-year-old rock; the ⁴⁰K that decays to ⁴⁰Ca rather than ⁴⁰Ar is left out, since \(b\) already accounts for it.</figcaption>
               </figure>
             </div>
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
-              <p>After closure, ⁴⁰K disappears at a known rate and radiogenic ⁴⁰Ar accumulates. If we knew the feldspar’s initial ⁴⁰K content, we could date it from either the ⁴⁰K remaining today or the radiogenic ⁴⁰Ar produced since closure. We usually do not know that starting quantity, but it cancels when we divide the daughter count by the surviving parent count.</p>
-              <p>Write \(\bigl[X\bigr]_t\) for the number of atoms of isotope \(X\) in the rock at time \(t\), and let \(\Delta t\) be the time since closure. ⁴⁰K has decay constant \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\). Of all ⁴⁰K decays, the fraction \(b=0.107\) produces ⁴⁰Ar; the rest produce calcium. The daughter-to-parent ratio is therefore</p>
-              <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 ratio and elapsed time since closure">
-                \[\begin{aligned}
-                  \mathcal Q
-                    &amp;=\frac{\bigl[{}^{40}\mathrm{Ar}\bigr]_t}
-                    {\bigl[{}^{40}\mathrm K\bigr]_t}
-                    =b\!\left(e^{\lambda\Delta t}-1\right),\\
-                  \Delta t
-                    &amp;=\frac{1}{\lambda}
-                    \ln\!\left(1+\frac{\mathcal Q}{b}\right).
-                \end{aligned}\]
+              <p>If we know the feldspar’s initial ⁴⁰K content, we can date it from the radiogenic ⁴⁰Ar produced since closure.</p>
+              <div class="equation equation--wide" role="math" aria-label="Time since closure from the ratio of radiogenic argon 40 to surviving potassium 40">
+                \[\Delta t=\frac{1}{\lambda}
+                  \ln\!\left(1+\frac{1}{b}\,
+                  \frac{\bigl[{}^{40}\mathrm{Ar}\bigr]_t}
+                  {\bigl[{}^{40}\mathrm K\bigr]_t}\right)\]
               </div>
-              <p>This simple clock assumes that the feldspar began with no radiogenic argon and lost none after closure. That second half is really an assumption about temperature: argon escapes a crystal only when it is warm enough to diffuse, so the clock is trustworthy exactly to the extent that the rock has been cold ever since it formed. The diffusion model below allows later argon loss.</p>
+              <table class="notation-table">
+                <tbody>
+                  <tr>
+                    <th scope="row">\(\bigl[X\bigr]_t\)</th>
+                    <td>the number of atoms of isotope \(X\) in the rock at time \(t\).</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(\Delta t\)</th>
+                    <td>time elapsed since closure — the age we are after.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(\lambda\)</th>
+                    <td>the ⁴⁰K decay constant, \(\ln 2/(1.25\,\mathrm{Gyr})\).</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(b\)</th>
+                    <td>0.107: the fraction of ⁴⁰K decays that produce ⁴⁰Ar. The rest produce ⁴⁰Ca, which is why only this fraction of the parent shows up as argon.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(\bigl[{}^{40}\mathrm{Ar}\bigr]_t\)</th>
+                    <td>radiogenic ⁴⁰Ar still held in the crystal. Writing the age this way assumes none of it has escaped, which is an assumption that the rock has stayed cold.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(\bigl[{}^{40}\mathrm K\bigr]_t\)</th>
+                    <td>the ⁴⁰K that has not yet decayed.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
 
@@ -180,11 +201,11 @@
                 </div>
               </figure>
               <figure class="section-media section-media--diagram">
-                <img src="../assets/cold-mars/isotope-budget-mars.svg?v=20260807b" width="960" height="630" alt="Three pie charts of the Martian rock's original potassium-40: all potassium-40 at formation on Mars, about a tenth radiogenic argon-40 at discovery on Earth, and after neutron irradiation an argon-39 wedge carved out of the potassium wedge.">
+                <img src="../assets/cold-mars/isotope-budget-mars.svg?v=20260807c" width="960" height="670" alt="Three pie charts of the Martian rock's original potassium-40: all potassium-40 at formation on Mars, about a tenth radiogenic argon-40 at discovery on Earth, and after neutron irradiation an argon-39 wedge carved out of the potassium wedge.">
                 <figcaption>The ³⁹Ar wedge is carved out of the ⁴⁰K wedge because irradiation converts ³⁹K, whose ratio to ⁴⁰K is fixed — it is drawn far larger than the true conversion, which is a small fraction of a percent.</figcaption>
               </figure>
               <figure class="section-media section-media--diagram">
-                <img src="../assets/cold-mars/isotope-budget-earth.svg?v=20260807b" width="960" height="630" alt="The same three pie charts for the co-irradiated Earth monitor, which never leaves Earth and is younger, so its radiogenic argon-40 wedge is much thinner.">
+                <img src="../assets/cold-mars/isotope-budget-earth.svg?v=20260807c" width="960" height="670" alt="The same three pie charts for the co-irradiated Earth monitor, which never leaves Earth and is younger, so its radiogenic argon-40 wedge is much thinner.">
                 <figcaption>The monitor never leaves Earth, and it is younger, so its radiogenic ⁴⁰Ar wedge is thinner — and because its age is already known, that wedge is what pins down the conversion factor \(J\) shared by both rocks.</figcaption>
               </figure>
             </div>
@@ -246,7 +267,7 @@
 
           <section class="article-grid subsection" id="argon-loss">
             <figure class="section-media section-media--diagram">
-              <img src="../assets/cold-mars/isotope-budget-diffusion.svg?v=20260807b" width="960" height="630" alt="The same three pie charts for a rock that did not stay cold: a black wedge in the discovery and post-irradiation pies stands for radiogenic argon-40 that diffused out of the crystal, and its size is unknown.">
+              <img src="../assets/cold-mars/isotope-budget-diffusion.svg?v=20260807c" width="960" height="670" alt="The same three pie charts for a rock that did not stay cold: a black wedge in the discovery and post-irradiation pies stands for radiogenic argon-40 that diffused out of the crystal, and its size is unknown.">
               <figcaption>The black wedge is ⁴⁰Ar that has diffused out of the crystal; nothing in the measurement reveals how big it is.</figcaption>
             </figure>
 
