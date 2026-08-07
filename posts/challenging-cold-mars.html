@@ -255,21 +255,46 @@
             </div>
 
             <div class="article-copy">
-              <p>Temperature controls how quickly argon moves through the feldspar. An argon atom spends most of its time in cavities in the aluminosilicate framework. To reach a neighboring cavity, it must squeeze through a narrower, higher-energy configuration. Let \(E_a\) be the molar energy needed to reach that bottleneck.</p>
-              <p>While the feldspar remains crystalline, thermal motion makes argon repeatedly sample configurations around a cavity. In a one-barrier model, the bottleneck’s Boltzmann weight relative to the stable cavity is \(\exp[-E_a/(R_gT)]\), where \(T\) is absolute temperature and \(R_g\) is the gas constant. If thermal motion supplies \(\nu_0\) attempts per second, the successful-hop rate is</p>
-              <div class="equation" role="math" aria-label="The successful hop rate is attempt frequency times an Arrhenius factor">
-                \[\Gamma(T)=\nu_0\exp\!\left(-\frac{E_a}{R_gT}\right).\]
-              </div>
-              <p>As \(T\) rises, the exponential penalty shrinks and successful hops become much more frequent.</p>
-              <p>The hops have no preferred direction. If neighboring cavities are separated by distance \(\ell\), then after \(t\) seconds the atom’s three-dimensional random walk satisfies</p>
-              <div class="equation" role="math" aria-label="Mean squared displacement from random hopping equals six times diffusivity times time">
-                \[\left\langle |\Delta\mathbf{x}|^2\right\rangle=\Gamma(T)t\ell^2=6D(T)t.\]
-              </div>
-              <p>Combining the attempt rate and hop length into \(D_0=\ell^2\nu_0/6\) gives the Arrhenius diffusion law:</p>
+              <p>Temperature controls how quickly argon moves through the feldspar. I use the diffusion model of <a href="https://doi.org/10.1029/JB094iB12p17917">Lovera, Richter &amp; Harrison (1989) ↗</a>, the multiple-diffusion-domain (MDD) model that ⁴⁰Ar/³⁹Ar thermal-history work has used ever since, Shuster &amp; Weiss included. It says that argon leaves a crystal by thermally activated volume diffusion, with a diffusivity \(D\) that depends on temperature through the Arrhenius law:</p>
               <div class="equation" role="math" aria-label="Argon diffusivity as an Arrhenius function of temperature">
                 \[D(T)=D_0\exp\!\left(-\frac{E_a}{R_gT}\right)\]
               </div>
-              <p>Escaping also takes longer when the diffusion domain is larger. For a spherical domain of radius \(r\), the release rate depends on \(D(T)/r^2\): doubling \(r\) makes the characteristic diffusion time four times longer.</p>
+              <p>Reading it symbol by symbol:</p>
+              <table class="notation-table">
+                <tbody>
+                  <tr>
+                    <th scope="row">\(T\)</th>
+                    <td>absolute temperature, in kelvin — never °C. The law is Arrhenius only on an absolute scale.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(D(T)\)</th>
+                    <td>diffusivity at that temperature, in area per time (cm²/s by convention). Larger \(D\) means argon spreads through the crystal faster.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(E_a\)</th>
+                    <td>activation energy, in energy per mole: what a mole of argon needs to break out of its site in the aluminosilicate framework and squeeze into the neighboring one. For Nakhla’s feldspar it sits near 117 kJ/mol.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(R_g\)</th>
+                    <td>the gas constant, 8.314 J mol⁻¹ K⁻¹, so \(R_gT\) is the thermal energy available per mole at temperature \(T\).</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">\(D_0\)</th>
+                    <td>the pre-exponential factor, in the same units as \(D\): the diffusivity in the hypothetical limit where every attempt succeeds.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Grouped that way, the exponent \(E_a/(R_gT)\) is a pure number — the height of the barrier measured in units of the thermal energy available to clear it — and the Arrhenius factor \(\exp[-E_a/(R_gT)]\) is the fraction of attempts that succeed, a number between 0 and 1 that rises toward 1 as the rock warms.</p>
+              <p>“Arrhenius” is a claim about a straight line. Taking logarithms of both sides,</p>
+              <div class="equation" role="math" aria-label="Log diffusivity is linear in inverse temperature with slope minus activation energy over the gas constant">
+                \[\ln D(T)=\ln D_0-\frac{E_a}{R_g}\cdot\frac{1}{T},\]
+              </div>
+              <p>so plotting \(\ln D\) against \(1/T\) gives a line with intercept \(\ln D_0\) and slope \(-E_a/R_g\). That plot is what geochronologists actually fit, and it is why the kinetics are always quoted as the pair \((E_a,D_0)\): one is the slope, the other the intercept.</p>
+              <p>Lovera et al. index the model by the <em>diffusion domain</em> — the region argon must cross to get out — rather than by the grain. A spherical domain of characteristic radius \(r\) empties at a rate set by \(D(T)/r^2\), so the intercept and the radius only ever appear together:</p>
+              <div class="equation" role="math" aria-label="Arrhenius law for one diffusion domain normalized by the squared domain radius">
+                \[\frac{D(T)}{r^2}=\frac{D_0}{r^2}\exp\!\left(-\frac{E_a}{R_gT}\right)\]
+              </div>
+              <p>The perfect crystal of this toy problem has a single value of \(D_0/r^2\). The MDD model’s one addition is that a real feldspar holds many domains that share the same \(E_a\) and \(D_0\) and differ only in \(r\); each then has its own \(D_0/r^2\), and the rock’s measured release is the volume-weighted sum over them. Size separates the domains sharply, because \(r\) enters squared: doubling \(r\) makes the characteristic diffusion time four times longer.</p>
               <p>The age measurement does not tell us \(E_a\) or \(D_0/r^2\) for this feldspar. We measure them with <em>step heating</em>.</p>
             </div>
           </section>
