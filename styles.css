@@ -1655,3 +1655,40 @@ h1 {
 .essay--note .notation-table th {
   width: 7.5rem;
 }
+
+/* TEMPORARY draft marker. Everything tagged .slop is prose awaiting a rewrite;
+   delete the class from an element once that part has been corrected, and
+   delete this block once none remain. */
+.slop,
+.slop p,
+.slop li,
+.slop h2,
+.slop h3,
+.slop th,
+.slop td,
+.slop summary,
+.slop figcaption,
+.slop .katex,
+.slop .equation {
+  color: #c02f1d;
+}
+
+.slop .article-copy,
+.slop .major-heading h2 {
+  border-left: 3px solid #c02f1d;
+  padding-left: 1rem;
+}
+
+p.slop {
+  border-left: 3px solid #c02f1d;
+  padding-left: 1rem;
+}
+
+.slop .section-media img,
+.slop .section-media video {
+  border-color: #c02f1d;
+}
+
+.section-media-stack .section-media--light {
+  width: 100%;
+}

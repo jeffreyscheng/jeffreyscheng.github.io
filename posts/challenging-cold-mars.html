@@ -141,37 +141,53 @@
           </section>
 
           <section class="article-grid subsection" id="date-feldspar">
-            <figure class="section-media section-media--light">
-              <img src="../assets/cold-mars/argon-potassium-ratio.svg?v=20260724b" alt="Radiogenic argon 40 divided by remaining potassium 40 rises with time since feldspar closure.">
-            </figure>
+            <div class="section-media-stack">
+              <figure class="section-media section-media--light">
+                <img src="../assets/cold-mars/argon-potassium-ratio.svg?v=20260724b" alt="Radiogenic argon 40 divided by remaining potassium 40 rises with time since feldspar closure.">
+              </figure>
+              <figure class="section-media section-media--diagram">
+                <img src="../assets/cold-mars/isotope-budget-2stage.svg?v=20260807a" width="660" height="600" alt="Two pie charts of the rock's original potassium-40. At formation on Mars the pie is entirely potassium-40; at discovery in an Earth laboratory 1.3 billion years later, about a tenth of it is radiogenic argon-40 and the rest is surviving potassium-40.">
+                <figcaption>What became of the feldspar’s original ⁴⁰K. Wedges are to scale for a 1.3-billion-year-old rock; the ⁴⁰K that decays to ⁴⁰Ca rather than ⁴⁰Ar is left out, since \(b\) already accounts for it.</figcaption>
+              </figure>
+            </div>
 
             <div class="article-copy">
               <h3>how to date a feldspar</h3>
               <p>After closure, ⁴⁰K disappears at a known rate and radiogenic ⁴⁰Ar accumulates. If we knew the feldspar’s initial ⁴⁰K content, we could date it from either the ⁴⁰K remaining today or the radiogenic ⁴⁰Ar produced since closure. We usually do not know that starting quantity, but it cancels when we divide the daughter count by the surviving parent count.</p>
-              <p>Let \(N_X(t)\) count atoms of isotope \(X\), and let \(\Delta t\) be the time since closure. ⁴⁰K has decay constant \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\). Of all ⁴⁰K decays, the fraction \(b=0.107\) produces ⁴⁰Ar; the rest produce calcium. The daughter-to-parent ratio is therefore</p>
+              <p>Write \(\bigl[X\bigr]_t\) for the number of atoms of isotope \(X\) in the rock at time \(t\), and let \(\Delta t\) be the time since closure. ⁴⁰K has decay constant \(\lambda=\ln 2/(1.25\,\mathrm{Gyr})\). Of all ⁴⁰K decays, the fraction \(b=0.107\) produces ⁴⁰Ar; the rest produce calcium. The daughter-to-parent ratio is therefore</p>
               <div class="equation" role="math" aria-label="Radiogenic argon 40 to potassium 40 ratio and elapsed time since closure">
                 \[\begin{aligned}
                   \mathcal Q
-                    &amp;=\frac{N_{^{40}\mathrm{Ar}}(t)}
-                    {N_{^{40}\mathrm K}(t)}
+                    &amp;=\frac{\bigl[{}^{40}\mathrm{Ar}\bigr]_t}
+                    {\bigl[{}^{40}\mathrm K\bigr]_t}
                     =b\!\left(e^{\lambda\Delta t}-1\right),\\
                   \Delta t
                     &amp;=\frac{1}{\lambda}
                     \ln\!\left(1+\frac{\mathcal Q}{b}\right).
                 \end{aligned}\]
               </div>
-              <p>This simple clock assumes that the feldspar began with no radiogenic argon and lost none after closure. The diffusion model below allows later argon loss.</p>
+              <p>This simple clock assumes that the feldspar began with no radiogenic argon and lost none after closure. That second half is really an assumption about temperature: argon escapes a crystal only when it is warm enough to diffuse, so the clock is trustworthy exactly to the extent that the rock has been cold ever since it formed. The diffusion model below allows later argon loss.</p>
             </div>
           </section>
 
           <section class="article-grid subsection" id="argon-irradiation">
-            <figure class="section-media" aria-label="Argon irradiation dating with a co-irradiated Earth monitor">
-              <div class="video-shell">
-                <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Co-irradiated Earth and Martian feldspars provide the isotope ratios used to infer the Martian rock's age" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724c">
-                  <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724c" type="video/mp4">
-                </video>
-              </div>
-            </figure>
+            <div class="section-media-stack">
+              <figure class="section-media" aria-label="Argon irradiation dating with a co-irradiated Earth monitor">
+                <div class="video-shell">
+                  <video width="854" height="480" muted loop playsinline controls preload="metadata" aria-label="Co-irradiated Earth and Martian feldspars provide the isotope ratios used to infer the Martian rock's age" poster="../assets/cold-mars/manim/argon-irradiation.jpg?v=20260724c">
+                    <source src="../assets/cold-mars/manim/argon-irradiation.mp4?v=20260724c" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+              <figure class="section-media section-media--diagram">
+                <img src="../assets/cold-mars/isotope-budget-mars.svg?v=20260807a" width="960" height="600" alt="Three pie charts of the Martian rock's original potassium-40: all potassium-40 at formation on Mars, about a tenth radiogenic argon-40 at discovery on Earth, and after neutron irradiation an argon-39 wedge carved out of the potassium wedge.">
+                <figcaption>The Martian feldspar. The ³⁹Ar wedge is carved out of the ⁴⁰K wedge because irradiation converts ³⁹K, whose ratio to ⁴⁰K is fixed — it is drawn far larger than the true conversion, which is a small fraction of a percent.</figcaption>
+              </figure>
+              <figure class="section-media section-media--diagram">
+                <img src="../assets/cold-mars/isotope-budget-earth.svg?v=20260807a" width="960" height="600" alt="The same three pie charts for the co-irradiated Earth monitor, which never leaves Earth and is younger, so its radiogenic argon-40 wedge is much thinner.">
+                <figcaption>The Earth monitor, which never leaves Earth. It is younger, so its radiogenic ⁴⁰Ar wedge is thinner — and because its age is already known, that wedge is what pins down the conversion factor \(J\) shared by both rocks.</figcaption>
+              </figure>
+            </div>
 
             <div class="article-copy">
               <h3>dating without a separate potassium measurement</h3>
@@ -205,8 +221,8 @@
                   <p>For either co-irradiated rock \(i\), define the corrected measured ratio</p>
                   <div class="equation" role="math" aria-label="Corrected argon 40 to argon 39 ratio">
                     \[\mathcal R_i=
-                      \frac{N_{^{40}\mathrm{Ar}}^i(t)}
-                      {N_{^{39}\mathrm{Ar}}^i(t)}.
+                      \frac{\bigl[{}^{40}\mathrm{Ar}\bigr]^i_t}
+                      {\bigl[{}^{39}\mathrm{Ar}\bigr]^i_t}.
                     \]
                   </div>
                   <p>The irradiation contributes the same unknown conversion factor \(J\) to both rocks:</p>
@@ -228,6 +244,19 @@
             </div>
           </section>
 
+          <section class="article-grid subsection" id="argon-loss">
+            <figure class="section-media section-media--diagram">
+              <img src="../assets/cold-mars/isotope-budget-diffusion.svg?v=20260807a" width="960" height="600" alt="The same three pie charts for a rock that did not stay cold: a black wedge in the discovery and post-irradiation pies stands for radiogenic argon-40 that diffused out of the crystal, and its size is unknown.">
+              <figcaption>A rock that did not stay cold. The black wedge is ⁴⁰Ar that has diffused out of the crystal; nothing in the measurement reveals how big it is.</figcaption>
+            </figure>
+
+            <div class="article-copy">
+              <p>Every step above assumed the crystal kept every atom of ⁴⁰Ar it ever made. That assumption is a statement about temperature, and it fails when the rock gets warm. Argon is a neutral atom sitting in a cavity of the aluminosilicate framework; warmth lets it hop from cavity to cavity until it reaches the edge of a grain and is gone. The rock goes on producing ⁴⁰Ar the entire time. It simply does not keep all of it.</p>
+              <p>The black wedge is what leaves, and its size is exactly what we cannot measure. A young rock that retained all of its argon and an old rock that lost half of it hand the mass spectrometer the same \(\mathcal R_M\), so Equation 1 returns an age that is too young by an unknown amount. Both ⁴⁰Ar and ³⁹Ar diffuse, but the ³⁹Ar was made weeks ago in the reactor and has not had a billion years in which to escape, so the loss does not cancel in the ratio.</p>
+              <p>If a perfectly uniform feldspar crystal loses ⁴⁰Ar to diffusion, it becomes impossible to date. Fortunately, real rocks are not perfect. We are going to employ a forensic trick on the heterogeneous crystal structure that is so effective that we extract not only the rock’s accurate birth date but also the rock’s past temperature.</p>
+            </div>
+          </section>
+
           <section class="article-grid subsection" id="perfect-crystal-riddle">
             <figure class="section-media section-media--diagram">
               <img src="../assets/cold-mars/perfect-crystal-riddle.svg?v=20260725b" width="960" height="900" alt="A vertical timeline shows a newly formed Martian rock magnified into identical spherical grains, stored in a refrigerator from 1300 million years ago until the present, then measured on Earth">
@@ -236,11 +265,11 @@
             <div class="article-copy">
               <h3>time-traveling riddle: using a perfect crystal as a thermometer</h3>
               <p>I claim that we can use a single rock as a time-traveling thermometer for the temperature of the Martian surface, which changed over time. Let’s first consider a much simpler case. An ancient Martian alien walks over to a fresh volcanic eruption, picks up a piece of newly-formed feldspar made of perfectly homogeneous crystal grains, chucks it into a refrigerator held at one constant temperature for hundreds of millions of years, and then teleports the aged feldspar into our living room on Earth.</p>
-              <p>We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. To solve the toy problem, we need two more links: how temperature controls argon’s escape, and how the surviving argon reveals the refrigerator temperature.</p>
+              <p class="slop">We now know how to infer the rock’s age: irradiate it beside an Earth feldspar, bake both rocks, measure the offgassed ³⁹Ar and ⁴⁰Ar, and apply Equation 1. To solve the toy problem, we need two more links: how temperature controls argon’s escape, and how the surviving argon reveals the refrigerator temperature.</p>
             </div>
           </section>
 
-          <section class="article-grid subsection">
+          <section class="article-grid subsection slop">
             <div class="section-media-stack">
               <figure class="section-media section-media--diagram">
                 <img src="../assets/cold-mars/arrhenius-diffusion.svg?v=20260725b" width="960" height="940" alt="Argon crosses an activation-energy barrier between feldspar cavities; the bottleneck has greater Boltzmann weight at higher temperature, and many unbiased hops become Arrhenius diffusion">
@@ -299,7 +328,7 @@
             </div>
           </section>
 
-          <section class="article-grid subsection">
+          <section class="article-grid subsection slop">
             <figure class="section-media section-media--diagram">
               <img src="../assets/cold-mars/step-heating-inversion.svg?v=20260725a" width="960" height="1320" alt="A single-domain step-heating simulation shows the oven schedule, argon released in each five-minute step, the cumulative staircase, and the inversion from retained natural argon to refrigerator temperature">
             </figure>
@@ -330,7 +359,7 @@
             </div>
           </section>
 
-          <section class="article-grid subsection" id="heterogeneous-riddle">
+          <section class="article-grid subsection slop" id="heterogeneous-riddle">
             <div class="section-media-stack">
               <figure class="section-media" aria-label="Diffusion-domain size controls argon retention">
                 <div class="video-shell">
@@ -357,7 +386,7 @@
           </section>
         </section>
 
-        <section class="major-section" id="bayesian-models">
+        <section class="major-section slop" id="bayesian-models">
           <div class="major-heading article-grid">
             <div aria-hidden="true"></div>
             <h2>augmenting shuster et al with modern computational bayesian models</h2>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 600" role="img" aria-labelledby="title description">
+  <title id="title">What became of the feldspar's original potassium-40, from formation to discovery</title>
+  <desc id="description">Two pie charts of the rock's original potassium-40 budget. At formation on Mars the pie is entirely potassium-40. At discovery in an Earth laboratory about 1.3 billion years later, roughly a tenth of the pie is radiogenic argon-40 and the rest is surviving potassium-40. The ratio between the two wedges gives the age.</desc>
+  <rect width="660" height="600" fill="#f7f5ef"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="30" y="50" width="300" height="175" fill="#e9c095"/>
+    <rect x="30" y="225" width="300" height="175" fill="#b4664a"/>
+    <rect x="330" y="50" width="300" height="175" fill="#a9d4e5"/>
+    <rect x="330" y="225" width="300" height="175" fill="#87a06e"/>
+    <line x1="330" y1="50" x2="330" y2="400" stroke="#f7f5ef" stroke-opacity="0.5" stroke-width="2"/>
+    <line x1="30" y1="225" x2="630" y2="225" stroke="#3a3b37" stroke-width="2.5"/>
+    <rect x="30" y="50" width="600" height="350" fill="none" stroke="#282b29" stroke-width="2.5"/>
+    <text x="180" y="86" text-anchor="middle" fill="#282b29" font-size="23" letter-spacing="1.2">MARS · FORMATION</text>
+    <text x="180" y="114" text-anchor="middle" fill="#282b29" fill-opacity="0.72" font-size="21">the clock starts</text>
+    <circle cx="180.0" cy="225.0" r="100" fill="#f7f5ef" fill-opacity="0.55"/>
+    <circle cx="180.0" cy="225.0" r="96" fill="#6f5a86"/>
+    <circle cx="180.0" cy="225.0" r="96" fill="none" stroke="#282b29" stroke-width="3"/>
+    <text x="180" y="352" text-anchor="middle" fill="#f7f5ef" font-size="22">all ⁴⁰K, no argon yet</text>
+    <text x="480" y="86" text-anchor="middle" fill="#282b29" font-size="23" letter-spacing="1.2">EARTH · LABORATORY</text>
+    <text x="480" y="114" text-anchor="middle" fill="#282b29" fill-opacity="0.72" font-size="21">at discovery</text>
+    <circle cx="480.0" cy="225.0" r="100" fill="#f7f5ef" fill-opacity="0.55"/>
+    <path d="M480.0 225.0 L480.00 129.00 A96 96 0 0 1 537.18 147.88 Z" fill="#df7650"/>
+    <path d="M480.0 225.0 L537.18 147.88 A96 96 0 1 1 480.00 129.00 Z" fill="#6f5a86"/>
+    <line x1="480.0" y1="225.0" x2="480.00" y2="129.00" stroke="#f7f5ef" stroke-width="2.5"/>
+    <line x1="480.0" y1="225.0" x2="537.18" y2="147.88" stroke="#f7f5ef" stroke-width="2.5"/>
+    <circle cx="480.0" cy="225.0" r="96" fill="none" stroke="#282b29" stroke-width="3"/>
+    <text x="480" y="352" text-anchor="middle" fill="#f7f5ef" font-size="22">⁴⁰K decayed into ⁴⁰Ar</text>
+    <text x="480" y="379" text-anchor="middle" fill="#f7f5ef" fill-opacity="0.85" font-size="20">the ratio gives the age</text>
+    <defs><marker id="tarrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#59605c"/></marker></defs>
+    <line x1="180" y1="470" x2="618" y2="470" stroke="#59605c" stroke-width="3" marker-end="url(#tarrow)"/>
+    <line x1="180" y1="459" x2="180" y2="481" stroke="#59605c" stroke-width="3"/>
+    <text x="180" y="508" text-anchor="middle" fill="#59605c" font-size="22">1300 My ago</text>
+    <line x1="480" y1="459" x2="480" y2="481" stroke="#59605c" stroke-width="3"/>
+    <text x="480" y="508" text-anchor="middle" fill="#59605c" font-size="22">present</text>
+    <text x="330" y="450" text-anchor="middle" fill="#59605c" font-size="21">1.3 billion years</text>
+    <rect x="191" y="530" width="19" height="19" rx="3" fill="#6f5a86" stroke="#282b29" stroke-width="1.5"/>
+    <text x="223" y="545" fill="#59605c" font-size="21">⁴⁰K</text>
+    <rect x="284" y="530" width="19" height="19" rx="3" fill="#df7650" stroke="#282b29" stroke-width="1.5"/>
+    <text x="316" y="545" fill="#59605c" font-size="21">radiogenic ⁴⁰Ar</text>
+  </g>
+</svg>
