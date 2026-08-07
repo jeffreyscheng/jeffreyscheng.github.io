@@ -1694,10 +1694,6 @@ p.slop {
   width: 100%;
 }
 
-.intro-media .shuster-figure {
-  width: 100%;
-}
-
 .sketch-placeholders--three {
   grid-template-columns: repeat(3, 1fr);
 }
