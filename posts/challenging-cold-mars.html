@@ -45,7 +45,7 @@
             </div>
 
             <div class="article-copy">
-              <p class="intro-claim">How many wet years did Mars experience? Cameras + simulation say up to 100M. Rock-whisperers say no more than 10M. I think the rock-whisperers are mistranslating slightly and that 100M is actually plausible.</p>
+              <p>How many wet years did Mars experience? Analyses of eroded Martian craters suggest up to 100M. Professional rock-whisperers say no more than 10M. I think the rock-whisperers are mistranslating slightly using outdated math and that a Martian history of 100 million wet-years is actually plausible.</p>
               <p>Ancient Mars experienced liquid erosion. We see canyons and pebbles. Canyons are carved by rivers. Pebbles on Earth can be smoothed by either wind or water, but ancient Mars is known to have had a thin atmosphere since we see tiny meteorite craters (tiny meteorites would have burned up in a thick atmosphere before impact). So pebbles are also strong evidence of liquid water.</p>
             </div>
           </div>
@@ -83,21 +83,9 @@
                 <li>a bit wet for a long time.</li>
               </ul>
               <p>Two methods give us very different answers:</p>
-              <ol class="method-list">
-                <li>
-                  <span class="method-name">Simulation</span>
-                  <ul class="arrow-list arrow-list--nested">
-                    <li>modeling the fluid dynamics of various ancient erosion regimes to see which is most compatible with camera images of modern Mars</li>
-                    <li><span class="todo">insert citation</span> estimates up to 100M “wet years”</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="method-name">Rock-thermometer</span>
-                  <ul class="arrow-list arrow-list--nested">
-                    <li>using spacefaring Martian feldspars as a time-traveling thermometer</li>
-                    <li><a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a> estimate at most 10M “wet years”</li>
-                  </ul>
-                </li>
+              <ol>
+                <li>Simulation: modeling the fluid dynamics of various ancient erosion regimes to see which is most compatible with camera images of modern Mars. <span class="todo">insert citation</span> estimates up to 100M “wet years”.</li>
+                <li>Rock-thermometer: using spacefaring Martian feldspars as a time-traveling thermometer. <a href="https://doi.org/10.1126/science.1113077">Shuster &amp; Weiss (2005) ↗</a> estimate at most 10M “wet years”.</li>
               </ol>
               <p>I was upset by how different those numbers are. Berkeley geochronologist <a href="https://www.researchgate.net/scientific-contributions/Jack-N-Carter-2256974892">Jack Carter</a> and I suspected the discrepancy comes from the 21-year-old Shuster et al result “reading” the rocks as a thermometer using a very underpowered Bayesian model. Using HMC enabled by modern autodiff, we find that 100M wet years is plausible with the rock-thermometer method, resolving the apparent contradiction.</p>
             </div>
@@ -252,18 +240,14 @@
             <div class="article-copy">
               <h3>dating without a separate potassium measurement</h3>
               <p>Measuring ⁴⁰Ar is easy: put the rock in a very hot oven and the neutral argon diffuses out. A mass spectrometer measures the offgassed argon. The same procedure fails on ⁴⁰K. Potassium is present as K⁺, and the feldspar’s electrostatic potential locks those ions in place. We therefore need to infer the age without measuring ⁴⁰K directly.</p>
-              <ul class="arrow-list">
-                <li>Isotope abundances act like fingerprints. The natural ⁴⁰K/³⁹K ratio is effectively constant here and is known for Martian material. ³⁹K is also not measurable by offgassing, but we can perform a trick.</li>
-                <li>Suppose we irradiate the rock with fast neutrons. A small fraction of its ³⁹K becomes ³⁹Ar through \({}^{39}\mathrm K+n\rightarrow{}^{39}\mathrm{Ar}+p\), and heating can release that ³⁹Ar. The converted fraction is basically a property of how angry the neutron irradiation is: its neutron fluence and energy spectrum. This fraction is unknown and hard to calculate, but we can employ another trick.</li>
-                <li>
-                  An Earth feldspar of known age is placed beside the Martian feldspar in the same irradiation package. Their adjacent positions let one unknown conversion factor calibrate both rocks:
-                  <ul class="arrow-list arrow-list--nested">
-                    <li>known Earth age + measured Earth ⁴⁰Ar/³⁹Ar → conversion factor for the shared irradiation</li>
-                    <li>shared conversion factor + measured Martian ³⁹Ar → proxy for present Martian ³⁹K</li>
-                    <li>known natural ⁴⁰K/³⁹K ratio → proxy for present Martian ⁴⁰K</li>
-                    <li>Martian radiogenic ⁴⁰Ar/⁴⁰K ratio → age of the Martian feldspar</li>
-                  </ul>
-                </li>
+              <p>Isotope abundances act like fingerprints. The natural ⁴⁰K/³⁹K ratio is effectively constant here and is known for Martian material. ³⁹K is also not measurable by offgassing, but we can perform a trick.</p>
+              <p>Suppose we irradiate the rock with fast neutrons. A small fraction of its ³⁹K becomes ³⁹Ar through \({}^{39}\mathrm K+n\rightarrow{}^{39}\mathrm{Ar}+p\), and heating can release that ³⁹Ar. The converted fraction is basically a property of how angry the neutron irradiation is: its neutron fluence and energy spectrum. This fraction is unknown and hard to calculate, but we can employ another trick.</p>
+              <p>An Earth feldspar of known age is placed beside the Martian feldspar in the same irradiation package. Their adjacent positions let one unknown conversion factor calibrate both rocks:</p>
+              <ul>
+                <li>known Earth age + measured Earth ⁴⁰Ar/³⁹Ar → conversion factor for the shared irradiation</li>
+                <li>shared conversion factor + measured Martian ³⁹Ar → proxy for present Martian ³⁹K</li>
+                <li>known natural ⁴⁰K/³⁹K ratio → proxy for present Martian ⁴⁰K</li>
+                <li>Martian radiogenic ⁴⁰Ar/⁴⁰K ratio → age of the Martian feldspar</li>
               </ul>
               <p>Let \(E\) denote the Earth monitor and \(M\) the Martian feldspar. After correcting for atmospheric argon and interfering reactions, \(\Delta t_E\) is known and \(\mathcal R_E,\mathcal R_M\) are the measured radiogenic ⁴⁰Ar / potassium-derived ³⁹Ar ratios. The Martian feldspar’s age is</p>
               <div class="equation equation--wide equation--nowrap" role="math" aria-label="Martian feldspar age calibrated by a co-irradiated Earth feldspar of known age">

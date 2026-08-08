@@ -1196,13 +1196,6 @@ h1 {
   margin-top: 2rem;
 }
 
-.intro-claim {
-  margin: 0 0 1.35rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
-  line-height: 1.35;
-}
-
 .intro-row {
   margin-bottom: clamp(3.5rem, 8vw, 6rem);
 }
@@ -1362,34 +1355,6 @@ h1 {
   margin-top: 0.65rem;
 }
 
-.article-copy .arrow-list {
-  list-style: none;
-  padding-left: 1.45rem;
-}
-
-.arrow-list > li {
-  position: relative;
-}
-
-.arrow-list > li::before {
-  position: absolute;
-  left: -1.35rem;
-  color: var(--muted);
-  content: "→";
-}
-
-.article-copy .arrow-list--nested {
-  margin-top: 0.75rem;
-  margin-bottom: 0.15rem;
-  padding-left: 1.35rem;
-  color: var(--muted);
-  font-size: 0.93em;
-}
-
-.arrow-list--nested > li + li {
-  margin-top: 0.4rem;
-}
-
 .notation-table {
   width: 100%;
   margin: 0.85rem 0 1.15rem;
@@ -1514,7 +1479,9 @@ h1 {
 }
 
 .essay--structured .equation {
-  margin: 1rem 0 1.15rem;
+  margin: 1.5rem 0 1.6rem;
+  padding: 0;
+  border: 0;
   font-size: clamp(1.05rem, 1.5vw, 1.18rem);
 }
 
@@ -1551,10 +1518,6 @@ h1 {
 
   .intro-sequence {
     margin-top: 1.5rem;
-  }
-
-  .intro-claim {
-    margin-bottom: 1.35rem;
   }
 
   .intro-row {
@@ -1702,29 +1665,14 @@ p.slop {
   min-height: 6.5rem;
 }
 
-.method-list {
-  margin: 0.5rem 0 1.2rem;
-  padding-left: 1.4rem;
-}
-
-.method-list > li + li {
-  margin-top: 1.15rem;
-}
-
-.method-name {
-  display: block;
-  margin-bottom: 0.15rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.32em;
-  line-height: 1.2;
-}
-
 .todo {
-  padding: 0.1em 0.42em;
-  border: 1px dashed var(--line);
-  border-radius: 0.2rem;
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.76em;
-  white-space: nowrap;
+}
+
+.todo::before {
+  content: "[";
+}
+
+.todo::after {
+  content: "]";
 }
