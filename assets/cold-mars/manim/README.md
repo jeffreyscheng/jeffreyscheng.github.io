@@ -11,3 +11,7 @@
 Both clips are H.264/yuv420p with the MP4 metadata moved to the beginning of
 the file. Their poster frames are taken 0.05 seconds after the corresponding
 clip starts.
+
+`isotope-agreement.mp4` is the render of `IsotopeAgreementClip` in
+`geochronology/web_clips.py`. Four independent chronometers cross at one
+crystallization age; the poster frame is taken 0.05 seconds in.
